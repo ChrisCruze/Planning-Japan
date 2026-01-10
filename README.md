@@ -98,3 +98,7 @@ Access the interactive planning dashboard by opening `index.html` in any modern 
 ---
 
 *Breaking the last-minute planning cycle, one well-planned trip at a time.* ✈️🗾
+
+## Repository
+
+GitHub: https://github.com/ChrisCruze/Planning-Japan
