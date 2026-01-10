@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planning Japan - Dashboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #e63946;
+            --secondary-color: #457b9d;
+            --success-color: #2a9d8f;
+            --warning-color: #f4a261;
+            --background: #f8f9fa;
+            --card-bg: #ffffff;
+            --text-primary: #2b2d42;
+            --text-secondary: #8d99ae;
+            --border-color: #dee2e6;
+            --shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            --shadow-hover: 0 4px 16px rgba(0, 0, 0, 0.15);
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--background);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            box-shadow: var(--shadow);
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            opacity: 0.95;
+        }
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            margin-bottom: 30px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .card-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .card-icon {
+            font-size: 2rem;
+        }
+
+        .progress-container {
+            margin: 16px 0;
+        }
+
+        .progress-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 12px;
+            background-color: #e9ecef;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--secondary-color), var(--success-color));
+            border-radius: 6px;
+            transition: width 0.5s ease;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin: 4px;
+        }
+
+        .status-completed {
+            background-color: #d4edda;
+            color: #155724;
+        }
+
+        .status-in-progress {
+            background-color: #fff3cd;
+            color: #856404;
+        }
+
+        .status-pending {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+
+        .timeline {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: var(--shadow);
+        }
+
+        .timeline-item {
+            display: flex;
+            padding: 20px 0;
+            border-left: 3px solid var(--border-color);
+            position: relative;
+            padding-left: 40px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -8px;
+            top: 28px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background-color: var(--border-color);
+        }
+
+        .timeline-item.active::before {
+            background-color: var(--secondary-color);
+            box-shadow: 0 0 0 4px rgba(69, 123, 157, 0.2);
+        }
+
+        .timeline-item.completed {
+            border-left-color: var(--success-color);
+        }
+
+        .timeline-item.completed::before {
+            background-color: var(--success-color);
+        }
+
+        .timeline-content h3 {
+            font-size: 1.1rem;
+            margin-bottom: 6px;
+            color: var(--text-primary);
+        }
+
+        .timeline-content p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 16px;
+            margin-top: 16px;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 16px;
+            background-color: var(--background);
+            border-radius: 8px;
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--secondary-color);
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-top: 4px;
+        }
+
+        .language-phrases {
+            margin-top: 16px;
+        }
+
+        .phrase-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px;
+            background-color: var(--background);
+            border-radius: 6px;
+            margin-bottom: 8px;
+        }
+
+        .phrase-text {
+            font-size: 0.95rem;
+        }
+
+        .phrase-status {
+            font-size: 1.2rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px 20px;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 1.75rem;
+            }
+
+            .container {
+                padding: 12px;
+            }
+
+            .card {
+                padding: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🗾 Planning Japan Dashboard</h1>
+            <p>Comprehensive early planning for an unforgettable journey</p>
+        </header>
+
+        <!-- Overall Progress -->
+        <div class="card">
+            <div class="card-header">
+                <h2 class="card-title">Overall Planning Progress</h2>
+                <span class="card-icon">📊</span>
+            </div>
+            <div class="progress-container">
+                <div class="progress-label">
+                    <span>Total Completion</span>
+                    <strong id="overall-progress-text">42%</strong>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 42%;" id="overall-progress"></div>
+                </div>
+            </div>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-value" id="days-until">87</div>
+                    <div class="stat-label">Days Until Trip</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">5/12</div>
+                    <div class="stat-label">Weeks Planned</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">$2,340</div>
+                    <div class="stat-label">Budget Tracked</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">3/5</div>
+                    <div class="stat-label">Phase Complete</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Dashboard Grid -->
+        <div class="dashboard-grid">
+            <!-- Booking Status -->
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="card-title">Booking Status</h2>
+                    <span class="card-icon">✈️</span>
+                </div>
+                <div class="progress-container">
+                    <div class="progress-label">
+                        <span>Flights</span>
+                        <strong>100%</strong>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 100%;"></div>
+                    </div>
+                </div>
+                <div class="progress-container">
+                    <div class="progress-label">
+                        <span>Accommodations</span>
+                        <strong>80%</strong>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 80%;"></div>
+                    </div>
+                </div>
+                <div class="progress-container">
+                    <div class="progress-label">
+                        <span>Activities</span>
+                        <strong>30%</strong>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 30%;"></div>
+                    </div>
+                </div>
+                <div style="margin-top: 16px;">
+                    <span class="status-badge status-completed">Flights Booked</span>
+                    <span class="status-badge status-in-progress">Hotels 6/8</span>
+                    <span class="status-badge status-pending">Tours Pending</span>
+                </div>
+            </div>
+
+            <!-- Itinerary Completion -->
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="card-title">Itinerary Completion</h2>
+                    <span class="card-icon">📅</span>
+                </div>
+                <div class="progress-container">
+                    <div class="progress-label">
+                        <span>Daily Plans</span>
+                        <strong>50%</strong>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 50%;"></div>
+                    </div>
+                </div>
+                <div class="progress-container">
+                    <div class="progress-label">
+                        <span>Restaurant Research</span>
+                        <strong>65%</strong>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 65%;"></div>
+                    </div>
+                </div>
+                <div class="progress-container">
+                    <div class="progress-label">
+                        <span>Transportation Routes</span>
+                        <strong>40%</strong>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 40%;"></div>
+                    </div>
+                </div>
+                <div style="margin-top: 16px;">
+                    <span class="status-badge status-completed">Tokyo Planned</span>
+                    <span class="status-badge status-in-progress">Kyoto 60%</span>
+                    <span class="status-badge status-pending">Osaka Pending</span>
+                </div>
+            </div>
+
+            <!-- Language Progress -->
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="card-title">Language Progress</h2>
+                    <span class="card-icon">🗣️</span>
+                </div>
+                <div class="progress-container">
+                    <div class="progress-label">
+                        <span>Phrases Mastered</span>
+                        <strong>18/50</strong>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 36%;"></div>
+                    </div>
+                </div>
+                <div class="language-phrases">
+                    <div class="phrase-item">
+                        <span class="phrase-text">Basic Greetings</span>
+                        <span class="phrase-status">✅</span>
+                    </div>
+                    <div class="phrase-item">
+                        <span class="phrase-text">Ordering Food</span>
+                        <span class="phrase-status">✅</span>
+                    </div>
+                    <div class="phrase-item">
+                        <span class="phrase-text">Asking Directions</span>
+                        <span class="phrase-status">🔄</span>
+                    </div>
+                    <div class="phrase-item">
+                        <span class="phrase-text">Emergency Phrases</span>
+                        <span class="phrase-status">⏳</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Timeline -->
+        <div class="timeline">
+            <h2 class="card-title" style="margin-bottom: 24px;">Planning Timeline</h2>
+            
+            <div class="timeline-item completed">
+                <div class="timeline-content">
+                    <h3>✅ Research Phase (Weeks 1-2)</h3>
+                    <p>Completed destination research, route planning, and date selection</p>
+                </div>
+            </div>
+
+            <div class="timeline-item completed">
+                <div class="timeline-content">
+                    <h3>✅ Booking Phase (Weeks 3-4)</h3>
+                    <p>Flights booked 2.5 months in advance, 6 of 8 accommodations secured</p>
+                </div>
+            </div>
+
+            <div class="timeline-item active">
+                <div class="timeline-content">
+                    <h3>🔄 Itinerary Development (Weeks 5-8)</h3>
+                    <p>Currently building detailed daily plans and making restaurant reservations</p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h3>⏳ Language Learning (Weeks 5-12)</h3>
+                    <p>Daily phrase practice ongoing - 18 of 50 essential phrases mastered</p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h3>⏳ Final Preparation (Weeks 9-12)</h3>
+                    <p>Upcoming: Final confirmations, packing lists, document compilation</p>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>Breaking the last-minute planning cycle, one well-planned trip at a time. ✈️</p>
+            <p style="margin-top: 8px;">Last updated: <span id="last-updated"></span></p>
+        </footer>
+    </div>
+
+    <script>
+        // Update last updated time
+        document.getElementById('last-updated').textContent = new Date().toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+            hour: '2-digit',
+            minute: '2-digit'
+        });
+
+        // Calculate days until trip (example: 87 days from now)
+        function updateDaysUntil() {
+            const tripDate = new Date();
+            tripDate.setDate(tripDate.getDate() + 87);
+            const daysUntil = Math.ceil((tripDate - new Date()) / (1000 * 60 * 60 * 24));
+            document.getElementById('days-until').textContent = daysUntil;
+        }
+
+        updateDaysUntil();
+
+        // Animate progress bars on load
+        window.addEventListener('load', function() {
+            const progressBars = document.querySelectorAll('.progress-fill');
+            progressBars.forEach(bar => {
+                const width = bar.style.width;
+                bar.style.width = '0%';
+                setTimeout(() => {
+                    bar.style.width = width;
+                }, 100);
+            });
+        });
+    </script>
+</body>
+</html>
