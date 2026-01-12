@@ -19,8 +19,8 @@ related: ["[[People]]", "[[Logistics]]", "[[Activities]]"]
 ## Travel Preferences
 
 - **Departure preference**: Atlanta (ATL)
-- **Travel style**: TBD
-- **Flexibility**: TBD
+- **Travel style**: Independent, research-focused, comparative shopper
+- **Flexibility**: High - open to recommendations but maintains own research track
 
 ## Activity Interests
 
@@ -32,8 +32,12 @@ related: ["[[People]]", "[[Logistics]]", "[[Activities]]"]
 
 ## Special Considerations
 
+- **Research approach**: Actively exploring alternative platforms like Skiplagged for flights
+- **Booking philosophy**: Open to recommendations but values comparative shopping and independent verification
+- **Communication style**: Brief and efficient, acknowledges information quickly
+- **Decision-making**: Collaborative but somewhat reserved, willing to follow lead while maintaining investigation
 - Departing from Atlanta with Kayla and Kayla's Daughter
-- See [[Logistics]] for group flight coordination
+- See [[Logistics]] for group flight coordination and booking strategy analysis
 
 ## Related Notes
 

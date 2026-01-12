@@ -41,8 +41,7 @@ Each traveler has their own profile document with personal preferences, origin l
 - [Karina](Documents/People/Karina/Karina.md)
 - [Kayla](Documents/People/Kayla/Kayla.md)
 - [Kayla's Daughter](Documents/People/Kaylas-Daughter/Kaylas-Daughter.md)
-- [Chris](Documents/People/Chris/Chris.md)
-- [Me](Documents/People/Me/Me.md)
+- [Chris](Documents/People/Chris/Chris.md) (trip organizer)
 
 > Once these documents are in place, planning becomes execution — not stress.
 

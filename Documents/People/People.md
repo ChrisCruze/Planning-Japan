@@ -39,15 +39,14 @@ This document helps:
 | **Karina** | Atlanta | |
 | **Kayla** | Atlanta | |
 | **Kayla's Daughter** | Atlanta | |
-| **Chris** | New York | |
-| **Me** | TBD | |
+| **Chris** | New York | Trip organizer and researcher |
 
 ## Group Dynamics Considerations
 
 ### Travel Coordination
 
 - **Flight preferences**: See [[Logistics]] for coordination options
-- **Group size**: 6 travelers total
+- **Group size**: 5 travelers total
 - **Flexibility needs**: Balance structure with spontaneity
 - **Energy levels**: Consider different travel styles
 
@@ -66,8 +65,7 @@ For detailed information about each traveler, see:
 - [[Karina]] - Personal preferences and travel context
 - [[Kayla]] - Personal preferences and travel context
 - [[Kaylas-Daughter]] - Personal preferences and travel context
-- [[Chris]] - Personal preferences and travel context
-- [[Me]] - Personal preferences and travel context
+- [[Chris]] - Personal preferences and travel context (trip organizer)
 
 ## Group Preferences Summary
 

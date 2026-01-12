@@ -18,9 +18,10 @@ related: ["[[People]]", "[[Logistics]]", "[[Activities]]"]
 
 ## Travel Preferences
 
-- **Departure preference**: Atlanta (ATL)
-- **Travel style**: TBD
-- **Flexibility**: TBD
+- **Departure preference**: Atlanta (ATL) - prefers group departure for cohesion
+- **Travel style**: Organized, methodical, deadline-oriented
+- **Flexibility**: Moderate - prefers group coordination but flexible if individual departures are cheaper
+- **Booking philosophy**: Strong preference for bundled packages via Expedia
 
 ## Activity Interests
 
@@ -32,9 +33,15 @@ related: ["[[People]]", "[[Logistics]]", "[[Activities]]"]
 
 ## Special Considerations
 
+- **Trip organizer/leader** - Taking charge of research and providing detailed information
 - Traveling with daughter
 - Departing from Atlanta with Karina and daughter
-- See [[Logistics]] for group flight coordination
+- **Booking preference**: Expedia for all travel packages abroad
+- **Package requirement**: Notes that packages require 3+ travelers for optimal pricing
+- **Deadline**: February 15th booking deadline established
+- **Accommodation style**: Non-inclusive, city hotel (not resort style)
+- **Food approach**: Pay for food outside or breakfast buffet at hotels; affordable street food options available
+- See [[Logistics]] for group flight coordination and package analysis
 
 ## Related Notes
 
