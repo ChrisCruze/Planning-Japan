@@ -1,14 +1,14 @@
 ---
-title: Kayla's Daughter
+title: Lylie
 date: 2026-01-10
-tags: [#japan-trip, #people, #kaylas-daughter]
+tags: [#japan-trip, #people, #lylie]
 type: reference
 status: complete
 aliases: []
 related: ["[[People]]", "[[Logistics]]", "[[Activities]]"]
 ---
 
-# Kayla's Daughter
+# Lylie
 
 > Traveler profile and preferences for Japan trip planning.
 
@@ -32,8 +32,8 @@ related: ["[[People]]", "[[Logistics]]", "[[Activities]]"]
 
 ## Special Considerations
 
-- Traveling with Kayla (mother)
-- Departing from Atlanta with Karina and Kayla
+- Traveling with Keyla (mother)
+- Departing from Atlanta with Karina and Keyla
 - See [[Logistics]] for group flight coordination
 
 ## Related Notes

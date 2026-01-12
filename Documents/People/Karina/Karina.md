@@ -36,7 +36,7 @@ related: ["[[People]]", "[[Logistics]]", "[[Activities]]"]
 - **Booking philosophy**: Open to recommendations but values comparative shopping and independent verification
 - **Communication style**: Brief and efficient, acknowledges information quickly
 - **Decision-making**: Collaborative but somewhat reserved, willing to follow lead while maintaining investigation
-- Departing from Atlanta with Kayla and Kayla's Daughter
+- Departing from Atlanta with Keyla and Lylie
 - See [[Logistics]] for group flight coordination and booking strategy analysis
 
 ## Related Notes

@@ -1,14 +1,14 @@
 ---
-title: Kayla
+title: Keyla
 date: 2026-01-10
-tags: [#japan-trip, #people, #kayla]
+tags: [#japan-trip, #people, #keyla]
 type: reference
 status: complete
 aliases: []
 related: ["[[People]]", "[[Logistics]]", "[[Activities]]"]
 ---
 
-# Kayla
+# Keyla
 
 > Traveler profile and preferences for Japan trip planning.
 
@@ -34,8 +34,8 @@ related: ["[[People]]", "[[Logistics]]", "[[Activities]]"]
 ## Special Considerations
 
 - **Trip organizer/leader** - Taking charge of research and providing detailed information
-- Traveling with daughter
-- Departing from Atlanta with Karina and daughter
+- Traveling with daughter (Lylie)
+- Departing from Atlanta with Karina and Lylie
 - **Booking preference**: Expedia for all travel packages abroad
 - **Package requirement**: Notes that packages require 3+ travelers for optimal pricing
 - **Deadline**: February 15th booking deadline established

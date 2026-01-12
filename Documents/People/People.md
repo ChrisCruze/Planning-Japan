@@ -37,8 +37,8 @@ This document helps:
 |------|----------------|-------|
 | **Yalisa** | Hershey, PA (likely NYC) | May depart from NYC for convenience |
 | **Karina** | Atlanta | |
-| **Kayla** | Atlanta | |
-| **Kayla's Daughter** | Atlanta | |
+| **Keyla** | Atlanta | Trip organizer |
+| **Lylie** | Atlanta | |
 | **Chris** | New York | Trip organizer and researcher |
 
 ## Group Dynamics Considerations
@@ -63,8 +63,8 @@ For detailed information about each traveler, see:
 
 - [[Yalisa]] - Personal preferences and travel context
 - [[Karina]] - Personal preferences and travel context
-- [[Kayla]] - Personal preferences and travel context
-- [[Kaylas-Daughter]] - Personal preferences and travel context
+- [[Keyla]] - Personal preferences and travel context (trip organizer)
+- [[Lylie]] - Personal preferences and travel context
 - [[Chris]] - Personal preferences and travel context (trip organizer)
 
 ## Group Preferences Summary

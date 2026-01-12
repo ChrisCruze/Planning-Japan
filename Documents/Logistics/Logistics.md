@@ -42,7 +42,7 @@ The most analytical of the four, this document answers:
 
 | Location | Travelers | Considerations |
 |----------|-----------|----------------|
-| **ATL** | Karina, Kayla, Kayla's Daughter | Direct flights available, competitive pricing |
+| **ATL** | Karina, Keyla, Lylie | Direct flights available, competitive pricing |
 | **NYC** | Chris | Multiple airline options, potential for group coordination |
 | **Hershey, PA** | Yalisa (likely NYC) | May depart from NYC for convenience |
 
