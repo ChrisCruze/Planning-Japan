@@ -13,6 +13,39 @@ A comprehensive trip planning system for Japan that breaks the pattern of last-m
 
 This project addresses these pain points through structured early planning.
 
+## 📚 Documentation System
+
+The planning process is organized into four interconnected documents that break complexity into manageable, modular components. Each document answers a distinct planning question and cross-references the others to create a cohesive planning ecosystem.
+
+### The Four-Document Framework
+
+| Document | Core Function | Location |
+|----------|---------------|----------|
+| **[Language](Documents/Language/Language.md)** | Builds **confidence** through functional Japanese phrases | `Documents/Language/` |
+| **[Activities](Documents/Activities/Activities.md)** | Creates **clarity and excitement** about trip experiences | `Documents/Activities/` |
+| **[Logistics](Documents/Logistics/Logistics.md)** | Reduces **stress and uncertainty** around travel arrangements | `Documents/Logistics/` |
+| **[People](Documents/People/People.md)** | Grounds the plan in **real connection** and group dynamics | `Documents/People/` |
+
+### How Documents Work Together
+
+- **Language** ↔ **Activities**: Phrases are contextualized by where they'll be used
+- **Activities** ↔ **Logistics**: Location needs inform transportation and hotel selection
+- **Logistics** ↔ **People**: Group coordination drives flight and accommodation decisions
+- **People** ↔ **Activities**: Individual preferences shape activity planning
+
+### Individual Person Documents
+
+Each traveler has their own profile document with personal preferences, origin location, and travel context:
+
+- [Yalisa](Documents/People/Yalisa/Yalisa.md)
+- [Karina](Documents/People/Karina/Karina.md)
+- [Kayla](Documents/People/Kayla/Kayla.md)
+- [Kayla's Daughter](Documents/People/Kaylas-Daughter/Kaylas-Daughter.md)
+- [Chris](Documents/People/Chris/Chris.md)
+- [Me](Documents/People/Me/Me.md)
+
+> Once these documents are in place, planning becomes execution — not stress.
+
 ## 🎯 Purpose
 
 Create a comprehensive early planning system that:
