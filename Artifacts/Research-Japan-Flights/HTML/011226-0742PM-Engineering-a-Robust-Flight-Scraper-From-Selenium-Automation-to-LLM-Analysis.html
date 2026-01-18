@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>011226 7:42PM Engineering a Robust Flight Scraper: From Selenium Automation to LLM Analysis</title>
+    <meta name="Title" content="Engineering a Robust Flight Scraper: From Selenium Automation to LLM Analysis" type="Artifact">
+    <meta name="Summary" content="A technical blueprint for building a stable Google Flights scraper using Selenium and Apify, detailing specific DOM selectors and production workflows." type="Artifact">
+    <meta name="Description" content="Technical architecture slide detailing the implementation of a Python/Selenium flight scraper." type="Artifact">
+    <meta name="Insight" content="Targeting stable accessibility attributes like 'aria-label' rather than volatile CSS classes is the key to maintaining scraper longevity against frequent frontend updates." type="Artifact">
+    <meta name="Question" content="How can developers build a resilient Google Flights scraper to power LLM-based travel analysis?" type="Artifact">
+</head>
+<body style="margin: 0; padding: 0; background-color: #f0f0f0; font-family: 'Segoe UI', Arial, sans-serif; -webkit-font-smoothing: antialiased;">
+
+<!-- 
+<analysis>
+1. Key Points:
+   - Core Stack: Python 3.9+, Selenium (Headless Chrome), BeautifulSoup, Pandas.
+   - Resilience Strategy: Use explicit waits for containers (`div.zISZ5c`) and realistic user-agents.
+   - Targeting Strategy: Prioritize `aria-label` attributes over brittle classes.
+   - Specific Selectors: Airline (`div.sSHqwe`), Price (`div.FpEdX`), Duration (`div.gvkrdb`).
+   - Workflow: Generate URLs -> Scrape to CSV -> LLM Ranking.
+   
+2. Information Type: 
+   - Technical Architecture.
+   - Process Flow.
+   - Reference Data (Selectors).
+
+3. Layout Evaluation:
+   - Table Slide: Too rigid for the workflow part.
+   - Subtitle Slide (Three Column): Best fit. Allows for three distinct technical pillars: "The Engine" (Stack/Config), "The Targets" (Selectors), and "The Workflow" (Process).
+   
+4. Selection: Three-Column Subtitle Slide.
+   - Title: "Automated Flight Intelligence: Scraper Architecture & Integration"
+   - Column 1: Core Automation Stack (Configuration & Stability).
+   - Column 2: DOM Strategy & Selectors (Technical Implementation).
+   - Column 3: Production Workflow (End-to-End Pipeline).
+
+5. Plan:
+   - Use `display: table` to create a rigid 3-column grid without flexbox.
+   - Use code-style formatting (monospace font, light grey background) for the specific CSS selectors to make them pop as technical data.
+   - Use a visual "step" indicator for the workflow in column 3.
+</analysis>
+
+<design_planning>
+1. Color Palette:
+   - Primary: #051C2C (McKinsey Navy).
+   - Highlight: #0077C8 (Process Blue).
+   - Code Background: #F4F6F8 (Light Blue-Grey).
+   - Text: #333333.
+
+2. Visual Hierarchy:
+   - Title: 26px, Serif, Navy.
+   - Sub-headers: 14px, Bold, Uppercase, Blue Border.
+   - Code Blocks: Monospace font, distinct background.
+   - Body Text: 12px, clean Sans-Serif.
+
+3. Layout Structure:
+   - Width: 1000px centered.
+   - Three equal columns (approx 300px each) with 30px gutters.
+   - Vertical alignment: Top.
+
+4. Typography:
+   - Font: Segoe UI (Body), Consolas/Monospace (Selectors), Georgia (Title).
+   - Lists: Custom bullets or simple dashes.
+</design_planning>
+-->
+
+    <!-- Main Slide Container -->
+    <div style="width: 1000px; margin: 40px auto; background-color: #ffffff; padding: 50px; box-shadow: 0 0 20px rgba(0,0,0,0.1); box-sizing: border-box;">
+
+        <!-- Header Section -->
+        <div style="border-bottom: 2px solid #051C2C; padding-bottom: 20px; margin-bottom: 30px;">
+            <div style="font-size: 11px; text-transform: uppercase; color: #666; letter-spacing: 1px; margin-bottom: 5px;">Technical Implementation Guide</div>
+            <h1 style="font-size: 28px; color: #051C2C; margin: 0; font-family: 'Georgia', serif; font-weight: normal; line-height: 1.2;">
+                Building a resilient scraper requires hybridizing Selenium automation with robust accessibility-based targeting
+            </h1>
+        </div>
+
+        <!-- Three Column Layout via Display Table -->
+        <div style="display: table; width: 100%; border-spacing: 25px 0; margin-left: -25px;">
+
+            <!-- Column 1: The Stack -->
+            <div style="display: table-cell; width: 33%; vertical-align: top;">
+                <h3 style="font-size: 14px; color: #0077C8; margin-top: 0; margin-bottom: 15px; text-transform: uppercase; border-bottom: 1px solid #ccc; padding-bottom: 10px; font-weight: bold;">
+                    1. Core Automation Stack
+                </h3>
+                
+                <div style="margin-bottom: 20px;">
+                    <div style="font-weight: bold; color: #051C2C; font-size: 13px; margin-bottom: 5px;">Foundation</div>
+                    <ul style="margin: 0; padding-left: 20px; color: #444; font-size: 12px; line-height: 1.6;">
+                        <li><strong>Runtime:</strong> Python 3.9+ environment</li>
+                        <li><strong>Driver:</strong> Selenium + <code>webdriver-manager</code></li>
+                        <li><strong>Parser:</strong> BeautifulSoup (faster than Selenium for data extraction)</li>
+                    </ul>
+                </div>
+
+                <div style="background-color: #F8F9FA; padding: 15px; border-left: 4px solid #0077C8;">
+                    <div style="font-weight: bold; color: #051C2C; font-size: 13px; margin-bottom: 8px;">Stability Configuration</div>
+                    <div style="font-size: 12px; color: #444; line-height: 1.5; margin-bottom: 8px;">
+                        Avoid detection and brittleness by configuring <code>ChromeOptions</code>:
+                    </div>
+                    <ul style="margin: 0; padding-left: 20px; color: #444; font-size: 12px; line-height: 1.6;">
+                        <li><code>--headless=new</code> (Fixed window size)</li>
+                        <li>Realistic User-Agent string</li>
+                        <li><strong>Critical:</strong> Explicit <code>WebDriverWait</code> for container load, never <code>sleep()</code></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Column 2: Targeting Strategy -->
+            <div style="display: table-cell; width: 33%; vertical-align: top;">
+                <h3 style="font-size: 14px; color: #0077C8; margin-top: 0; margin-bottom: 15px; text-transform: uppercase; border-bottom: 1px solid #ccc; padding-bottom: 10px; font-weight: bold;">
+                    2. DOM Targeting Strategy
+                </h3>
+
+                <div style="font-size: 12px; color: #444; margin-bottom: 15px; line-height: 1.5;">
+                    Google Flights frontends are dynamic. To prevent breakage, prioritize <strong>accessibility attributes</strong> over CSS classes.
+                </div>
+
+                <!-- Technical Reference Table -->
+                <div style="border: 1px solid #e0e0e0; border-radius: 4px; overflow: hidden;">
+                    <div style="background-color: #f0f0f0; padding: 8px 12px; font-size: 11px; font-weight: bold; color: #666; border-bottom: 1px solid #ddd;">
+                        KEY DOM SELECTORS (2025)
+                    </div>
+                    
+                    <div style="padding: 12px;">
+                        <div style="margin-bottom: 10px; border-bottom: 1px solid #eee; padding-bottom: 8px;">
+                            <div style="font-size: 11px; font-weight: bold; color: #051C2C;">Root Container</div>
+                            <div style="font-family: Consolas, monospace; font-size: 11px; color: #D32F2F; background: #FFF0F0; padding: 2px 4px; display: inline-block; margin-top: 2px;">div.zISZ5c</div>
+                        </div>
+
+                        <div style="margin-bottom: 10px; border-bottom: 1px solid #eee; padding-bottom: 8px;">
+                            <div style="font-size: 11px; font-weight: bold; color: #051C2C;">Flight Card</div>
+                            <div style="font-family: Consolas, monospace; font-size: 11px; color: #D32F2F; background: #FFF0F0; padding: 2px 4px; display: inline-block; margin-top: 2px;">li.pIav2d</div>
+                        </div>
+
+                        <div style="margin-bottom: 10px; border-bottom: 1px solid #eee; padding-bottom: 8px;">
+                            <div style="font-size: 11px; font-weight: bold; color: #051C2C;">Times (Stable)</div>
+                            <div style="font-family: Consolas, monospace; font-size: 11px; color: #1976D2; background: #E3F2FD; padding: 2px 4px; display: inline-block; margin-top: 2px;">span[aria-label*="Departure time:"]</div>
+                        </div>
+
+                        <div style="margin-bottom: 0;">
+                            <div style="font-size: 11px; font-weight: bold; color: #051C2C;">Price</div>
+                            <div style="font-family: Consolas, monospace; font-size: 11px; color: #D32F2F; background: #FFF0F0; padding: 2px 4px; display: inline-block; margin-top: 2px;">div.FpEdX span</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Column 3: Workflow -->
+            <div style="display: table-cell; width: 33%; vertical-align: top;">
+                <h3 style="font-size: 14px; color: #0077C8; margin-top: 0; margin-bottom: 15px; text-transform: uppercase; border-bottom: 1px solid #ccc; padding-bottom: 10px; font-weight: bold;">
+                    3. Production Workflow
+                </h3>
+
+                <!-- Step 1 -->
+                <div style="margin-bottom: 20px; position: relative; padding-left: 25px;">
+                    <div style="position: absolute; left: 0; top: 0; font-weight: bold; color: #0077C8; font-size: 16px;">1</div>
+                    <div style="font-weight: bold; color: #051C2C; font-size: 13px; margin-bottom: 4px;">URL Generation</div>
+                    <div style="font-size: 12px; color: #444; line-height: 1.4;">
+                        Construct search URLs programmatically for all Origin/Destination combinations (e.g., NYC/PHL &#8594; TYO/KIX).
+                    </div>
+                </div>
+
+                <!-- Step 2 -->
+                <div style="margin-bottom: 20px; position: relative; padding-left: 25px;">
+                    <div style="position: absolute; left: 0; top: 0; font-weight: bold; color: #0077C8; font-size: 16px;">2</div>
+                    <div style="font-weight: bold; color: #051C2C; font-size: 13px; margin-bottom: 4px;">Apify Actor Execution</div>
+                    <div style="font-size: 12px; color: #444; line-height: 1.4;">
+                        Wrap scraping logic in <code>main.py</code>. Deploy as an Apify Actor to handle containerization, proxy rotation, and scheduling.
+                    </div>
+                </div>
+
+                <!-- Step 3 -->
+                <div style="margin-bottom: 20px; position: relative; padding-left: 25px;">
+                    <div style="position: absolute; left: 0; top: 0; font-weight: bold; color: #0077C8; font-size: 16px;">3</div>
+                    <div style="font-weight: bold; color: #051C2C; font-size: 13px; margin-bottom: 4px;">Normalization & Analysis</div>
+                    <div style="font-size: 12px; color: #444; line-height: 1.4;">
+                        Normalize airline, duration, and price data into a CSV.
+                    </div>
+                    <div style="margin-top: 8px; font-size: 11px; background-color: #E8F0FE; color: #1967D2; padding: 8px; border-radius: 4px;">
+                        <strong>LLM Handoff:</strong> Feed CSV to LLM to rank complex itineraries across all airport combinations.
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+
+        <!-- Footer -->
+        <div style="margin-top: 40px; border-top: 1px solid #ddd; padding-top: 10px; font-size: 10px; color: #999;">
+            Source: Apify Google Flights Guide (2025), "Python browser automation with Selenium"
+        </div>
+
+    </div>
+
+
+<div class="notes-section" style="margin-top: 2em; padding-top: 2em; border-top: 1px solid #e5e7eb;"><h2 style="font-size: 1.5em; margin-bottom: 1em;">Notes</h2><p>LLMs like ChatGPT/Perplexity/Gemini are great for <em>strategy</em> and transforming flight data, but they cannot reliably surface every live fare or replicate historical prices; you need them orchestrating real search engines (Google Flights, Skyscanner, Kayak, etc.), not replacing them.[1][2]</p>
+<p>Below is a practical way to combine them and which platforms to lean on when you’re optimizing across multiple airports.</p>
+<h2>Why LLMs miss good or “historical” prices</h2>
+<p>LLMs:</p>
+<ul>
+<li>Do not have direct GDS/airline API access in consumer UIs, so they mostly reason <em>about</em> flights instead of querying full inventories.[2][1]</li>
+<li>Tend to default to “safe” patterns (major hubs, obvious routes), a form of collapse where you keep seeing the same 3–5 options and mid‑range prices.[3]</li>
+<li>Are not guaranteed to be trained on, or have tools connected to, the <em>exact</em> historical price traces you remember for a period.[4][3]</li>
+</ul>
+<p>So use them as:</p>
+<ul>
+<li>Constraint solvers (“given this dump of options, rank by X,Y,Z”).  </li>
+<li>Macro‑strategy advisors (“which days/airports/alliances to target”).  </li>
+<li>Script generators (e.g., generate scraping/automation code against flight tools).[5][6]</li>
+</ul>
+<h2>Best engines for multi‑airport / flexible search</h2>
+<p>When you care about <em>deterministic</em> coverage and multiple airports, these tend to work best:</p>
+<table>
+<thead>
+<tr>
+<th>Need</th>
+<th>Best tools</th>
+<th>Why they’re strong</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Fast baseline, multiple airports, decent price history</td>
+<td><strong>Google Flights</strong>, <strong>KAYAK</strong></td>
+<td>Google is very fast, strong filters, good calendar/date grid; Kayak supports multiple departure airports and color‑coded fare calendars. [7][8][9]</td>
+</tr>
+<tr>
+<td>“Everywhere” / flexible region + dates</td>
+<td><strong>Skyscanner</strong>, <strong>FlightsFinder</strong>, <strong>Kiwi</strong></td>
+<td>“Everywhere” destination search, whole‑month or year calendars, and region‑level search (country/continent), great for broad scanning. [7][8][9]</td>
+</tr>
+<tr>
+<td>Very flexible routes, stitched itineraries</td>
+<td><strong>Kiwi</strong>, <strong>PanFlights</strong></td>
+<td>Can stitch non‑partner carriers and flexible multi‑city routes, including remote airports and route optimization. [10][9]</td>
+</tr>
+<tr>
+<td>Deep control / power user</td>
+<td><strong>ITA Matrix</strong> (backing Google Flights)</td>
+<td>Advanced routing language and fare construction; often used after Google Flights to lock in a specific construction. [11][8]</td>
+</tr>
+</tbody></table>
+<p>For someone doing multi‑airport optimization around NYC, a strong stack is:</p>
+<ul>
+<li>Google Flights (primary grid/explore).[7][9]</li>
+<li>Skyscanner or FlightsFinder/“flexible dates” for everywhere + obscure combos.[9][7]</li>
+<li>Kiwi or PanFlights when you’re willing to self‑connect.[10][9]</li>
+</ul>
+<h2>How to use an LLM <em>with</em> these tools</h2>
+<p>Treat the LLM as a meta‑layer over your manual/automated searches:</p>
+<ol>
+<li><p><strong>Query design / search strategy</strong></p>
+<ul>
+<li>Ask it to propose a search plan across tools: which origin airports to bundle, which date windows to scan, and which engines to use for each step (baseline vs. edge routes).[8][7][9]</li>
+<li>Example: “Given NYC and possible destinations X/Y/Z, propose search steps on Google Flights + Skyscanner to minimize total cost with max 1 stop.”</li>
+</ul>
+</li>
+<li><p><strong>Parsing and ranking exported data</strong></p>
+<ul>
+<li>Export or copy search results (date grids, CSV exports, scraped data) and have the LLM:<ul>
+<li>Normalize carriers, stops, and total travel time.  </li>
+<li>Score options given your utility function (e.g., minimize cost subject to arrival before 10am, no &lt;90‑min connections, prefer alliances).[5]</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>Agentic workflows</strong></p>
+<ul>
+<li>Use tools like LangChain/LangGraph or browser‑automation agents that:<ul>
+<li>Call Google Flights / Skyscanner / Kiwi with different airport/date combos.  </li>
+<li>Pull results into a table.  </li>
+<li>Have the LLM run reasoning on that table to pick candidates and suggest “next queries” (e.g., tighten date window where heat‑map shows dips).[6][5]</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>Retrospective / “historical” sanity checks</strong></p>
+<ul>
+<li>For a past period where you <em>know</em> prices were lower, you won’t get exact historical fares, but you can:<ul>
+<li>Use the LLM to infer likely causes (seasonality, fuel, demand, route cuts).[12][2]</li>
+<li>Ask it to define guardrail ranges (e.g., “on NYC–LON, off‑peak economy under $X one‑way is historically ‘good’ vs. ‘great’ vs. ‘unicorn’”) and then compare to current grids you see in Google Flights.[7][8][12]</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h2>Concrete workflow for “best determinant across many airports”</h2>
+<p>For something like NYC + BOS + PHL + maybe WAS to Europe/Asia:</p>
+<ol>
+<li><p><strong>Wide scan</strong></p>
+<ul>
+<li>In Google Flights: use multiple departure airports and a destination region, view month‑wide calendar + date grid to see low‑fare days by origin.[9][7]</li>
+<li>In Skyscanner / FlightsFinder / Kiwi: run “Everywhere” or region searches from an airport group and flexible dates (month/year).[7][9]</li>
+</ul>
+</li>
+<li><p><strong>Data capture</strong></p>
+<ul>
+<li>Screenshot or copy the cheapest round‑trip prices by origin and date buckets into a small sheet (or export if supported).[9]</li>
+<li>Include columns: origin airport, destination (city/region), date range, fare, carrier, stops, total duration.</li>
+</ul>
+</li>
+<li><p><strong>Send to LLM for optimization</strong></p>
+<ul>
+<li>Paste that structured data and ask:<ul>
+<li>“Find Pareto‑optimal itineraries minimizing price and total travel time.”  </li>
+<li>“Rank the airports by effective ‘value’ when you factor in my ground‑travel penalty (e.g., add $50 cost for BOS vs. JFK).”[5]</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>Refine</strong></p>
+<ul>
+<li>Use the LLM’s ranking to focus on 1–2 best origin airports + tight date ranges, then re‑run focused searches directly in Google Flights / Skyscanner to confirm and book.[8][7][9]</li>
+</ul>
+</li>
+</ol>
+<p>If helpful, a next step could be drafting a concrete schema and LLM prompt template for you (e.g., JSON columns + scoring function) so you can drop in exports from Google Flights/Skyscanner and have an agent consistently choose the best airport/date combo.</p>
+<p>Sources<br>[1] When LLMs Hit Their Limit And Why You Need Agents <a href="https://aipmguru.substack.com/p/when-llms-hit-their-limit-and-why">https://aipmguru.substack.com/p/when-llms-hit-their-limit-and-why</a><br>[2] The Rise of AI Flight Search Engines: Could LLMs Reshape Airlines ... <a href="https://pros.com/learn/blog/rise-ai-flight-search-engines-could-llms-reshape-airlines-traffic-acquisition-trends/">https://pros.com/learn/blog/rise-ai-flight-search-engines-could-llms-reshape-airlines-traffic-acquisition-trends/</a><br>[3] Escaping LLM Collapse: Why AI Keeps Recommending the Same 3 ... <a href="https://www.ottotheagent.com/tech-blog-posts/escaping-llm-collapse-why-ai-keeps-recommending-the-same-3-flights-and-how-we-broke-it">https://www.ottotheagent.com/tech-blog-posts/escaping-llm-collapse-why-ai-keeps-recommending-the-same-3-flights-and-how-we-broke-it</a><br>[4] Fine-Tuning LLMs vs. RAG: How to Solve LLM Limitations - Memgraph <a href="https://memgraph.com/blog/llm-limitations-fine-tuning-vs-rag">https://memgraph.com/blog/llm-limitations-fine-tuning-vs-rag</a><br>[5] Searching flights just got better with the power of LLM (and a bit of ... <a href="https://www.reddit.com/r/ChatGPT/comments/1mim0b2/searching_flights_just_got_better_with_the_power/">https://www.reddit.com/r/ChatGPT/comments/1mim0b2/searching_flights_just_got_better_with_the_power/</a><br>[6] Building a Secure Flight Booking System with LLM Agent in Langflow <a href="https://dev.to/permit_io/building-a-secure-flight-booking-system-with-llm-agent-in-langflow-3ml">https://dev.to/permit_io/building-a-secure-flight-booking-system-with-llm-agent-in-langflow-3ml</a><br>[7] Google Flights vs Skyscanner: Honest Comparison in 2026 - Going <a href="https://www.going.com/guides/google-flights-vs-skyscanner">https://www.going.com/guides/google-flights-vs-skyscanner</a><br>[8] 10 best flight booking solutions in 2026 - COAX Software <a href="https://coaxsoft.com/blog/10-best-flight-booking-solutions">https://coaxsoft.com/blog/10-best-flight-booking-solutions</a><br>[9] Flexible Flights, Flexible Dates Flight Search | FlightsFinder <a href="https://www.flightsfinder.com/flexible-dates">https://www.flightsfinder.com/flexible-dates</a><br>[10] PanFlights: Flexible flight search, fare calendar and reverse ... <a href="https://panflights.com">https://panflights.com</a><br>[11] TravelArrow vs Google Flights vs Skyscanner… what's actually ... <a href="https://www.reddit.com/r/travel/comments/1qax1ll/travelarrow_vs_google_flights_vs_skyscanner_whats/">https://www.reddit.com/r/travel/comments/1qax1ll/travelarrow_vs_google_flights_vs_skyscanner_whats/</a><br>[12] The 10 Best (and Cheapest) Airfare Search Sites for ... <a href="https://www.frommers.com/tips/airfare/the-10-best-and-cheapest-airfare-search-sites-for-2026/">https://www.frommers.com/tips/airfare/the-10-best-and-cheapest-airfare-search-sites-for-2026/</a><br>[13] Comparing Language Models (LLM &amp; LCM) in Modern Airport ... <a href="https://www.linkedin.com/pulse/comparing-language-models-llm-lcm-modern-airport-burak-da%C4%9Fdeviren-9peof">https://www.linkedin.com/pulse/comparing-language-models-llm-lcm-modern-airport-burak-da%C4%9Fdeviren-9peof</a><br>[14] How to search for multi-city (aka open-jaw) flights with flexible ... <a href="https://www.reddit.com/r/Shoestring/comments/156x7q7/how_to_search_for_multicity_aka_openjaw_flights/">https://www.reddit.com/r/Shoestring/comments/156x7q7/how_to_search_for_multicity_aka_openjaw_flights/</a><br>[15] Why is finding the nearest airport using LLMs so complex? <a href="https://stories.riafy.me/why-is-finding-the-nearest-airport-using-llms-so-complex-76bca0ace1d5">https://stories.riafy.me/why-is-finding-the-nearest-airport-using-llms-so-complex-76bca0ace1d5</a></p></div>
+</body>
+</html>

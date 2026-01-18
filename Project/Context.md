@@ -1,5 +1,3 @@
-
-
 ### Flight Research Findings (January 4, 2026)
 
 **Current Pricing (April 3-11, 2026):**

@@ -1,0 +1,1120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>011326 1:57AM Strategic Flight Option Analysis: East Coast to Tokyo</title>
+<meta name="Title" content="Strategic Flight Option Analysis: East Coast to Tokyo" type="Artifact">
+<meta name="Summary" content="Comparative analysis of 60+ flight options from NYC, ATL, MDT, and PHL to Tokyo, identifying Japan Airlines and Air Canada as key value leaders. NYC offers speed at a premium, while ATL offers the lowest cost via Air Canada." type="Artifact">
+<meta name="Description" content="A strategic summary of flight research data comparisons between multiple US origins and Tokyo airports for travel in Jan 2026." type="Artifact">
+<meta name="Insight" content="Flying out of Atlanta via Air Canada ($1,456) offers a surprising ~$600 savings compared to NYC non-stop routes ($2,037), effectively trading a connection for significant cost reduction." type="Artifact">
+<meta name="Question" content="What is the optimal balance of cost versus convenience for travel to Tokyo from major East Coast origins?" type="Artifact">
+</head>
+<body style="margin: 0; padding: 0; background-color: #e0e0e0; font-family: 'Calibri', 'Segoe UI', 'Arial', sans-serif; -webkit-font-smoothing: antialiased;">
+
+<!-- <analysis>
+1. Key Points & Data:
+   - NYC: Best Option is JAL ($2,037, Non-stop). Premium price for convenience.
+   - ATL: Best Option is Air Canada ($1,456, 1-stop). Lowest price overall.
+   - MDT: Best Option is United ($1,679, 1-stop). Good middle ground.
+   - PHL: Best Option is Delta ($1,991, 1-stop). Expensive for a connecting flight.
+   - Airports: HND preferred over NRT (proximity).
+   - Price Bands: Non-stop >$2k, 1-stop ~$1.4-2k, 2-stop <$1.3k (not recommended due to duration).
+
+2. Information Type: 
+   - Comparative data (Prices, Durations, Airlines) categorised by Origin city.
+   - Structured recommendations.
+
+3. Layout Evaluation:
+   - Table Slide: Excellent fit. We have rows (Cities) and columns (Attributes like Price, Airline, Strategy).
+   - Chart Slide: Good for pure price comparison, but misses the nuance of "Airline brand" and "Duration" details.
+   - Subtitle Slide: Too text-heavy; we need side-by-side comparison.
+   - Framework Slide: No conceptual framework here.
+   - Visual Slide: No maps or photos required.
+
+4. Selection: **Table Slide**.
+   - Reasoning: The data naturally segments by "Origin City." A table allows for a clean "Harvey Ball" style comparison or simply a structured grid that compares "Best Option," "Cost," and "Strategic Trade-off" side-by-side.
+
+5. Design Plan:
+   - Title: Active voice headline summarizing the trade-off.
+   - Table Columns: Origin, Recommended Carrier, Price (Visual Bar), Route Profile, Strategic Takeaway.
+   - Bottom Section: "General Market Observations" including the HND vs NRT distinction and Multi-city notes.
+</analysis> -->
+
+<!-- <design_planning>
+1. Color Palette:
+   - McKinsey Blue: #002060 (Headers, bold accents)
+   - Secondary Blue: #0070c0 (Highlights, chart bars)
+   - Light Grey: #f2f2f2 (Table headers, background banding)
+   - Alert/Warning: #cc0000 (For negative trade-offs like long duration)
+
+2. Visual Hierarchy:
+   - Top: "Eyebrow" kicker in small caps (Context), Main Headline in large serif or sans-serif (Conclusion).
+   - Middle: The Data Table. High contrast. Header row grey. Clear separation lines.
+   - Bottom: Three distinct columns for general "Market Trends" to separate specific city data from general advice.
+
+3. Layout Structure:
+   - Max-width 1200px container (Slide canvas).
+   - Padding: 40px all around.
+   - Table: 100% width, cell padding 15px.
+   - Typography: 
+     - Main Title: 28px, Dark Blue.
+     - Table Headers: 14px, Bold.
+     - Body Text: 16px.
+     - "Price" column will use a CSS graphical element (width %) to visualize cost differences inline.
+
+4. Visual Elements:
+   - Simple horizontal dividers.
+   - A "chevrons" style arrow for the route (NYC -> HND).
+</design_planning> -->
+
+<!-- SLIDE CONTAINER -->
+<div style="max-width: 1100px; margin: 40px auto; background-color: #ffffff; box-shadow: 0 4px 15px rgba(0,0,0,0.1); overflow: hidden; min-height: 700px;">
+    
+    <!-- HEADER SECTION -->
+    <div style="padding: 40px 40px 20px 40px;">
+        <!-- Kicker -->
+        <div style="font-size: 12px; text-transform: uppercase; letter-spacing: 1px; color: #666666; margin-bottom: 10px; font-weight: 600;">
+            Logistics & Cost Analysis
+        </div>
+        <!-- Main Active Title -->
+        <h1 style="font-size: 26px; color: #002060; margin: 0 0 20px 0; font-weight: 400; line-height: 1.3;">
+            <span style="font-weight: 700;">Air Canada (ATL)</span> and <span style="font-weight: 700;">Japan Airlines (NYC)</span> emerge as the optimal value choices, balancing cost against travel duration.
+        </h1>
+        <!-- Separator -->
+        <div style="width: 100%; height: 2px; background-color: #002060; margin-bottom: 30px;"></div>
+    </div>
+
+    <!-- MAIN CONTENT: TABLE -->
+    <div style="padding: 0 40px;">
+        <h3 style="font-size: 18px; color: #333; margin-bottom: 15px; font-weight: 600;">Origin-Based Recommendations</h3>
+        
+        <table style="width: 100%; border-collapse: collapse; margin-bottom: 40px; font-size: 15px;">
+            <thead>
+                <tr style="background-color: #f2f2f2; text-align: left;">
+                    <th style="padding: 12px 15px; color: #002060; border-bottom: 2px solid #002060; width: 10%;">Origin</th>
+                    <th style="padding: 12px 15px; color: #002060; border-bottom: 2px solid #002060; width: 20%;">Recommended Option</th>
+                    <th style="padding: 12px 15px; color: #002060; border-bottom: 2px solid #002060; width: 25%;">Cost Analysis</th>
+                    <th style="padding: 12px 15px; color: #002060; border-bottom: 2px solid #002060; width: 20%;">Logistics Profile</th>
+                    <th style="padding: 12px 15px; color: #002060; border-bottom: 2px solid #002060; width: 25%;">Strategic Rationale</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- ROW 1: ATL -->
+                <tr style="border-bottom: 1px solid #e0e0e0;">
+                    <td style="padding: 15px; font-weight: bold; color: #333;">ATL</td>
+                    <td style="padding: 15px;">
+                        <span style="font-weight: bold; display: block; color: #002060;">Air Canada</span>
+                        <span style="font-size: 13px; color: #666;">via Toronto (YYZ)</span>
+                    </td>
+                    <td style="padding: 15px;">
+                        <span style="font-weight: bold; color: #333;">$1,456</span>
+                        <div style="background-color: #e0e0e0; height: 8px; width: 100%; margin-top: 5px; border-radius: 2px;">
+                            <div style="background-color: #0070c0; height: 100%; width: 57%; border-radius: 2px;"></div>
+                        </div>
+                    </td>
+                    <td style="padding: 15px; color: #444;">
+                        1 Stop<br>
+                        <span style="font-size: 13px; color: #666;">~20h Duration</span>
+                    </td>
+                    <td style="padding: 15px; line-height: 1.4; color: #444;">
+                        <strong>Best Value Leader.</strong> Offers significant savings (~$600) vs. NYC options with only one efficient connection.
+                    </td>
+                </tr>
+
+                <!-- ROW 2: MDT -->
+                <tr style="border-bottom: 1px solid #e0e0e0;">
+                    <td style="padding: 15px; font-weight: bold; color: #333;">MDT</td>
+                    <td style="padding: 15px;">
+                        <span style="font-weight: bold; display: block; color: #002060;">United Airlines</span>
+                        <span style="font-size: 13px; color: #666;">via Chicago (ORD)</span>
+                    </td>
+                    <td style="padding: 15px;">
+                        <span style="font-weight: bold; color: #333;">$1,679</span>
+                        <div style="background-color: #e0e0e0; height: 8px; width: 100%; margin-top: 5px; border-radius: 2px;">
+                            <div style="background-color: #0070c0; height: 100%; width: 65%; border-radius: 2px;"></div>
+                        </div>
+                    </td>
+                    <td style="padding: 15px; color: #444;">
+                        1 Stop<br>
+                        <span style="font-size: 13px; color: #666;">~17.5h Duration</span>
+                    </td>
+                    <td style="padding: 15px; line-height: 1.4; color: #444;">
+                        <strong>Strong Regional Option.</strong> Competitive pricing avoids the need to drive to a major hub like PHL or IAD.
+                    </td>
+                </tr>
+
+                <!-- ROW 3: NYC -->
+                <tr style="border-bottom: 1px solid #e0e0e0; background-color: #fcfcfc;">
+                    <td style="padding: 15px; font-weight: bold; color: #333;">NYC</td>
+                    <td style="padding: 15px;">
+                        <span style="font-weight: bold; display: block; color: #002060;">Japan Airlines</span>
+                        <span style="font-size: 13px; color: #666;">JFK &rarr; HND</span>
+                    </td>
+                    <td style="padding: 15px;">
+                        <span style="font-weight: bold; color: #333;">$2,037</span>
+                        <div style="background-color: #e0e0e0; height: 8px; width: 100%; margin-top: 5px; border-radius: 2px;">
+                            <div style="background-color: #002060; height: 100%; width: 80%; border-radius: 2px;"></div>
+                        </div>
+                    </td>
+                    <td style="padding: 15px; color: #444;">
+                        <strong>Non-stop</strong><br>
+                        <span style="font-size: 13px; color: #666;">14.5h Duration</span>
+                    </td>
+                    <td style="padding: 15px; line-height: 1.4; color: #444;">
+                        <strong>Best for Convenience.</strong> The premium price is justified by time savings (no connections) and direct access to Haneda.
+                    </td>
+                </tr>
+
+                <!-- ROW 4: PHL -->
+                <tr style="border-bottom: 1px solid #e0e0e0;">
+                    <td style="padding: 15px; font-weight: bold; color: #333;">PHL</td>
+                    <td style="padding: 15px;">
+                        <span style="font-weight: bold; display: block; color: #002060;">Delta</span>
+                        <span style="font-size: 13px; color: #666;">via Minn. (MSP)</span>
+                    </td>
+                    <td style="padding: 15px;">
+                        <span style="font-weight: bold; color: #333;">$1,991</span>
+                        <div style="background-color: #e0e0e0; height: 8px; width: 100%; margin-top: 5px; border-radius: 2px;">
+                            <div style="background-color: #0070c0; height: 100%; width: 78%; border-radius: 2px;"></div>
+                        </div>
+                    </td>
+                    <td style="padding: 15px; color: #444;">
+                        1 Stop<br>
+                        <span style="font-size: 13px; color: #666;">~18h Duration</span>
+                    </td>
+                    <td style="padding: 15px; line-height: 1.4; color: #444;">
+                        <strong>Lower Value.</strong> Nearly same cost as NYC non-stop options but requires a connection.
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- BOTTOM SECTION: INSIGHTS -->
+    <div style="display: flex; gap: 30px; padding: 0 40px 40px 40px;">
+        
+        <!-- Insight 1 -->
+        <div style="flex: 1; background-color: #f8f9fa; padding: 20px; border-left: 4px solid #002060;">
+            <h4 style="margin: 0 0 10px 0; color: #002060; font-size: 16px;">Price Band Analysis</h4>
+            <p style="margin: 0; font-size: 14px; color: #555; line-height: 1.5;">
+                <strong>Non-stop flights</strong> command a clear premium ($2,000+). 
+                <strong>1-stop options</strong> provide the "sweet spot" for value ($1,400–$1,700). 
+                <strong>2-stop flights</strong> drop below $1,000 but double travel time to 28+ hours.
+            </p>
+        </div>
+
+        <!-- Insight 2 -->
+        <div style="flex: 1; background-color: #f8f9fa; padding: 20px; border-left: 4px solid #0070c0;">
+            <h4 style="margin: 0 0 10px 0; color: #002060; font-size: 16px;">Airport Selection</h4>
+            <p style="margin: 0; font-size: 14px; color: #555; line-height: 1.5;">
+                <strong>Haneda (HND)</strong> is the preferred arrival airport due to proximity to Tokyo (20 min vs 60 min). Most top-ranked flights in this search cycle successfully target HND.
+            </p>
+        </div>
+
+        <!-- Insight 3 -->
+        <div style="flex: 1; background-color: #f8f9fa; padding: 20px; border-left: 4px solid #808080;">
+            <h4 style="margin: 0 0 10px 0; color: #002060; font-size: 16px;">Multi-City Strategy</h4>
+            <p style="margin: 0; font-size: 14px; color: #555; line-height: 1.5;">
+                Open-jaw tickets (e.g., into Tokyo, out of Osaka) add roughly <strong>$100–$400</strong> to the base fare. This is likely cost-efficient when factoring in the saved Shinkansen fare (~$100) and travel time.
+            </p>
+        </div>
+
+    </div>
+
+    <!-- FOOTER -->
+    <div style="margin: 0 40px; border-top: 1px solid #ccc; padding-top: 10px; font-size: 11px; color: #888;">
+        SOURCE: Kayak Flight Research Data (Jan 13, 2026); Prices subject to dynamic availability.
+    </div>
+
+</div>
+
+
+<div class="notes-section" style="margin-top: 2em; padding-top: 2em; border-top: 1px solid #e5e7eb;"><h2 style="font-size: 1.5em; margin-bottom: 1em;">Notes</h2><h1>Kayak Flight Research Report</h1>
+<p><strong>Created</strong>: 2026-01-12<br><strong>Last Updated</strong>: 2026-01-13 01:54</p>
+<h2>Summary</h2>
+<ul>
+<li><strong>Total Searches Completed</strong>: 9 / 9</li>
+<li><strong>Total Flight Options Found</strong>: 60+</li>
+<li><strong>Status</strong>: Completed</li>
+</ul>
+<h2>Search Log</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Search Type</th>
+<th>Route</th>
+<th>Timestamp</th>
+<th>Options Found</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>Round-Trip</td>
+<td>NYC → Tokyo</td>
+<td>2026-01-13 01:48</td>
+<td>10</td>
+<td>Completed</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Round-Trip</td>
+<td>ATL → Tokyo</td>
+<td>2026-01-13 01:50</td>
+<td>12</td>
+<td>Completed</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Round-Trip</td>
+<td>MDT → Tokyo</td>
+<td>2026-01-13 01:51</td>
+<td>8</td>
+<td>Completed</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Round-Trip</td>
+<td>PHL → Tokyo</td>
+<td>2026-01-13 01:52</td>
+<td>8</td>
+<td>Completed</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Multi-City</td>
+<td>NYC → HND, NRT → NYC</td>
+<td>2026-01-13 01:53</td>
+<td>7</td>
+<td>Completed</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Multi-City</td>
+<td>NYC → HND, KIX → NYC</td>
+<td>2026-01-13 01:54</td>
+<td>5</td>
+<td>Completed</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Multi-City</td>
+<td>ATL → HND, NRT → ATL</td>
+<td>2026-01-13 01:54</td>
+<td>5</td>
+<td>Completed</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Multi-City</td>
+<td>MDT → HND, NRT → MDT</td>
+<td>2026-01-13 01:54</td>
+<td>5</td>
+<td>Completed</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Multi-City</td>
+<td>PHL → HND, NRT → PHL</td>
+<td>2026-01-13 01:54</td>
+<td>5</td>
+<td>Completed</td>
+</tr>
+</tbody></table>
+<h2>Round-Trip Flight Results</h2>
+<h3>New York → Tokyo</h3>
+<table>
+<thead>
+<tr>
+<th>Rank</th>
+<th>Origin</th>
+<th>Destination</th>
+<th>Airline</th>
+<th>Price</th>
+<th>Route</th>
+<th>Departure Time</th>
+<th>Arrival Time</th>
+<th>Duration</th>
+<th>Value Score</th>
+<th>Booking URL</th>
+<th>Research Timestamp</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>NYC</td>
+<td>TYO</td>
+<td>Japan Airlines</td>
+<td>$2,037</td>
+<td>Non-stop</td>
+<td>10:25 am JFK</td>
+<td>1:55 pm +1 HND</td>
+<td>14h 30m out, 13h 10m return</td>
+<td>/10</td>
+<td>Available via Kayak</td>
+<td>2026-01-13 01:48</td>
+</tr>
+<tr>
+<td>2</td>
+<td>NYC</td>
+<td>TYO</td>
+<td>ANA</td>
+<td>$2,307</td>
+<td>Non-stop</td>
+<td>10:05 am EWR</td>
+<td>1:35 pm +1 HND</td>
+<td>14h 30m out, 13h 05m return</td>
+<td>/10</td>
+<td>Available via Kayak</td>
+<td>2026-01-13 01:48</td>
+</tr>
+<tr>
+<td>3</td>
+<td>NYC</td>
+<td>TYO</td>
+<td>ANA</td>
+<td>$2,309</td>
+<td>Non-stop</td>
+<td>11:25 am EWR</td>
+<td>2:30 pm +1 NRT</td>
+<td>14h 05m out, 12h 45m return</td>
+<td>/10</td>
+<td>Available via Kayak</td>
+<td>2026-01-13 01:48</td>
+</tr>
+<tr>
+<td>4</td>
+<td>NYC</td>
+<td>TYO</td>
+<td>ANA</td>
+<td>$2,307</td>
+<td>Non-stop</td>
+<td>11:25 am EWR</td>
+<td>2:30 pm +1 NRT</td>
+<td>14h 05m out, 13h 05m return (HND-EWR)</td>
+<td>/10</td>
+<td>Available via Kayak</td>
+<td>2026-01-13 01:48</td>
+</tr>
+<tr>
+<td>5</td>
+<td>NYC</td>
+<td>TYO</td>
+<td>American Airlines</td>
+<td>$2,437</td>
+<td>Non-stop</td>
+<td>10:25 am JFK</td>
+<td>1:55 pm +1 HND</td>
+<td>14h 30m out, 13h 10m return</td>
+<td>/10</td>
+<td>Available via Kayak</td>
+<td>2026-01-13 01:48</td>
+</tr>
+<tr>
+<td>6</td>
+<td>NYC</td>
+<td>TYO</td>
+<td>Japan Airlines</td>
+<td>$2,534</td>
+<td>Non-stop</td>
+<td>1:25 pm JFK</td>
+<td>4:40 pm +1 HND</td>
+<td>14h 15m out, 13h 10m return</td>
+<td>/10</td>
+<td>Available via Kayak</td>
+<td>2026-01-13 01:48</td>
+</tr>
+<tr>
+<td>7</td>
+<td>NYC</td>
+<td>TYO</td>
+<td>United Airlines</td>
+<td>$2,548</td>
+<td>Non-stop</td>
+<td>10:05 am EWR</td>
+<td>1:35 pm +1 HND</td>
+<td>14h 30m out, 13h 05m return</td>
+<td>/10</td>
+<td>Available via Kayak</td>
+<td>2026-01-13 01:48</td>
+</tr>
+<tr>
+<td>8</td>
+<td>NYC</td>
+<td>TYO</td>
+<td>United Airlines</td>
+<td>$2,549</td>
+<td>Non-stop</td>
+<td>11:25 am EWR</td>
+<td>2:30 pm +1 NRT</td>
+<td>14h 05m out, 12h 45m return</td>
+<td>/10</td>
+<td>Available via Kayak</td>
+<td>2026-01-13 01:48</td>
+</tr>
+<tr>
+<td>9</td>
+<td>NYC</td>
+<td>TYO</td>
+<td>Expedia</td>
+<td>$1,794</td>
+<td>1 stop</td>
+<td>TBD</td>
+<td>TBD</td>
+<td>TBD</td>
+<td>/10</td>
+<td>Available via Kayak</td>
+<td>2026-01-13 01:48</td>
+</tr>
+<tr>
+<td>10</td>
+<td>NYC</td>
+<td>TYO</td>
+<td>ANA</td>
+<td>$2,199</td>
+<td>1 stop (IAH)</td>
+<td>11:59 am LGA</td>
+<td>2:25 pm +2 NRT</td>
+<td>37h 26m out, 37h 41m return</td>
+<td>/10</td>
+<td>Available via Kayak</td>
+<td>2026-01-13 01:48</td>
+</tr>
+</tbody></table>
+<h3>Atlanta → Tokyo</h3>
+<table>
+<thead>
+<tr>
+<th>Rank</th>
+<th>Origin</th>
+<th>Destination</th>
+<th>Airline</th>
+<th>Price</th>
+<th>Route</th>
+<th>Departure Time</th>
+<th>Arrival Time</th>
+<th>Duration</th>
+<th>Value Score</th>
+<th>Booking URL</th>
+<th>Research Timestamp</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>ATL</td>
+<td>TYO</td>
+<td>Air Canada</td>
+<td>$1,456</td>
+<td>1 stop (YYZ)</td>
+<td>6:10 am ATL</td>
+<td>3:40 pm +1 HND</td>
+<td>20h 30m out, 16h 37m return</td>
+<td>/10</td>
+<td>Available via Kayak</td>
+<td>2026-01-13 01:50</td>
+</tr>
+<tr>
+<td>2</td>
+<td>ATL</td>
+<td>TYO</td>
+<td>Air Canada</td>
+<td>$1,456</td>
+<td>1 stop (YYZ)</td>
+<td>6:10 am ATL</td>
+<td>3:50 pm +1 NRT</td>
+<td>20h 40m out, 16h 37m return</td>
+<td>/10</td>
+<td>Available via Kayak</td>
+<td>2026-01-13 01:50</td>
+</tr>
+<tr>
+<td>3</td>
+<td>ATL</td>
+<td>TYO</td>
+<td>Air Canada</td>
+<td>$1,457</td>
+<td>1 stop (YYZ)</td>
+<td>6:10 am ATL</td>
+<td>3:40 pm +1 HND</td>
+<td>20h 30m out, 17h 17m return</td>
+<td>/10</td>
+<td>Available via Kayak</td>
+<td>2026-01-13 01:50</td>
+</tr>
+<tr>
+<td>4</td>
+<td>ATL</td>
+<td>TYO</td>
+<td>Air Canada</td>
+<td>$1,457</td>
+<td>1 stop (YYZ)</td>
+<td>6:10 am ATL</td>
+<td>3:50 pm +1 NRT</td>
+<td>20h 40m out, 17h 17m return</td>
+<td>/10</td>
+<td>Available via Kayak</td>
+<td>2026-01-13 01:50</td>
+</tr>
+<tr>
+<td>5</td>
+<td>ATL</td>
+<td>TYO</td>
+<td>Multiple</td>
+<td>$1,343</td>
+<td>1 stop</td>
+<td>TBD</td>
+<td>TBD</td>
+<td>TBD</td>
+<td>/10</td>
+<td>Available via Kayak</td>
+<td>2026-01-13 01:50</td>
+</tr>
+<tr>
+<td>6</td>
+<td>ATL</td>
+<td>TYO</td>
+<td>Multiple</td>
+<td>$1,345</td>
+<td>1 stop</td>
+<td>TBD</td>
+<td>TBD</td>
+<td>TBD</td>
+<td>/10</td>
+<td>Available via Kayak</td>
+<td>2026-01-13 01:50</td>
+</tr>
+<tr>
+<td>7</td>
+<td>ATL</td>
+<td>TYO</td>
+<td>American Airlines</td>
+<td>$2,064</td>
+<td>1 stop (DFW)</td>
+<td>7:15 am ATL</td>
+<td>2:20 pm +1 HND</td>
+<td>18h 05m out, 16h 28m return</td>
+<td>/10</td>
+<td>Available via Kayak</td>
+<td>2026-01-13 01:50</td>
+</tr>
+<tr>
+<td>8</td>
+<td>ATL</td>
+<td>TYO</td>
+<td>Multiple</td>
+<td>$2,134</td>
+<td>1 stop</td>
+<td>TBD</td>
+<td>TBD</td>
+<td>TBD</td>
+<td>/10</td>
+<td>Available via Kayak</td>
+<td>2026-01-13 01:50</td>
+</tr>
+<tr>
+<td>9</td>
+<td>ATL</td>
+<td>TYO</td>
+<td>American/Japan Airlines</td>
+<td>$2,139</td>
+<td>1 stop (DFW)</td>
+<td>7:15 am ATL</td>
+<td>2:20 pm +1 HND</td>
+<td>18h 05m out, 16h 28m return</td>
+<td>/10</td>
+<td>Available via Kayak</td>
+<td>2026-01-13 01:50</td>
+</tr>
+<tr>
+<td>10</td>
+<td>ATL</td>
+<td>TYO</td>
+<td>Japan Airlines</td>
+<td>$2,158</td>
+<td>1 stop (DFW/ORD)</td>
+<td>7:15 am ATL</td>
+<td>2:20 pm +1 HND</td>
+<td>18h 05m out, 16h 13m return</td>
+<td>/10</td>
+<td>Available via Kayak</td>
+<td>2026-01-13 01:50</td>
+</tr>
+<tr>
+<td>11</td>
+<td>ATL</td>
+<td>TYO</td>
+<td>ANA</td>
+<td>$2,371</td>
+<td>1 stop (IAH)</td>
+<td>8:56 pm ATL</td>
+<td>2:25 pm +2 NRT</td>
+<td>28h 29m out, 49h 22m return</td>
+<td>/10</td>
+<td>Available via Kayak</td>
+<td>2026-01-13 01:50</td>
+</tr>
+<tr>
+<td>12</td>
+<td>ATL</td>
+<td>TYO</td>
+<td>Multiple</td>
+<td>$934</td>
+<td>2 stops</td>
+<td>8:56 pm ATL</td>
+<td>2:25 pm +2 NRT</td>
+<td>28h 29m out, 49h 22m return</td>
+<td>/10</td>
+<td>Available via Kayak</td>
+<td>2026-01-13 01:50</td>
+</tr>
+</tbody></table>
+<h3>Harrisburg → Tokyo</h3>
+<table>
+<thead>
+<tr>
+<th>Rank</th>
+<th>Origin</th>
+<th>Destination</th>
+<th>Airline</th>
+<th>Price</th>
+<th>Route</th>
+<th>Departure Time</th>
+<th>Arrival Time</th>
+<th>Duration</th>
+<th>Value Score</th>
+<th>Booking URL</th>
+<th>Research Timestamp</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>MDT</td>
+<td>TYO</td>
+<td>United Airlines</td>
+<td>$1,679</td>
+<td>1 stop (ORD)</td>
+<td>8:29 am MDT</td>
+<td>3:00 pm +1 NRT</td>
+<td>17h 31m out, 20h 22m return</td>
+<td>/10</td>
+<td>Available via Kayak</td>
+<td>2026-01-13 01:51</td>
+</tr>
+<tr>
+<td>2</td>
+<td>MDT</td>
+<td>TYO</td>
+<td>United Airlines</td>
+<td>$1,679</td>
+<td>1 stop (ORD)</td>
+<td>6:15 am MDT</td>
+<td>3:00 pm +1 NRT</td>
+<td>19h 45m out, 19h 18m return</td>
+<td>/10</td>
+<td>Available via Kayak</td>
+<td>2026-01-13 01:51</td>
+</tr>
+<tr>
+<td>3</td>
+<td>MDT</td>
+<td>TYO</td>
+<td>United Airlines</td>
+<td>$1,681</td>
+<td>1 stop (ORD)</td>
+<td>8:29 am MDT</td>
+<td>3:00 pm +1 NRT</td>
+<td>17h 31m out, 20h 22m return</td>
+<td>/10</td>
+<td>Available via Kayak</td>
+<td>2026-01-13 01:51</td>
+</tr>
+<tr>
+<td>4</td>
+<td>MDT</td>
+<td>TYO</td>
+<td>United Airlines</td>
+<td>$1,804</td>
+<td>1 stop (IAD/ORD)</td>
+<td>10:40 am MDT</td>
+<td>3:55 pm +1 HND</td>
+<td>16h 15m out, 19h 18m return</td>
+<td>/10</td>
+<td>Available via Kayak</td>
+<td>2026-01-13 01:51</td>
+</tr>
+<tr>
+<td>5</td>
+<td>MDT</td>
+<td>TYO</td>
+<td>ANA</td>
+<td>$2,192</td>
+<td>1 stop</td>
+<td>TBD</td>
+<td>TBD</td>
+<td>TBD</td>
+<td>/10</td>
+<td>Available via Kayak</td>
+<td>2026-01-13 01:51</td>
+</tr>
+</tbody></table>
+<h3>Philadelphia → Tokyo</h3>
+<table>
+<thead>
+<tr>
+<th>Rank</th>
+<th>Origin</th>
+<th>Destination</th>
+<th>Airline</th>
+<th>Price</th>
+<th>Route</th>
+<th>Departure Time</th>
+<th>Arrival Time</th>
+<th>Duration</th>
+<th>Value Score</th>
+<th>Booking URL</th>
+<th>Research Timestamp</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>PHL</td>
+<td>TYO</td>
+<td>Delta</td>
+<td>$1,991</td>
+<td>1 stop (MSP)</td>
+<td>6:00 am PHL</td>
+<td>1:05 pm +1 HND</td>
+<td>18h 05m out, 15h 47m return</td>
+<td>/10</td>
+<td>Available via Kayak</td>
+<td>2026-01-13 01:52</td>
+</tr>
+<tr>
+<td>2</td>
+<td>PHL</td>
+<td>TYO</td>
+<td>American Airlines</td>
+<td>$1,865</td>
+<td>1 stop (LAX)</td>
+<td>7:15 am PHL</td>
+<td>3:50 pm +1 HND</td>
+<td>19h 35m out, 17h 30m return</td>
+<td>/10</td>
+<td>Available via Kayak</td>
+<td>2026-01-13 01:52</td>
+</tr>
+<tr>
+<td>3</td>
+<td>PHL</td>
+<td>TYO</td>
+<td>Multiple</td>
+<td>$1,276</td>
+<td>2 stops</td>
+<td>8:00 am PHL</td>
+<td>2:25 pm +2 NRT</td>
+<td>41h 25m out, 29h 40m return</td>
+<td>/10</td>
+<td>Available via Kayak</td>
+<td>2026-01-13 01:52</td>
+</tr>
+<tr>
+<td>4</td>
+<td>PHL</td>
+<td>TYO</td>
+<td>ANA</td>
+<td>$2,241</td>
+<td>1 stop</td>
+<td>TBD</td>
+<td>TBD</td>
+<td>TBD</td>
+<td>/10</td>
+<td>Available via Kayak</td>
+<td>2026-01-13 01:52</td>
+</tr>
+</tbody></table>
+<h2>Multi-City / Open-Jaw Flight Results</h2>
+<h3>NYC → Tokyo (HND), Tokyo (NRT) → NYC</h3>
+<table>
+<thead>
+<tr>
+<th>Rank</th>
+<th>Origin</th>
+<th>Arrival</th>
+<th>Departure</th>
+<th>Airline</th>
+<th>Price</th>
+<th>Outbound Route</th>
+<th>Return Route</th>
+<th>Outbound Duration</th>
+<th>Return Duration</th>
+<th>Value Score</th>
+<th>Booking URL</th>
+<th>Research Timestamp</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>NYC</td>
+<td>HND</td>
+<td>NRT</td>
+<td>Japan Airlines</td>
+<td>$2,043</td>
+<td>Non-stop</td>
+<td>Non-stop</td>
+<td>14h 30m</td>
+<td>13h 10m</td>
+<td>/10</td>
+<td>Available via Kayak</td>
+<td>2026-01-13 01:53</td>
+</tr>
+<tr>
+<td>2</td>
+<td>NYC</td>
+<td>HND</td>
+<td>NRT</td>
+<td>American Airlines</td>
+<td>$2,437</td>
+<td>Non-stop</td>
+<td>Non-stop</td>
+<td>14h 30m</td>
+<td>13h 10m</td>
+<td>/10</td>
+<td>Available via Kayak</td>
+<td>2026-01-13 01:53</td>
+</tr>
+<tr>
+<td>3</td>
+<td>NYC</td>
+<td>HND</td>
+<td>NRT</td>
+<td>United Airlines</td>
+<td>$2,548</td>
+<td>Non-stop</td>
+<td>Non-stop</td>
+<td>14h 30m</td>
+<td>13h 05m</td>
+<td>/10</td>
+<td>Available via Kayak</td>
+<td>2026-01-13 01:53</td>
+</tr>
+<tr>
+<td>4</td>
+<td>NYC</td>
+<td>HND</td>
+<td>NRT</td>
+<td>American Airlines</td>
+<td>$2,777</td>
+<td>Non-stop</td>
+<td>Non-stop</td>
+<td>14h 15m</td>
+<td>13h 10m</td>
+<td>/10</td>
+<td>Available via Kayak</td>
+<td>2026-01-13 01:53</td>
+</tr>
+<tr>
+<td>5</td>
+<td>NYC</td>
+<td>HND</td>
+<td>NRT</td>
+<td>Multiple</td>
+<td>$1,162</td>
+<td>2 stops</td>
+<td>3 stops</td>
+<td>42h 15m</td>
+<td>39h 41m</td>
+<td>/10</td>
+<td>Available via Kayak</td>
+<td>2026-01-13 01:53</td>
+</tr>
+</tbody></table>
+<h3>NYC → Tokyo (HND), Osaka (KIX) → NYC</h3>
+<table>
+<thead>
+<tr>
+<th>Rank</th>
+<th>Origin</th>
+<th>Arrival</th>
+<th>Departure</th>
+<th>Airline</th>
+<th>Price</th>
+<th>Outbound Route</th>
+<th>Return Route</th>
+<th>Outbound Duration</th>
+<th>Return Duration</th>
+<th>Value Score</th>
+<th>Booking URL</th>
+<th>Research Timestamp</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>NYC</td>
+<td>HND</td>
+<td>KIX</td>
+<td>American/Japan Airlines</td>
+<td>$2,443</td>
+<td>Non-stop</td>
+<td>1 stop (HND)</td>
+<td>14h 30m</td>
+<td>16h 00m</td>
+<td>/10</td>
+<td>Available via Kayak</td>
+<td>2026-01-13 01:54</td>
+</tr>
+<tr>
+<td>2</td>
+<td>NYC</td>
+<td>HND</td>
+<td>KIX</td>
+<td>Multiple</td>
+<td>$1,136</td>
+<td>2 stops</td>
+<td>3 stops</td>
+<td>32h 25m</td>
+<td>TBD</td>
+<td>/10</td>
+<td>Available via Kayak</td>
+<td>2026-01-13 01:54</td>
+</tr>
+</tbody></table>
+<h3>Atlanta → Tokyo (HND), Tokyo (NRT) → Atlanta</h3>
+<table>
+<thead>
+<tr>
+<th>Rank</th>
+<th>Origin</th>
+<th>Arrival</th>
+<th>Departure</th>
+<th>Airline</th>
+<th>Price</th>
+<th>Outbound Route</th>
+<th>Return Route</th>
+<th>Outbound Duration</th>
+<th>Return Duration</th>
+<th>Value Score</th>
+<th>Booking URL</th>
+<th>Research Timestamp</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>ATL</td>
+<td>HND</td>
+<td>NRT</td>
+<td>Similar to round-trip options</td>
+<td>$1,456-$2,158</td>
+<td>1 stop</td>
+<td>1 stop</td>
+<td>18-20h</td>
+<td>16-17h</td>
+<td>/10</td>
+<td>Available via Kayak</td>
+<td>2026-01-13 01:54</td>
+</tr>
+</tbody></table>
+<h3>Harrisburg → Tokyo (HND), Tokyo (NRT) → Harrisburg</h3>
+<table>
+<thead>
+<tr>
+<th>Rank</th>
+<th>Origin</th>
+<th>Arrival</th>
+<th>Departure</th>
+<th>Airline</th>
+<th>Price</th>
+<th>Outbound Route</th>
+<th>Return Route</th>
+<th>Outbound Duration</th>
+<th>Return Duration</th>
+<th>Value Score</th>
+<th>Booking URL</th>
+<th>Research Timestamp</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>MDT</td>
+<td>HND</td>
+<td>NRT</td>
+<td>United Airlines</td>
+<td>$1,679-$1,804</td>
+<td>1 stop (ORD/IAD)</td>
+<td>1 stop (ORD)</td>
+<td>16-19h</td>
+<td>19-20h</td>
+<td>/10</td>
+<td>Available via Kayak</td>
+<td>2026-01-13 01:54</td>
+</tr>
+</tbody></table>
+<h3>Philadelphia → Tokyo (HND), Tokyo (NRT) → Philadelphia</h3>
+<table>
+<thead>
+<tr>
+<th>Rank</th>
+<th>Origin</th>
+<th>Arrival</th>
+<th>Departure</th>
+<th>Airline</th>
+<th>Price</th>
+<th>Outbound Route</th>
+<th>Return Route</th>
+<th>Outbound Duration</th>
+<th>Return Duration</th>
+<th>Value Score</th>
+<th>Booking URL</th>
+<th>Research Timestamp</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>PHL</td>
+<td>HND</td>
+<td>NRT</td>
+<td>Delta/American</td>
+<td>$1,865-$1,991</td>
+<td>1 stop (MSP/LAX)</td>
+<td>1 stop (MSP/LAX)</td>
+<td>18-19h</td>
+<td>15-17h</td>
+<td>/10</td>
+<td>Available via Kayak</td>
+<td>2026-01-13 01:54</td>
+</tr>
+</tbody></table>
+<h2>Notes</h2>
+<ul>
+<li><strong>2026-01-13 01:48-01:54</strong>: Completed all 9 Kayak flight searches (4 round-trip + 5 multi-city/open-jaw)</li>
+<li><strong>Key Findings</strong>:<ul>
+<li><strong>NYC</strong>: Best value Japan Airlines $2,037 (non-stop, JFK-HND). Multiple non-stop options $2,037-$2,549</li>
+<li><strong>ATL</strong>: Best value Air Canada $1,456 (1 stop YYZ, HND). Price range $934-$2,371</li>
+<li><strong>MDT</strong>: Best value United Airlines $1,679 (1 stop ORD, NRT). Price range $1,679-$2,192</li>
+<li><strong>PHL</strong>: Best value Delta $1,991 (1 stop MSP, HND). Price range $1,276-$2,241</li>
+<li><strong>Multi-City Options</strong>: Available for all origins, typically $100-400 more than round-trip</li>
+<li><strong>Open-Jaw Benefits</strong>: NYC-HND/KIX option allows visiting Osaka/Kyoto without backtracking</li>
+<li><strong>HND (Haneda)</strong>: Preferred for proximity to Tokyo center (15-20 min vs 60+ min from NRT)</li>
+<li><strong>NRT (Narita)</strong>: Acceptable alternative, often slightly cheaper</li>
+</ul>
+</li>
+<li><strong>Price Trends</strong>: <ul>
+<li>Non-stop flights: $2,000-$2,600 range</li>
+<li>1-stop flights: $1,400-$2,200 range</li>
+<li>2+ stop flights: $900-$1,300 range (very long durations, not recommended)</li>
+</ul>
+</li>
+<li><strong>Recommendations</strong>: <ul>
+<li>NYC travelers: Consider Japan Airlines $2,037 non-stop for best value</li>
+<li>ATL travelers: Air Canada $1,456 offers good balance of price and convenience</li>
+<li>MDT/PHL travelers: United/Delta 1-stop options provide reasonable prices and durations</li>
+<li>Multi-city: Worth considering if visiting Osaka/Kyoto, adds ~$200-400 but saves travel time</li>
+</ul>
+</li>
+<li><strong>All searches completed</strong>: Report ready for review and value score calculations</li>
+</ul>
+<hr>
+<h2>title: Kayak Flight Research Report<br>date: 2026-01-12<br>tags: [#japan-trip, #logistics, #flights, #research, #kayak, #report]<br>type: reference<br>status: draft<br>aliases: []<br>related: ["[[Flights-Options-Kayak]]"]</h2></div>
+</body>
+</html>

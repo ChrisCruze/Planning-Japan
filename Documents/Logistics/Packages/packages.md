@@ -35,6 +35,10 @@ This folder contains detailed information about specific travel packages under c
 
 - [[Richmond-Hotel-Premier-Asakusa]] - Expedia package for 3 travelers (2 adults, 1 child)
 
+For detailed package research and comparison, see [[Package-Options]].
+
 ## Related Notes
 
 - [[Logistics]] - Main logistics document with booking strategy analysis
+- [[Package-Options]] - Detailed package research and comparison with separate bookings
+

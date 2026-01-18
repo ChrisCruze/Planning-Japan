@@ -114,3 +114,4 @@ Important phrases when you need help:
 
 - Focus on functional fluency over linguistic perfection
 - Research shows travelers experience more satisfaction from confident communication attempts
+

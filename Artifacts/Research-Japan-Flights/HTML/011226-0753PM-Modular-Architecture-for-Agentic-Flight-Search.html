@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>011226 7:53PM Modular Architecture for Agentic Flight Search</title>
+    <meta name="Title" content="Modular Architecture for Agentic Flight Search" type="Artifact">
+    <meta name="Summary" content="A four-phase technical architecture for building a robust flight search backend using Apify Actors wrapped in Python for LLM consumption." type="Artifact">
+    <meta name="Description" content="Technical architecture slide detailing the data flow from requirements to LLM integration." type="Artifact">
+    <meta name="Insight" content="Wrapping existing commercial scrapers in a custom normalization Actor is superior to building raw Selenium scripts for resilient agentic workflows." type="Artifact">
+    <meta name="Question" content="How should agents orchestrate Apify actors to feed high-quality flight data to LLMs?" type="Artifact">
+</head>
+<body style="margin: 0; padding: 0; background-color: #f0f0f0; font-family: 'Segoe UI', Arial, sans-serif; -webkit-font-smoothing: antialiased;">
+
+<!-- 
+<analysis>
+1. Key Points:
+   - Architecture Strategy: Don't scrape from scratch; wrap existing Apify Store Actors (Data Layer) in a custom Python Actor (Normalization Layer).
+   - Four Key Phases:
+     1. Requirements/Spec: Define inputs (Origins, Japan Airports) and strict Output Schema.
+     2. Data Layer: The "Wrapper Actor" pattern. Calls store actors, handles normalization.
+     3. Orchestration: Scheduling, Rate limits, Pagination.
+     4. LLM Integration: Ranking, Pareto optimization, Utility scoring.
+   - Core Artifacts: Normalized JSON schema, PRD, Tech Spec.
+
+2. Information Type: 
+   - Process Architecture (Step-by-step Technical Flow).
+   - Tech Stack Definition.
+
+3. Layout Evaluation:
+   - Subtitle Slide (Four Columns): This is the ideal fit. It creates a "Value Chain" visual where data flows from left (Requirements) to right (LLM Value).
+   - Framework Slide: Could work, but 4 vertical columns allows for more detailed text about specific responsibilities.
+
+4. Selection: Four-Column Subtitle Slide (Process Flow).
+   - Title: "Agentic Flight Search Architecture: From Data Acquisition to LLM Reasoning"
+   - Column 1: Specification & Input Model.
+   - Column 2: The Apify Wrapper Pattern (Data Layer).
+   - Column 3: Orchestration & Ops.
+   - Column 4: LLM Reasoning Layer.
+
+5. Plan:
+   - Use `display: table` for the 4 columns.
+   - Visual styling: Numbered headers (1-4) to denote sequence.
+   - Code snippets in boxes for Schemas.
+</analysis>
+
+<design_planning>
+1. Color Palette:
+   - Primary: #051C2C (McKinsey Navy).
+   - Accent: #0077C8 (Bright Blue).
+   - Backgrounds: #F5F7F9 (Light Grey/Blue).
+   - Code Blocks: #E8E8E8 (Light Grey).
+
+2. Visual Hierarchy:
+   - Title: 24px Serif, Navy.
+   - Column Headers: 14px Sans-Serif, Bold, Uppercase, Blue.
+   - Sub-headers (Owner Agents): 11px, Italic, Dark Grey.
+   - Body: 11px-12px.
+
+3. Layout Structure:
+   - Width: 1100px.
+   - 4 Columns (approx 23% width each) + Gaps.
+   - Bottom "Pitfalls" banner.
+
+4. Typography:
+   - Font: Segoe UI / Arial.
+   - Monospace for JSON keys.
+</design_planning>
+-->
+
+    <!-- Main Slide Container -->
+    <div style="width: 1100px; margin: 40px auto; background-color: #ffffff; padding: 40px 50px; box-shadow: 0 0 20px rgba(0,0,0,0.1); box-sizing: border-box;">
+
+        <!-- Header -->
+        <div style="border-bottom: 2px solid #051C2C; padding-bottom: 15px; margin-bottom: 30px;">
+            <div style="font-size: 11px; text-transform: uppercase; color: #666; letter-spacing: 1px; margin-bottom: 5px;">Technical Architecture</div>
+            <h1 style="font-size: 26px; color: #051C2C; margin: 0; font-family: 'Georgia', serif; font-weight: normal; line-height: 1.2;">
+                A modular "Wrapper Actor" architecture ensures robust data delivery for LLM reasoning
+            </h1>
+        </div>
+
+        <!-- 4-Column Layout via Table -->
+        <div style="display: table; width: 100%; border-spacing: 15px 0; margin-left: -15px;">
+
+            <!-- Phase 1: Spec -->
+            <div style="display: table-cell; width: 25%; vertical-align: top; background-color: #fff;">
+                <h3 style="font-size: 14px; color: #0077C8; margin-top: 0; margin-bottom: 5px; text-transform: uppercase; border-bottom: 1px solid #ddd; padding-bottom: 10px;">
+                    1. Requirements & Spec
+                </h3>
+                <div style="font-size: 11px; color: #666; font-style: italic; margin-bottom: 15px;">Owner: Product Agent</div>
+
+                <div style="font-size: 12px; color: #333; margin-bottom: 10px; font-weight: bold;">Core Inputs</div>
+                <ul style="margin: 0 0 15px 0; padding-left: 15px; font-size: 12px; color: #444; line-height: 1.4;">
+                    <li><strong>Origins:</strong> Grouped IATA (e.g., NYC, PHL)</li>
+                    <li><strong>Destinations:</strong> Japan Group (TYO, KIX)</li>
+                    <li><strong>Dates:</strong> Outbound/Return Ranges</li>
+                </ul>
+
+                <div style="background-color: #F8F9FA; padding: 10px; border: 1px solid #e0e0e0;">
+                    <div style="font-size: 11px; font-weight: bold; color: #051C2C; margin-bottom: 5px;">Normalized Schema Goal</div>
+                    <div style="font-family: Consolas, monospace; font-size: 10px; color: #555; line-height: 1.4;">
+                        {<br>
+                        &nbsp;&nbsp;"origin": "JFK",<br>
+                        &nbsp;&nbsp;"price": 945.20,<br>
+                        &nbsp;&nbsp;"stops": 1,<br>
+                        &nbsp;&nbsp;"duration": 840<br>
+                        }
+                    </div>
+                </div>
+            </div>
+
+            <!-- Phase 2: Data Layer -->
+            <div style="display: table-cell; width: 25%; vertical-align: top; background-color: #F0F7FF; border-top: 3px solid #0077C8; padding: 15px;">
+                <h3 style="font-size: 14px; color: #0077C8; margin-top: 0; margin-bottom: 5px; text-transform: uppercase; padding-bottom: 5px;">
+                    2. Data Layer (Wrapper)
+                </h3>
+                <div style="font-size: 11px; color: #666; font-style: italic; margin-bottom: 15px;">Owner: Integration Agent</div>
+
+                <div style="font-size: 12px; color: #333; margin-bottom: 10px;">
+                    <strong>Strategy:</strong> Do not build scrapers. Wrap existing Store Actors.
+                </div>
+
+                <div style="margin-bottom: 15px;">
+                    <div style="font-size: 11px; font-weight: bold; color: #051C2C; margin-bottom: 3px;">Base Actor</div>
+                    <div style="font-size: 11px; color: #444;"><code>simpleapi/google-flights-scraper</code> or similar.</div>
+                </div>
+
+                <div style="margin-bottom: 0;">
+                    <div style="font-size: 11px; font-weight: bold; color: #051C2C; margin-bottom: 3px;">Wrapper Logic (Python)</div>
+                    <ul style="margin: 0; padding-left: 15px; font-size: 11px; color: #444; line-height: 1.4;">
+                        <li>Standardize input JSON</li>
+                        <li>Handle pagination</li>
+                        <li><strong>Normalize fields</strong> (null checks for alliances, baggage)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Phase 3: Orchestration -->
+            <div style="display: table-cell; width: 25%; vertical-align: top;">
+                <h3 style="font-size: 14px; color: #0077C8; margin-top: 0; margin-bottom: 5px; text-transform: uppercase; border-bottom: 1px solid #ddd; padding-bottom: 10px;">
+                    3. Orchestration
+                </h3>
+                <div style="font-size: 11px; color: #666; font-style: italic; margin-bottom: 15px;">Owner: DevOps Agent</div>
+
+                <div style="font-size: 12px; color: #333; margin-bottom: 10px; font-weight: bold;">Scheduling</div>
+                <div style="font-size: 12px; color: #444; line-height: 1.4; margin-bottom: 15px;">
+                    Use Apify Scheduler for cron jobs (e.g., daily 03:00 UTC) or on-demand API triggers.
+                </div>
+
+                <div style="font-size: 12px; color: #333; margin-bottom: 10px; font-weight: bold;">Constraints</div>
+                <ul style="margin: 0; padding-left: 15px; font-size: 12px; color: #444; line-height: 1.4;">
+                    <li><strong>Batching:</strong> Cap queries per run (e.g., 50) to manage costs.</li>
+                    <li><strong>Rate Limits:</strong> Respect <code>maximum</code> param in store actors.</li>
+                    <li><strong>Tagging:</strong> Apply <code>searchId</code> to group disparate runs.</li>
+                </ul>
+            </div>
+
+            <!-- Phase 4: LLM Integration -->
+            <div style="display: table-cell; width: 25%; vertical-align: top;">
+                <h3 style="font-size: 14px; color: #0077C8; margin-top: 0; margin-bottom: 5px; text-transform: uppercase; border-bottom: 1px solid #ddd; padding-bottom: 10px;">
+                    4. LLM Reasoning
+                </h3>
+                <div style="font-size: 11px; color: #666; font-style: italic; margin-bottom: 15px;">Owner: Selection Agent</div>
+
+                <div style="font-size: 12px; color: #333; margin-bottom: 10px; font-weight: bold;">Data Consumption</div>
+                <div style="font-size: 12px; color: #444; line-height: 1.4; margin-bottom: 15px;">
+                    Pull from Apify Dataset (JSON) via API once run completes.
+                </div>
+
+                <div style="background-color: #E3F2FD; padding: 10px; border-left: 3px solid #0077C8;">
+                    <div style="font-size: 11px; font-weight: bold; color: #051C2C; margin-bottom: 5px;">Analysis Logic</div>
+                    <ul style="margin: 0; padding-left: 15px; font-size: 11px; color: #444; line-height: 1.4;">
+                        <li><strong>Pareto Front:</strong> Filter dominated options (Price vs Duration).</li>
+                        <li><strong>Utility Scoring:</strong> Penalize non-preferred airports.</li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Footer / Common Pitfalls -->
+        <div style="margin-top: 30px; border-top: 1px solid #ccc; padding-top: 15px;">
+            <div style="display: table; width: 100%;">
+                <div style="display: table-cell; width: 15%; font-size: 11px; font-weight: bold; color: #D32F2F; vertical-align: top;">
+                    COMMON PITFALLS
+                </div>
+                <div style="display: table-cell; width: 85%; vertical-align: top;">
+                    <ul style="margin: 0; padding: 0; list-style-type: none; font-size: 11px; color: #666;">
+                        <li style="display: inline-block; margin-right: 20px;">&bull; <strong>Cartesian Explosion:</strong> Unbounded date/airport combos causing high costs.</li>
+                        <li style="display: inline-block; margin-right: 20px;">&bull; <strong>Missing Fields:</strong> Crashing on optional data (baggage, alliances).</li>
+                        <li style="display: inline-block;">&bull; <strong>Silent Failures:</strong> 0 results due to bad IATA codes treated as success.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sources -->
+        <div style="margin-top: 15px; font-size: 9px; color: #999;">
+            Source: Apify Documentation, "Google Flights Scraper" Actor Docs, Internal Architecture Analysis
+        </div>
+
+    </div>
+
+
+<div class="notes-section" style="margin-top: 2em; padding-top: 2em; border-top: 1px solid #e5e7eb;"><h2 style="font-size: 1.5em; margin-bottom: 1em;">Notes</h2><p>The cleanest Apify approach is: use an existing Google Flights Scraper Actor/API for data, then wrap it in your own Python Actor that standardizes results for your LLM/agent.[1][2][3][4][5]</p>
+<h2>High-level phases (for agents)</h2>
+<ul>
+<li>Requirements &amp; tech spec  </li>
+<li>Data layer (Apify Flights Actor)  </li>
+<li>Orchestration &amp; scheduling  </li>
+<li>LLM/agent integration  </li>
+<li>QA &amp; monitoring</li>
+</ul>
+<p>Below are concrete steps plus docs you can hand to different agents.</p>
+<hr>
+<h2>1) Requirements and tech spec</h2>
+<p><strong>Goal</strong>: Build a flight-search backend that, given origin(s), Japan airports, and date windows, calls Apify’s Google Flights tooling and returns normalized JSON/CSV for an LLM to reason over.[2][3][5][1]</p>
+<h3>Functional requirements (for a “Product/Spec” agent)</h3>
+<ul>
+<li>Inputs:<ul>
+<li>Origin IATA or city groups, e.g. <code>["NYC","PHL","ATL"]</code>.  </li>
+<li>Japan destinations, e.g. <code>["TYO","KIX","ITM","NGO","FUK","CTS"]</code>.  </li>
+<li>Outbound date range and return date range (ISO <code>YYYY-MM-DD</code>).  </li>
+<li>Trip type: round-trip, one-way, or multi-city/open-jaw.[3][5]</li>
+</ul>
+</li>
+<li>Behavior:<ul>
+<li>For each origin–destination–date combo, query an Apify Google Flights Actor/API (e.g. <code>simpleapi/google-flights-scraper</code> or <code>johnvc/google-flights-data-scraper-flight-and-price-search</code>).[4][1][2][3]</li>
+<li>Collect:<ul>
+<li>Price, currency.  </li>
+<li>Airline(s), marketing vs operating carrier if available.  </li>
+<li>Departure/arrival times, total duration.  </li>
+<li>Number of stops and layover airports.  </li>
+<li>URL/deep link to the original Google Flights result where provided.[1][2][3]</li>
+</ul>
+</li>
+<li>Normalize into a shared schema and persist to Apify Dataset + downloadable CSV.[6]</li>
+</ul>
+</li>
+<li>Non-functional:<ul>
+<li>Handle rate limits (batch queries, respect <code>maximum</code> parameter).[2]</li>
+<li>Fail fast when input parameters are invalid (bad IATA, malformed dates).  </li>
+<li>Clear logging for each route/date run (origin, dest, dates, count of results).[6]</li>
+</ul>
+</li>
+</ul>
+<p><strong>Sample normalized schema</strong></p>
+<pre><code class="language-json">{
+  "origin": "JFK",
+  "destination": "HND",
+  "tripType": "round-trip",
+  "outboundDate": "2026-04-02",
+  "returnDate": "2026-04-11",
+  "price": 945.20,
+  "currency": "USD",
+  "airlines": ["Japan Airlines"],
+  "alliances": ["oneworld"],
+  "stopsOutbound": 0,
+  "stopsReturn": 1,
+  "durationOutboundMinutes": 840,
+  "durationReturnMinutes": 900,
+  "bookingLink": "https://www.google.com/travel/flights/...",
+  "raw": {}
+}
+</code></pre>
+<hr>
+<h2>2) Data layer: choose and wrap an Apify Google Flights Actor</h2>
+<p><strong>Owner agent</strong>: “Apify Integration” agent.</p>
+<h3>Step 2.1 – Pick the base Actor/API</h3>
+<ul>
+<li>Use an existing Google Flights Actor instead of writing Selenium yourself:[5][3][1][2]<ul>
+<li>Example: <code>simpleapi/google-flights-scraper</code> – JSON input with <code>departureIATA</code>, <code>arrivalIATA</code>, <code>departureDate</code>, <code>maximum</code>, etc.[2]</li>
+<li>Example: <code>johnvc/google-flights-data-scraper-flight-and-price-search</code> for more advanced options (multi-city, filters, languages).[3][4]</li>
+</ul>
+</li>
+</ul>
+<p><strong>Common mistake to avoid</strong>: Mixing multiple different store Actors in one app before you’ve standardized schemas—start with one and align your normalization on its output structure.[4][3][2]</p>
+<h3>Step 2.2 – Create a thin Python wrapper Actor</h3>
+<p>Use the Python SDK + an Apify template:[7][6]</p>
+<ul>
+<li>Start from the empty Python template or a simple scraping template:[7]</li>
+<li>In <code>src/main.py</code>:<ul>
+<li>Read Actor input: <code>origins</code>, <code>destinations</code>, <code>outboundDates</code>, <code>returnDates</code>, <code>tripType</code>.  </li>
+<li>For each combination, build the JSON required by the Flights Actor (e.g. <code>departureIATA</code>, <code>arrivalIATA</code>, <code>departureDate</code>, <code>returnDate</code>, <code>maximum</code>).[3][2]</li>
+<li>Call the Flights Actor via Apify API client and capture results.[4][6]</li>
+<li>Transform each record into your normalized schema and <code>Actor.push_data()</code> it.[6]</li>
+</ul>
+</li>
+</ul>
+<p><strong>Common mistakes &amp; mitigations</strong></p>
+<ul>
+<li>Mistake: Not limiting the cartesian explosion.  <ul>
+<li>Mitigation: Hard-cap combinations per run (e.g., max 50 queries) and support pagination or multiple runs.</li>
+</ul>
+</li>
+<li>Mistake: Assuming all results have the same fields.  <ul>
+<li>Mitigation: Treat optional fields (<code>alliances</code>, <code>bookingLink</code>, baggage info) defensively; default to <code>null</code> if missing.[2][3]</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2>3) Orchestration and scheduling</h2>
+<p><strong>Owner agent</strong>: “Scheduler/DevOps” agent.</p>
+<h3>Step 3.1 – Input model for a run</h3>
+<p>Define Actor input JSON like:</p>
+<pre><code class="language-json">{
+  "origins": ["NYC", "PHL", "ATL"],
+  "japanAirports": ["HND", "NRT", "KIX", "ITM", "NGO", "FUK", "CTS"],
+  "outboundDateRange": ["2026-04-02", "2026-04-05"],
+  "returnDateRange": ["2026-04-08", "2026-04-11"],
+  "tripType": "round-trip",
+  "maxQueries": 40
+}
+</code></pre>
+<p>The Actor expands this to the underlying Google Flights Actor calls.</p>
+<h3>Step 3.2 – Scheduling &amp; rate limits</h3>
+<ul>
+<li>Use Apify’s built-in scheduler to run:<ul>
+<li>On demand (triggered via API)  </li>
+<li>Or on cron (e.g., daily 03:00 UTC to update prices).[6]</li>
+</ul>
+</li>
+<li>Respect:<ul>
+<li>The <code>maximum</code> parameter on Flights Actors, which controls how many itineraries per search are scraped.[2]</li>
+<li>Your cost limits (Apify usage + store Actor pricing).[1][2]</li>
+</ul>
+</li>
+</ul>
+<p><strong>Common mistakes</strong></p>
+<ul>
+<li>Firing too many Actors concurrently with same parameters → duplicated data and higher costs.  </li>
+<li>Forgetting to tag runs with an ID (e.g., <code>searchId</code>) to group results for the same logical search.</li>
+</ul>
+<hr>
+<h2>4) LLM/agent integration layer</h2>
+<p><strong>Owner agent</strong>: “Reasoning/Selection” agent.</p>
+<p>Responsibilities:</p>
+<ul>
+<li>Receive search parameters from user/LLM frontend.  </li>
+<li>Trigger the Apify wrapper Actor with those parameters.[6]</li>
+<li>Wait for completion (via webhooks or polling the run status).  </li>
+<li>Fetch Dataset items (JSON) and:<ul>
+<li>Filter out dominated options (Pareto front by price vs duration).  </li>
+<li>Apply user-specific utilities (e.g., penalize non-NYC airports, prefer certain alliances).</li>
+</ul>
+</li>
+</ul>
+<p><strong>Common mistakes</strong></p>
+<ul>
+<li>Letting the LLM directly form random Google Flights parameters; instead, validate/normalize into your spec first.  </li>
+<li>Not capturing the <code>searchId</code> in every row, which makes it hard to join multiple runs later.</li>
+</ul>
+<hr>
+<h2>5) Common pitfalls with Apify + Google Flights</h2>
+<ul>
+<li><strong>DOM/behavior changes</strong> are handled by the store Actor maintainer, but you still must:<ul>
+<li>Watch for sudden drops in result counts or obviously wrong prices.[3][2]</li>
+</ul>
+</li>
+<li><strong>Input validation</strong>:<ul>
+<li>Bad IATA codes or impossible dates will often just return zero results; your Actor should treat that as an error state/log event, not “success”.[2]</li>
+</ul>
+</li>
+<li><strong>Open-jaw / multi-city</strong>:<ul>
+<li>Not all Google Flights scrapers support full multi-city in one call; you might need to:<ul>
+<li>Call one-way twice (US → Japan, Japan → US from a different airport).  </li>
+<li>Or use the more advanced multi-city scraper (e.g., John’s actor) that advertises multi-city support.[4][3]</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2>Documents you can hand to agents</h2>
+<h3>A. Product requirements doc (PRD)</h3>
+<ul>
+<li>Problem: Automate multi-airport, multi-city Japan flight search for power users.  </li>
+<li>Users: You + future advanced travelers.  </li>
+<li>Scenarios:<ul>
+<li>“Compare NYC/PHL/ATL → Japan between Apr 2–11 for best value.”  </li>
+<li>“Find open-jaw itineraries into Tokyo, out of Osaka.”</li>
+</ul>
+</li>
+<li>Success metrics:<ul>
+<li>Time saved vs manual Google Flights use.  </li>
+<li>Number of times per week you use the tool.  </li>
+<li>% of searches returning at least N high-quality options.</li>
+</ul>
+</li>
+</ul>
+<h3>B. Technical design doc</h3>
+<ul>
+<li>Architecture:<ul>
+<li>Client/Agent → “Search Orchestrator” service → Apify wrapper Actor → Store Flights Actor(s) → Apify Dataset → LLM Ranking Layer.[3][6][2]</li>
+</ul>
+</li>
+<li>Key components:<ul>
+<li>Apify wrapper Actor (Python, uses Apify SDK).[7][6]</li>
+<li>Flight schema module shared between orchestrator and LLM.  </li>
+<li>Monitoring: Apify run logs, dataset counts, alert if 0 results.[6]</li>
+</ul>
+</li>
+</ul>
+<h3>C. Implementation checklist per agent</h3>
+<ul>
+<li><p><strong>Apify Integration agent</strong>:</p>
+<ul>
+<li>Choose base Flights Actor.  </li>
+<li>Implement wrapper Actor with normalization and push_data.  </li>
+<li>Test with a single NYC→TYO date pair.</li>
+</ul>
+</li>
+<li><p><strong>Scheduler/Infra agent</strong>:</p>
+<ul>
+<li>Configure scheduler and webhooks.  </li>
+<li>Set environment secrets (Apify token).  </li>
+<li>Implement run-status polling endpoint.</li>
+</ul>
+</li>
+<li><p><strong>LLM/Reasoning agent</strong>:</p>
+<ul>
+<li>Define strict JSON schema for results.  </li>
+<li>Author prompts that assume that schema, not raw Google Flights HTML.  </li>
+<li>Implement Pareto and custom scoring logic.</li>
+</ul>
+</li>
+</ul>
+<p>If you want, the next step can be a concrete <code>src/main.py</code> skeleton for the Apify wrapper Actor that calls a specific Google Flights scraper (e.g., <code>simpleapi/google-flights-scraper</code>) and emits your normalized schema.</p>
+<p>Sources<br>[1] Google Flights Scraper API in Python - Apify <a href="https://apify.com/simpleapi/google-flights-scraper/api/python">https://apify.com/simpleapi/google-flights-scraper/api/python</a><br>[2] Google Flights Scraper - Apify <a href="https://apify.com/simpleapi/google-flights-scraper">https://apify.com/simpleapi/google-flights-scraper</a><br>[3] Google Flights Scraper - Apify <a href="https://apify.com/johnvc/google-flights-data-scraper-flight-and-price-search">https://apify.com/johnvc/google-flights-data-scraper-flight-and-price-search</a><br>[4] Google Flights API in Python - Apify <a href="https://apify.com/canadesk/google-flights/api/python">https://apify.com/canadesk/google-flights/api/python</a><br>[5] Google Flights API - Apify <a href="https://apify.com/api/google-flights-api">https://apify.com/api/google-flights-api</a><br>[6] Introduction | SDK for Python - Apify Documentation <a href="https://docs.apify.com/sdk/python/docs/overview/introduction">https://docs.apify.com/sdk/python/docs/overview/introduction</a><br>[7] Empty Python project · Template - Apify <a href="https://apify.com/templates/python-empty">https://apify.com/templates/python-empty</a><br>[8] Scrape Google Flights with Python - Apify Blog <a href="https://blog.apify.com/how-to-scrape-google-flights/">https://blog.apify.com/how-to-scrape-google-flights/</a><br>[9] Using Selenium | SDK for Python - Apify Documentation <a href="https://docs.apify.com/sdk/python/docs/guides/selenium">https://docs.apify.com/sdk/python/docs/guides/selenium</a><br>[10] How to use Selenium for web scraping (Python guide) - Apify Blog <a href="https://blog.apify.com/web-scraping-with-selenium-and-python/">https://blog.apify.com/web-scraping-with-selenium-and-python/</a><br>[11] Google Flights OpenAPI definition - Apify <a href="https://apify.com/canadesk/google-flights/api/openapi">https://apify.com/canadesk/google-flights/api/openapi</a><br>[12] Python browser automation with Selenium (2025 guide) - Apify Blog <a href="https://blog.apify.com/python-browser-automation-with-selenium/">https://blog.apify.com/python-browser-automation-with-selenium/</a><br>[13] Flight Award &amp; Itinerary Scraper – Miles, Taxes &amp; Cabins - Apify <a href="https://apify.com/igolaizola/flight-award-scraper">https://apify.com/igolaizola/flight-award-scraper</a><br>[14] manifest.json - apify/actor-templates - GitHub <a href="https://github.com/apify/actor-templates/blob/master/templates/manifest.json">https://github.com/apify/actor-templates/blob/master/templates/manifest.json</a><br>[15] Selenium + Chrome · Template - Apify <a href="https://apify.com/templates/python-selenium">https://apify.com/templates/python-selenium</a></p></div>
+</body>
+</html>

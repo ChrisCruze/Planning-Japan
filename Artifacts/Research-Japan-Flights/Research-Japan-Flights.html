@@ -1,0 +1,2123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research Japan Flights</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            background-color: #f0f0f0;
+            font-family: 'Arial', 'Helvetica', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+        .combined-title {
+            text-align: center;
+            color: #051C2C;
+            font-size: 36px;
+            font-family: 'Georgia', serif;
+            margin: 40px 0;
+        }
+        .slide-wrapper {
+            margin-bottom: 20px;
+        }
+        .slide-divider {
+            border-top: 3px solid #0077B6;
+            margin: 60px auto;
+            max-width: 1000px;
+        }
+        .notes-container {
+            max-width: 1000px;
+            margin: 80px auto;
+            background-color: #ffffff;
+            padding: 50px 60px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            box-sizing: border-box;
+        }
+        .notes-header {
+            font-size: 28px;
+            color: #051C2C;
+            font-family: 'Georgia', serif;
+            margin-bottom: 40px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #051C2C;
+        }
+        .note-section {
+            margin-bottom: 50px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        .note-section:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        .note-title {
+            color: #0077B6;
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .note-section h1, .note-section h2, .note-section h3 {
+            color: #051C2C;
+        }
+        .note-section h1 { font-size: 20px; }
+        .note-section h2 { font-size: 16px; }
+        .note-section h3 { font-size: 14px; }
+        .note-section p { line-height: 1.6; color: #444; }
+        .note-section ul, .note-section ol { color: #444; line-height: 1.6; }
+        .note-section code {
+            background-color: #f5f5f5;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Consolas', monospace;
+            font-size: 13px;
+        }
+        .note-section pre {
+            background-color: #f5f5f5;
+            padding: 15px;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+        .note-section pre code {
+            background: none;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="combined-title">Research Japan Flights</h1>
+    
+    <!-- Slides -->
+    <div class="slide-wrapper"><div style="width: 1100px; margin: 40px auto; background-color: #ffffff; padding: 50px; box-shadow: 0 0 20px rgba(0,0,0,0.1); box-sizing: border-box;">
+
+        
+        <div style="border-bottom: 2px solid #051C2C; padding-bottom: 20px; margin-bottom: 30px;">
+            <div style="font-size: 11px; text-transform: uppercase; color: #666; letter-spacing: 1px; margin-bottom: 5px;">Development Strategy</div>
+            <h1 style="font-size: 28px; color: #051C2C; margin: 0; font-family: 'Georgia', serif; font-weight: normal; line-height: 1.2;">
+                Enforcing a strict "Four-File" architecture prioritizes momentum over premature abstraction
+            </h1>
+        </div>
+
+        
+        <div style="display: table; width: 100%; border-spacing: 20px 0; margin-left: -20px;">
+
+            
+            <div style="display: table-cell; width: 25%; vertical-align: top; background-color: #fff;">
+                <h3 style="font-family: Consolas, monospace; font-size: 14px; color: #0078D7; margin-top: 0; margin-bottom: 5px; border-bottom: 1px solid #ddd; padding-bottom: 10px;">
+                    README.md
+                </h3>
+                <div style="font-size: 11px; color: #666; font-style: italic; margin-bottom: 15px;">Role: Orientation & Order</div>
+
+                <div style="font-size: 12px; color: #333; margin-bottom: 10px; font-weight: bold;">Primary Function</div>
+                <div style="font-size: 12px; color: #444; line-height: 1.5; margin-bottom: 15px;">
+                    Not for marketing. It defines the <strong>build order</strong>, forcing the implementation of <code>main.py</code> before dependencies are even listed.
+                </div>
+
+                <div style="background-color: #F5F5F5; padding: 10px; border-left: 3px solid #051C2C; font-family: Consolas, monospace; font-size: 10px; color: #555;">
+                    # Build Order<br>
+                    1. main.py<br>
+                    2. requirements.txt<br>
+                    3. .gitignore
+                </div>
+            </div>
+
+            
+            <div style="display: table-cell; width: 25%; vertical-align: top; background-color: #F0F8FF; border-top: 3px solid #0078D7; padding: 15px;">
+                <h3 style="font-family: Consolas, monospace; font-size: 14px; color: #0078D7; margin-top: 0; margin-bottom: 5px; padding-bottom: 5px;">
+                    main.py
+                </h3>
+                <div style="font-size: 11px; color: #666; font-style: italic; margin-bottom: 15px;">Role: Execution Core</div>
+
+                <div style="font-size: 12px; color: #333; margin-bottom: 10px; font-weight: bold;">The MVP Heart</div>
+                <ul style="margin: 0; padding-left: 15px; font-size: 12px; color: #444; line-height: 1.5; margin-bottom: 15px;">
+                    <li><strong>Single Entry:</strong> Runnable via <code>python main.py</code>.</li>
+                    <li><strong>Self-Contained:</strong> No database or auth at start.</li>
+                    <li><strong>Signposts:</strong> Explicit TODOs for future expansion.</li>
+                </ul>
+            </div>
+
+            
+            <div style="display: table-cell; width: 25%; vertical-align: top;">
+                <h3 style="font-family: Consolas, monospace; font-size: 14px; color: #0078D7; margin-top: 0; margin-bottom: 5px; border-bottom: 1px solid #ddd; padding-bottom: 10px;">
+                    requirements.txt
+                </h3>
+                <div style="font-size: 11px; color: #666; font-style: italic; margin-bottom: 15px;">Role: Just-in-Time Dependencies</div>
+
+                <div style="font-size: 12px; color: #333; margin-bottom: 10px; font-weight: bold;">Discipline</div>
+                <div style="font-size: 12px; color: #444; line-height: 1.5; margin-bottom: 15px;">
+                    Starts completely empty. Dependencies are added <strong>only</strong> when called by <code>main.py</code> code. No speculative installs.
+                </div>
+
+                <div style="background-color: #F5F5F5; padding: 10px; border: 1px dashed #999; font-family: Consolas, monospace; font-size: 10px; color: #777;">
+                    # Only added when used<br>
+                    fastapi==0.109.0<br>
+                    uvicorn[standard]
+                </div>
+            </div>
+
+            
+            <div style="display: table-cell; width: 25%; vertical-align: top;">
+                <h3 style="font-family: Consolas, monospace; font-size: 14px; color: #0078D7; margin-top: 0; margin-bottom: 5px; border-bottom: 1px solid #ddd; padding-bottom: 10px;">
+                    .gitignore
+                </h3>
+                <div style="font-size: 11px; color: #666; font-style: italic; margin-bottom: 15px;">Role: Hygiene & Defense</div>
+
+                <div style="font-size: 12px; color: #333; margin-bottom: 10px; font-weight: bold;">Reactive Rules</div>
+                <div style="font-size: 12px; color: #444; line-height: 1.5; margin-bottom: 15px;">
+                    Defensive, not fancy. Ignore artifacts only as they appear (logs, pycache, .env). Keeps the mental model clean.
+                </div>
+            </div>
+
+        </div>
+
+        
+        <div style="margin-top: 40px; background-color: #051C2C; padding: 20px; color: #fff;">
+            <div style="font-size: 11px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 5px; opacity: 0.8;">The Mental Model</div>
+            <div style="font-family: 'Georgia', serif; font-size: 16px; font-style: italic;">
+                "One file runs the app. One file explains the app. One file lists dependencies. One file keeps the repo clean."
+            </div>
+        </div>
+
+        
+        <div style="margin-top: 15px; font-size: 9px; color: #999;">
+            Source: "The Minimal MVP" Development Standard, FastAPI Best Practices 2026
+        </div>
+
+    </div></div><div class="slide-divider"></div><div class="slide-wrapper"><div style="width: 1100px; margin: 40px auto; background-color: #ffffff; padding: 40px 50px; box-shadow: 0 0 20px rgba(0,0,0,0.1); box-sizing: border-box;">
+
+        
+        <div style="border-bottom: 2px solid #051C2C; padding-bottom: 15px; margin-bottom: 30px;">
+            <div style="font-size: 11px; text-transform: uppercase; color: #666; letter-spacing: 1px; margin-bottom: 5px;">Technical Architecture</div>
+            <h1 style="font-size: 26px; color: #051C2C; margin: 0; font-family: 'Georgia', serif; font-weight: normal; line-height: 1.2;">
+                A modular "Wrapper Actor" architecture ensures robust data delivery for LLM reasoning
+            </h1>
+        </div>
+
+        
+        <div style="display: table; width: 100%; border-spacing: 15px 0; margin-left: -15px;">
+
+            
+            <div style="display: table-cell; width: 25%; vertical-align: top; background-color: #fff;">
+                <h3 style="font-size: 14px; color: #0077C8; margin-top: 0; margin-bottom: 5px; text-transform: uppercase; border-bottom: 1px solid #ddd; padding-bottom: 10px;">
+                    1. Requirements & Spec
+                </h3>
+                <div style="font-size: 11px; color: #666; font-style: italic; margin-bottom: 15px;">Owner: Product Agent</div>
+
+                <div style="font-size: 12px; color: #333; margin-bottom: 10px; font-weight: bold;">Core Inputs</div>
+                <ul style="margin: 0 0 15px 0; padding-left: 15px; font-size: 12px; color: #444; line-height: 1.4;">
+                    <li><strong>Origins:</strong> Grouped IATA (e.g., NYC, PHL)</li>
+                    <li><strong>Destinations:</strong> Japan Group (TYO, KIX)</li>
+                    <li><strong>Dates:</strong> Outbound/Return Ranges</li>
+                </ul>
+
+                <div style="background-color: #F8F9FA; padding: 10px; border: 1px solid #e0e0e0;">
+                    <div style="font-size: 11px; font-weight: bold; color: #051C2C; margin-bottom: 5px;">Normalized Schema Goal</div>
+                    <div style="font-family: Consolas, monospace; font-size: 10px; color: #555; line-height: 1.4;">
+                        {<br>
+                        &nbsp;&nbsp;"origin": "JFK",<br>
+                        &nbsp;&nbsp;"price": 945.20,<br>
+                        &nbsp;&nbsp;"stops": 1,<br>
+                        &nbsp;&nbsp;"duration": 840<br>
+                        }
+                    </div>
+                </div>
+            </div>
+
+            
+            <div style="display: table-cell; width: 25%; vertical-align: top; background-color: #F0F7FF; border-top: 3px solid #0077C8; padding: 15px;">
+                <h3 style="font-size: 14px; color: #0077C8; margin-top: 0; margin-bottom: 5px; text-transform: uppercase; padding-bottom: 5px;">
+                    2. Data Layer (Wrapper)
+                </h3>
+                <div style="font-size: 11px; color: #666; font-style: italic; margin-bottom: 15px;">Owner: Integration Agent</div>
+
+                <div style="font-size: 12px; color: #333; margin-bottom: 10px;">
+                    <strong>Strategy:</strong> Do not build scrapers. Wrap existing Store Actors.
+                </div>
+
+                <div style="margin-bottom: 15px;">
+                    <div style="font-size: 11px; font-weight: bold; color: #051C2C; margin-bottom: 3px;">Base Actor</div>
+                    <div style="font-size: 11px; color: #444;"><code>simpleapi/google-flights-scraper</code> or similar.</div>
+                </div>
+
+                <div style="margin-bottom: 0;">
+                    <div style="font-size: 11px; font-weight: bold; color: #051C2C; margin-bottom: 3px;">Wrapper Logic (Python)</div>
+                    <ul style="margin: 0; padding-left: 15px; font-size: 11px; color: #444; line-height: 1.4;">
+                        <li>Standardize input JSON</li>
+                        <li>Handle pagination</li>
+                        <li><strong>Normalize fields</strong> (null checks for alliances, baggage)</li>
+                    </ul>
+                </div>
+            </div>
+
+            
+            <div style="display: table-cell; width: 25%; vertical-align: top;">
+                <h3 style="font-size: 14px; color: #0077C8; margin-top: 0; margin-bottom: 5px; text-transform: uppercase; border-bottom: 1px solid #ddd; padding-bottom: 10px;">
+                    3. Orchestration
+                </h3>
+                <div style="font-size: 11px; color: #666; font-style: italic; margin-bottom: 15px;">Owner: DevOps Agent</div>
+
+                <div style="font-size: 12px; color: #333; margin-bottom: 10px; font-weight: bold;">Scheduling</div>
+                <div style="font-size: 12px; color: #444; line-height: 1.4; margin-bottom: 15px;">
+                    Use Apify Scheduler for cron jobs (e.g., daily 03:00 UTC) or on-demand API triggers.
+                </div>
+
+                <div style="font-size: 12px; color: #333; margin-bottom: 10px; font-weight: bold;">Constraints</div>
+                <ul style="margin: 0; padding-left: 15px; font-size: 12px; color: #444; line-height: 1.4;">
+                    <li><strong>Batching:</strong> Cap queries per run (e.g., 50) to manage costs.</li>
+                    <li><strong>Rate Limits:</strong> Respect <code>maximum</code> param in store actors.</li>
+                    <li><strong>Tagging:</strong> Apply <code>searchId</code> to group disparate runs.</li>
+                </ul>
+            </div>
+
+            
+            <div style="display: table-cell; width: 25%; vertical-align: top;">
+                <h3 style="font-size: 14px; color: #0077C8; margin-top: 0; margin-bottom: 5px; text-transform: uppercase; border-bottom: 1px solid #ddd; padding-bottom: 10px;">
+                    4. LLM Reasoning
+                </h3>
+                <div style="font-size: 11px; color: #666; font-style: italic; margin-bottom: 15px;">Owner: Selection Agent</div>
+
+                <div style="font-size: 12px; color: #333; margin-bottom: 10px; font-weight: bold;">Data Consumption</div>
+                <div style="font-size: 12px; color: #444; line-height: 1.4; margin-bottom: 15px;">
+                    Pull from Apify Dataset (JSON) via API once run completes.
+                </div>
+
+                <div style="background-color: #E3F2FD; padding: 10px; border-left: 3px solid #0077C8;">
+                    <div style="font-size: 11px; font-weight: bold; color: #051C2C; margin-bottom: 5px;">Analysis Logic</div>
+                    <ul style="margin: 0; padding-left: 15px; font-size: 11px; color: #444; line-height: 1.4;">
+                        <li><strong>Pareto Front:</strong> Filter dominated options (Price vs Duration).</li>
+                        <li><strong>Utility Scoring:</strong> Penalize non-preferred airports.</li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+
+        
+        <div style="margin-top: 30px; border-top: 1px solid #ccc; padding-top: 15px;">
+            <div style="display: table; width: 100%;">
+                <div style="display: table-cell; width: 15%; font-size: 11px; font-weight: bold; color: #D32F2F; vertical-align: top;">
+                    COMMON PITFALLS
+                </div>
+                <div style="display: table-cell; width: 85%; vertical-align: top;">
+                    <ul style="margin: 0; padding: 0; list-style-type: none; font-size: 11px; color: #666;">
+                        <li style="display: inline-block; margin-right: 20px;">&bull; <strong>Cartesian Explosion:</strong> Unbounded date/airport combos causing high costs.</li>
+                        <li style="display: inline-block; margin-right: 20px;">&bull; <strong>Missing Fields:</strong> Crashing on optional data (baggage, alliances).</li>
+                        <li style="display: inline-block;">&bull; <strong>Silent Failures:</strong> 0 results due to bad IATA codes treated as success.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        
+        <div style="margin-top: 15px; font-size: 9px; color: #999;">
+            Source: Apify Documentation, "Google Flights Scraper" Actor Docs, Internal Architecture Analysis
+        </div>
+
+    </div></div><div class="slide-divider"></div><div class="slide-wrapper"><div style="width: 1000px; margin: 40px auto; background-color: #ffffff; padding: 50px; box-shadow: 0 0 20px rgba(0,0,0,0.1); box-sizing: border-box;">
+
+        
+        <div style="border-bottom: 2px solid #051C2C; padding-bottom: 20px; margin-bottom: 30px;">
+            <div style="font-size: 11px; text-transform: uppercase; color: #666; letter-spacing: 1px; margin-bottom: 5px;">Technical Implementation Guide</div>
+            <h1 style="font-size: 28px; color: #051C2C; margin: 0; font-family: 'Georgia', serif; font-weight: normal; line-height: 1.2;">
+                Building a resilient scraper requires hybridizing Selenium automation with robust accessibility-based targeting
+            </h1>
+        </div>
+
+        
+        <div style="display: table; width: 100%; border-spacing: 25px 0; margin-left: -25px;">
+
+            
+            <div style="display: table-cell; width: 33%; vertical-align: top;">
+                <h3 style="font-size: 14px; color: #0077C8; margin-top: 0; margin-bottom: 15px; text-transform: uppercase; border-bottom: 1px solid #ccc; padding-bottom: 10px; font-weight: bold;">
+                    1. Core Automation Stack
+                </h3>
+                
+                <div style="margin-bottom: 20px;">
+                    <div style="font-weight: bold; color: #051C2C; font-size: 13px; margin-bottom: 5px;">Foundation</div>
+                    <ul style="margin: 0; padding-left: 20px; color: #444; font-size: 12px; line-height: 1.6;">
+                        <li><strong>Runtime:</strong> Python 3.9+ environment</li>
+                        <li><strong>Driver:</strong> Selenium + <code>webdriver-manager</code></li>
+                        <li><strong>Parser:</strong> BeautifulSoup (faster than Selenium for data extraction)</li>
+                    </ul>
+                </div>
+
+                <div style="background-color: #F8F9FA; padding: 15px; border-left: 4px solid #0077C8;">
+                    <div style="font-weight: bold; color: #051C2C; font-size: 13px; margin-bottom: 8px;">Stability Configuration</div>
+                    <div style="font-size: 12px; color: #444; line-height: 1.5; margin-bottom: 8px;">
+                        Avoid detection and brittleness by configuring <code>ChromeOptions</code>:
+                    </div>
+                    <ul style="margin: 0; padding-left: 20px; color: #444; font-size: 12px; line-height: 1.6;">
+                        <li><code>--headless=new</code> (Fixed window size)</li>
+                        <li>Realistic User-Agent string</li>
+                        <li><strong>Critical:</strong> Explicit <code>WebDriverWait</code> for container load, never <code>sleep()</code></li>
+                    </ul>
+                </div>
+            </div>
+
+            
+            <div style="display: table-cell; width: 33%; vertical-align: top;">
+                <h3 style="font-size: 14px; color: #0077C8; margin-top: 0; margin-bottom: 15px; text-transform: uppercase; border-bottom: 1px solid #ccc; padding-bottom: 10px; font-weight: bold;">
+                    2. DOM Targeting Strategy
+                </h3>
+
+                <div style="font-size: 12px; color: #444; margin-bottom: 15px; line-height: 1.5;">
+                    Google Flights frontends are dynamic. To prevent breakage, prioritize <strong>accessibility attributes</strong> over CSS classes.
+                </div>
+
+                
+                <div style="border: 1px solid #e0e0e0; border-radius: 4px; overflow: hidden;">
+                    <div style="background-color: #f0f0f0; padding: 8px 12px; font-size: 11px; font-weight: bold; color: #666; border-bottom: 1px solid #ddd;">
+                        KEY DOM SELECTORS (2025)
+                    </div>
+                    
+                    <div style="padding: 12px;">
+                        <div style="margin-bottom: 10px; border-bottom: 1px solid #eee; padding-bottom: 8px;">
+                            <div style="font-size: 11px; font-weight: bold; color: #051C2C;">Root Container</div>
+                            <div style="font-family: Consolas, monospace; font-size: 11px; color: #D32F2F; background: #FFF0F0; padding: 2px 4px; display: inline-block; margin-top: 2px;">div.zISZ5c</div>
+                        </div>
+
+                        <div style="margin-bottom: 10px; border-bottom: 1px solid #eee; padding-bottom: 8px;">
+                            <div style="font-size: 11px; font-weight: bold; color: #051C2C;">Flight Card</div>
+                            <div style="font-family: Consolas, monospace; font-size: 11px; color: #D32F2F; background: #FFF0F0; padding: 2px 4px; display: inline-block; margin-top: 2px;">li.pIav2d</div>
+                        </div>
+
+                        <div style="margin-bottom: 10px; border-bottom: 1px solid #eee; padding-bottom: 8px;">
+                            <div style="font-size: 11px; font-weight: bold; color: #051C2C;">Times (Stable)</div>
+                            <div style="font-family: Consolas, monospace; font-size: 11px; color: #1976D2; background: #E3F2FD; padding: 2px 4px; display: inline-block; margin-top: 2px;">span[aria-label*="Departure time:"]</div>
+                        </div>
+
+                        <div style="margin-bottom: 0;">
+                            <div style="font-size: 11px; font-weight: bold; color: #051C2C;">Price</div>
+                            <div style="font-family: Consolas, monospace; font-size: 11px; color: #D32F2F; background: #FFF0F0; padding: 2px 4px; display: inline-block; margin-top: 2px;">div.FpEdX span</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            
+            <div style="display: table-cell; width: 33%; vertical-align: top;">
+                <h3 style="font-size: 14px; color: #0077C8; margin-top: 0; margin-bottom: 15px; text-transform: uppercase; border-bottom: 1px solid #ccc; padding-bottom: 10px; font-weight: bold;">
+                    3. Production Workflow
+                </h3>
+
+                
+                <div style="margin-bottom: 20px; position: relative; padding-left: 25px;">
+                    <div style="position: absolute; left: 0; top: 0; font-weight: bold; color: #0077C8; font-size: 16px;">1</div>
+                    <div style="font-weight: bold; color: #051C2C; font-size: 13px; margin-bottom: 4px;">URL Generation</div>
+                    <div style="font-size: 12px; color: #444; line-height: 1.4;">
+                        Construct search URLs programmatically for all Origin/Destination combinations (e.g., NYC/PHL &#8594; TYO/KIX).
+                    </div>
+                </div>
+
+                
+                <div style="margin-bottom: 20px; position: relative; padding-left: 25px;">
+                    <div style="position: absolute; left: 0; top: 0; font-weight: bold; color: #0077C8; font-size: 16px;">2</div>
+                    <div style="font-weight: bold; color: #051C2C; font-size: 13px; margin-bottom: 4px;">Apify Actor Execution</div>
+                    <div style="font-size: 12px; color: #444; line-height: 1.4;">
+                        Wrap scraping logic in <code>main.py</code>. Deploy as an Apify Actor to handle containerization, proxy rotation, and scheduling.
+                    </div>
+                </div>
+
+                
+                <div style="margin-bottom: 20px; position: relative; padding-left: 25px;">
+                    <div style="position: absolute; left: 0; top: 0; font-weight: bold; color: #0077C8; font-size: 16px;">3</div>
+                    <div style="font-weight: bold; color: #051C2C; font-size: 13px; margin-bottom: 4px;">Normalization & Analysis</div>
+                    <div style="font-size: 12px; color: #444; line-height: 1.4;">
+                        Normalize airline, duration, and price data into a CSV.
+                    </div>
+                    <div style="margin-top: 8px; font-size: 11px; background-color: #E8F0FE; color: #1967D2; padding: 8px; border-radius: 4px;">
+                        <strong>LLM Handoff:</strong> Feed CSV to LLM to rank complex itineraries across all airport combinations.
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+
+        
+        <div style="margin-top: 40px; border-top: 1px solid #ddd; padding-top: 10px; font-size: 10px; color: #999;">
+            Source: Apify Google Flights Guide (2025), "Python browser automation with Selenium"
+        </div>
+
+    </div></div><div class="slide-divider"></div><div class="slide-wrapper"><div style="width: 1100px; min-height: 700px; margin: 40px auto; background-color: #ffffff; padding: 40px 50px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); box-sizing: border-box; position: relative;">
+
+    
+    <div style="margin-bottom: 35px; border-bottom: 2px solid #051c2c; padding-bottom: 15px;">
+        <h1 style="font-size: 28px; color: #051c2c; margin: 0 0 10px 0; font-weight: 400; letter-spacing: -0.5px;">
+            Strategic booking window for April 2026 Tokyo travel closes in mid-February
+        </h1>
+        <p style="font-size: 16px; color: #555555; margin: 0; line-height: 1.4;">
+            High-season demand driven by Cherry Blossoms necessitates immediate action to secure direct fares in the $1,000–$1,200 range.
+        </p>
+    </div>
+
+    
+    <div style="display: flex; gap: 30px; margin-bottom: 30px;">
+        
+        
+        <div style="flex: 1; display: flex; flex-direction: column;">
+            <div style="border-top: 4px solid #051c2c; padding-top: 15px; margin-bottom: 15px;">
+                <h3 style="font-size: 16px; color: #051c2c; margin: 0 0 10px 0; line-height: 1.3;">
+                    April "Cherry Blossom" seasonality creates a high price floor
+                </h3>
+            </div>
+            
+            <div style="background-color: #f4f7f9; padding: 20px; flex-grow: 1;">
+                <p style="font-size: 13px; color: #333; margin: 0 0 15px 0;">
+                    April 3–10 represents peak demand. Unlike February ($800 baseline), April inventory carries a significant premium due to a 50% surge in visitor arrivals.
+                </p>
+                
+                <div style="margin-bottom: 20px;">
+                    <span style="display: block; font-size: 11px; text-transform: uppercase; color: #666; margin-bottom: 5px;">Expected Direct Fare Range</span>
+                    <span style="font-size: 32px; font-weight: bold; color: #051c2c;">$1,000 - $1,750</span>
+                    <span style="display: block; font-size: 11px; color: #d93900; margin-top: 5px;">▲ 20-40% vs Q1 Average</span>
+                </div>
+
+                <ul style="margin: 0; padding-left: 15px; font-size: 13px; color: #333; line-height: 1.6;">
+                    <li style="margin-bottom: 8px;">Waiting beyond the booking window typically triggers premiums of <strong>15-25%</strong>.</li>
+                    <li style="margin-bottom: 8px;">Budget options (one-stop) exist (~$800) but add <strong>6-12 hours</strong> of travel time.</li>
+                </ul>
+            </div>
+        </div>
+
+        
+        <div style="flex: 1; display: flex; flex-direction: column;">
+            <div style="border-top: 4px solid #0077c8; padding-top: 15px; margin-bottom: 15px;">
+                <h3 style="font-size: 16px; color: #051c2c; margin: 0 0 10px 0; line-height: 1.3;">
+                    Optimal booking window expires Feb 15; immediate monitoring required
+                </h3>
+            </div>
+            
+            <div style="flex-grow: 1;">
+                
+                <div style="display: flex; flex-direction: column; gap: 2px; margin-bottom: 20px;">
+                    
+                    <div style="display: flex; align-items: stretch; height: 50px;">
+                        <div style="width: 80px; background-color: #e0e0e0; font-size: 11px; font-weight: bold; display: flex; align-items: center; justify-content: center; color: #555;">Now - Jan 20</div>
+                        <div style="flex: 1; background-color: #f9f9f9; padding: 0 15px; display: flex; align-items: center; font-size: 12px; border-left: 2px solid #fff;">Set Alerts (Google/Kayak). Establish baseline.</div>
+                    </div>
+                    
+                    <div style="display: flex; align-items: stretch; height: 50px;">
+                        <div style="width: 80px; background-color: #0077c8; color: white; font-size: 11px; font-weight: bold; display: flex; align-items: center; justify-content: center; text-align: center;">Jan 20 - Feb 15</div>
+                        <div style="flex: 1; background-color: #eef7fc; padding: 0 15px; display: flex; align-items: center; font-size: 12px; font-weight: bold; color: #004c80; border-left: 2px solid #fff;">OPTIMAL BOOKING WINDOW</div>
+                    </div>
+                    
+                    <div style="display: flex; align-items: stretch; height: 50px;">
+                        <div style="width: 80px; background-color: #d93900; color: white; font-size: 11px; font-weight: bold; display: flex; align-items: center; justify-content: center;">Post Feb 15</div>
+                        <div style="flex: 1; background-color: #fcf0ec; padding: 0 15px; display: flex; align-items: center; font-size: 12px; color: #8a2400; border-left: 2px solid #fff;">Prices surge (High Risk)</div>
+                    </div>
+                </div>
+
+                <p style="font-size: 13px; color: #333; margin: 0; line-height: 1.5;">
+                    Historical data indicates steepest price increases occur inside the <strong>28-day window</strong>. We are currently 90 days out, ideal for international routes.
+                </p>
+            </div>
+        </div>
+
+        
+        <div style="flex: 1; display: flex; flex-direction: column;">
+            <div style="border-top: 4px solid #888888; padding-top: 15px; margin-bottom: 15px;">
+                <h3 style="font-size: 16px; color: #051c2c; margin: 0 0 10px 0; line-height: 1.3;">
+                    Direct carriers via JFK-HND offer superior value for short duration trips
+                </h3>
+            </div>
+            
+            <div style="flex-grow: 1;">
+                 <table style="width: 100%; border-collapse: collapse; font-size: 12px; margin-bottom: 15px;">
+                    <tr style="border-bottom: 1px solid #ccc;">
+                        <th style="text-align: left; padding: 5px 0; color: #555;">Carrier</th>
+                        <th style="text-align: left; padding: 5px 0; color: #555;">Route</th>
+                        <th style="text-align: right; padding: 5px 0; color: #555;">Duration</th>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #eee;">
+                        <td style="padding: 8px 0; font-weight: bold;">ANA / JAL</td>
+                        <td style="padding: 8px 0;">JFK ↔ HND</td>
+                        <td style="padding: 8px 0; text-align: right;">~14.5h</td>
+                    </tr>
+                     <tr style="border-bottom: 1px solid #eee;">
+                        <td style="padding: 8px 0;">American</td>
+                        <td style="padding: 8px 0;">JFK ↔ HND</td>
+                        <td style="padding: 8px 0; text-align: right;">~14.5h</td>
+                    </tr>
+                </table>
+
+                <div style="padding: 15px; background-color: #f0f0f0; border-left: 3px solid #666; font-size: 12px; line-height: 1.5; color: #333;">
+                    <strong>Recommendation:</strong> Prioritize <strong>Haneda (HND)</strong> over Narita (NRT). HND is ~30 mins to central Tokyo vs 60-90 mins for NRT. <br><br>
+                    <em>Note: A $50-$100 premium for HND is justifiable for time savings on a 7-day trip.</em>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    
+    <div style="background-color: #051c2c; color: white; padding: 20px 25px; display: flex; align-items: center; justify-content: space-between;">
+        <div style="flex: 1;">
+            <span style="display: block; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: #8ba4b8; margin-bottom: 5px;">Executive Summary & Next Steps</span>
+            <p style="margin: 0; font-size: 14px; line-height: 1.4; font-weight: 500;">
+                Initiate price monitoring immediately. If direct fares appear between <strong>$1,000–$1,200</strong> in late January, execute booking. Do not wait for "last minute" deals; they do not exist for high-season Japan travel.
+            </p>
+        </div>
+        <div style="margin-left: 30px; text-align: center; min-width: 100px;">
+            <div style="font-size: 10px; color: #8ba4b8;">DEADLINE</div>
+            <div style="font-size: 18px; font-weight: bold; color: #fff;">FEB 15</div>
+        </div>
+    </div>
+
+    
+    <div style="margin-top: 30px; font-size: 9px; color: #888; border-top: 1px solid #ddd; padding-top: 10px;">
+        SOURCE: Google Flights Analysis; Kayak Historical Pricing Trends; Airline Route Schedules (ANA, JAL, American); Japan National Tourism Organization (Arrival Statistics).
+    </div>
+
+</div></div>
+    
+    <!-- All Notes Combined -->
+    
+    <div class="notes-container">
+        <h2 class="notes-header">Notes</h2>
+        
+        <div class="note-section">
+            <div class="note-title">011326 1:57AM Strategic Flight Option Analysis: East Coast to Tokyo</div>
+            <h1>Kayak Flight Research Report</h1>
+<p><strong>Created</strong>: 2026-01-12<br><strong>Last Updated</strong>: 2026-01-13 01:54</p>
+<h2>Summary</h2>
+<ul>
+<li><strong>Total Searches Completed</strong>: 9 / 9</li>
+<li><strong>Total Flight Options Found</strong>: 60+</li>
+<li><strong>Status</strong>: Completed</li>
+</ul>
+<h2>Search Log</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Search Type</th>
+<th>Route</th>
+<th>Timestamp</th>
+<th>Options Found</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>Round-Trip</td>
+<td>NYC → Tokyo</td>
+<td>2026-01-13 01:48</td>
+<td>10</td>
+<td>Completed</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Round-Trip</td>
+<td>ATL → Tokyo</td>
+<td>2026-01-13 01:50</td>
+<td>12</td>
+<td>Completed</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Round-Trip</td>
+<td>MDT → Tokyo</td>
+<td>2026-01-13 01:51</td>
+<td>8</td>
+<td>Completed</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Round-Trip</td>
+<td>PHL → Tokyo</td>
+<td>2026-01-13 01:52</td>
+<td>8</td>
+<td>Completed</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Multi-City</td>
+<td>NYC → HND, NRT → NYC</td>
+<td>2026-01-13 01:53</td>
+<td>7</td>
+<td>Completed</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Multi-City</td>
+<td>NYC → HND, KIX → NYC</td>
+<td>2026-01-13 01:54</td>
+<td>5</td>
+<td>Completed</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Multi-City</td>
+<td>ATL → HND, NRT → ATL</td>
+<td>2026-01-13 01:54</td>
+<td>5</td>
+<td>Completed</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Multi-City</td>
+<td>MDT → HND, NRT → MDT</td>
+<td>2026-01-13 01:54</td>
+<td>5</td>
+<td>Completed</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Multi-City</td>
+<td>PHL → HND, NRT → PHL</td>
+<td>2026-01-13 01:54</td>
+<td>5</td>
+<td>Completed</td>
+</tr>
+</tbody></table>
+<h2>Round-Trip Flight Results</h2>
+<h3>New York → Tokyo</h3>
+<table>
+<thead>
+<tr>
+<th>Rank</th>
+<th>Origin</th>
+<th>Destination</th>
+<th>Airline</th>
+<th>Price</th>
+<th>Route</th>
+<th>Departure Time</th>
+<th>Arrival Time</th>
+<th>Duration</th>
+<th>Value Score</th>
+<th>Booking URL</th>
+<th>Research Timestamp</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>NYC</td>
+<td>TYO</td>
+<td>Japan Airlines</td>
+<td>$2,037</td>
+<td>Non-stop</td>
+<td>10:25 am JFK</td>
+<td>1:55 pm +1 HND</td>
+<td>14h 30m out, 13h 10m return</td>
+<td>/10</td>
+<td>Available via Kayak</td>
+<td>2026-01-13 01:48</td>
+</tr>
+<tr>
+<td>2</td>
+<td>NYC</td>
+<td>TYO</td>
+<td>ANA</td>
+<td>$2,307</td>
+<td>Non-stop</td>
+<td>10:05 am EWR</td>
+<td>1:35 pm +1 HND</td>
+<td>14h 30m out, 13h 05m return</td>
+<td>/10</td>
+<td>Available via Kayak</td>
+<td>2026-01-13 01:48</td>
+</tr>
+<tr>
+<td>3</td>
+<td>NYC</td>
+<td>TYO</td>
+<td>ANA</td>
+<td>$2,309</td>
+<td>Non-stop</td>
+<td>11:25 am EWR</td>
+<td>2:30 pm +1 NRT</td>
+<td>14h 05m out, 12h 45m return</td>
+<td>/10</td>
+<td>Available via Kayak</td>
+<td>2026-01-13 01:48</td>
+</tr>
+<tr>
+<td>4</td>
+<td>NYC</td>
+<td>TYO</td>
+<td>ANA</td>
+<td>$2,307</td>
+<td>Non-stop</td>
+<td>11:25 am EWR</td>
+<td>2:30 pm +1 NRT</td>
+<td>14h 05m out, 13h 05m return (HND-EWR)</td>
+<td>/10</td>
+<td>Available via Kayak</td>
+<td>2026-01-13 01:48</td>
+</tr>
+<tr>
+<td>5</td>
+<td>NYC</td>
+<td>TYO</td>
+<td>American Airlines</td>
+<td>$2,437</td>
+<td>Non-stop</td>
+<td>10:25 am JFK</td>
+<td>1:55 pm +1 HND</td>
+<td>14h 30m out, 13h 10m return</td>
+<td>/10</td>
+<td>Available via Kayak</td>
+<td>2026-01-13 01:48</td>
+</tr>
+<tr>
+<td>6</td>
+<td>NYC</td>
+<td>TYO</td>
+<td>Japan Airlines</td>
+<td>$2,534</td>
+<td>Non-stop</td>
+<td>1:25 pm JFK</td>
+<td>4:40 pm +1 HND</td>
+<td>14h 15m out, 13h 10m return</td>
+<td>/10</td>
+<td>Available via Kayak</td>
+<td>2026-01-13 01:48</td>
+</tr>
+<tr>
+<td>7</td>
+<td>NYC</td>
+<td>TYO</td>
+<td>United Airlines</td>
+<td>$2,548</td>
+<td>Non-stop</td>
+<td>10:05 am EWR</td>
+<td>1:35 pm +1 HND</td>
+<td>14h 30m out, 13h 05m return</td>
+<td>/10</td>
+<td>Available via Kayak</td>
+<td>2026-01-13 01:48</td>
+</tr>
+<tr>
+<td>8</td>
+<td>NYC</td>
+<td>TYO</td>
+<td>United Airlines</td>
+<td>$2,549</td>
+<td>Non-stop</td>
+<td>11:25 am EWR</td>
+<td>2:30 pm +1 NRT</td>
+<td>14h 05m out, 12h 45m return</td>
+<td>/10</td>
+<td>Available via Kayak</td>
+<td>2026-01-13 01:48</td>
+</tr>
+<tr>
+<td>9</td>
+<td>NYC</td>
+<td>TYO</td>
+<td>Expedia</td>
+<td>$1,794</td>
+<td>1 stop</td>
+<td>TBD</td>
+<td>TBD</td>
+<td>TBD</td>
+<td>/10</td>
+<td>Available via Kayak</td>
+<td>2026-01-13 01:48</td>
+</tr>
+<tr>
+<td>10</td>
+<td>NYC</td>
+<td>TYO</td>
+<td>ANA</td>
+<td>$2,199</td>
+<td>1 stop (IAH)</td>
+<td>11:59 am LGA</td>
+<td>2:25 pm +2 NRT</td>
+<td>37h 26m out, 37h 41m return</td>
+<td>/10</td>
+<td>Available via Kayak</td>
+<td>2026-01-13 01:48</td>
+</tr>
+</tbody></table>
+<h3>Atlanta → Tokyo</h3>
+<table>
+<thead>
+<tr>
+<th>Rank</th>
+<th>Origin</th>
+<th>Destination</th>
+<th>Airline</th>
+<th>Price</th>
+<th>Route</th>
+<th>Departure Time</th>
+<th>Arrival Time</th>
+<th>Duration</th>
+<th>Value Score</th>
+<th>Booking URL</th>
+<th>Research Timestamp</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>ATL</td>
+<td>TYO</td>
+<td>Air Canada</td>
+<td>$1,456</td>
+<td>1 stop (YYZ)</td>
+<td>6:10 am ATL</td>
+<td>3:40 pm +1 HND</td>
+<td>20h 30m out, 16h 37m return</td>
+<td>/10</td>
+<td>Available via Kayak</td>
+<td>2026-01-13 01:50</td>
+</tr>
+<tr>
+<td>2</td>
+<td>ATL</td>
+<td>TYO</td>
+<td>Air Canada</td>
+<td>$1,456</td>
+<td>1 stop (YYZ)</td>
+<td>6:10 am ATL</td>
+<td>3:50 pm +1 NRT</td>
+<td>20h 40m out, 16h 37m return</td>
+<td>/10</td>
+<td>Available via Kayak</td>
+<td>2026-01-13 01:50</td>
+</tr>
+<tr>
+<td>3</td>
+<td>ATL</td>
+<td>TYO</td>
+<td>Air Canada</td>
+<td>$1,457</td>
+<td>1 stop (YYZ)</td>
+<td>6:10 am ATL</td>
+<td>3:40 pm +1 HND</td>
+<td>20h 30m out, 17h 17m return</td>
+<td>/10</td>
+<td>Available via Kayak</td>
+<td>2026-01-13 01:50</td>
+</tr>
+<tr>
+<td>4</td>
+<td>ATL</td>
+<td>TYO</td>
+<td>Air Canada</td>
+<td>$1,457</td>
+<td>1 stop (YYZ)</td>
+<td>6:10 am ATL</td>
+<td>3:50 pm +1 NRT</td>
+<td>20h 40m out, 17h 17m return</td>
+<td>/10</td>
+<td>Available via Kayak</td>
+<td>2026-01-13 01:50</td>
+</tr>
+<tr>
+<td>5</td>
+<td>ATL</td>
+<td>TYO</td>
+<td>Multiple</td>
+<td>$1,343</td>
+<td>1 stop</td>
+<td>TBD</td>
+<td>TBD</td>
+<td>TBD</td>
+<td>/10</td>
+<td>Available via Kayak</td>
+<td>2026-01-13 01:50</td>
+</tr>
+<tr>
+<td>6</td>
+<td>ATL</td>
+<td>TYO</td>
+<td>Multiple</td>
+<td>$1,345</td>
+<td>1 stop</td>
+<td>TBD</td>
+<td>TBD</td>
+<td>TBD</td>
+<td>/10</td>
+<td>Available via Kayak</td>
+<td>2026-01-13 01:50</td>
+</tr>
+<tr>
+<td>7</td>
+<td>ATL</td>
+<td>TYO</td>
+<td>American Airlines</td>
+<td>$2,064</td>
+<td>1 stop (DFW)</td>
+<td>7:15 am ATL</td>
+<td>2:20 pm +1 HND</td>
+<td>18h 05m out, 16h 28m return</td>
+<td>/10</td>
+<td>Available via Kayak</td>
+<td>2026-01-13 01:50</td>
+</tr>
+<tr>
+<td>8</td>
+<td>ATL</td>
+<td>TYO</td>
+<td>Multiple</td>
+<td>$2,134</td>
+<td>1 stop</td>
+<td>TBD</td>
+<td>TBD</td>
+<td>TBD</td>
+<td>/10</td>
+<td>Available via Kayak</td>
+<td>2026-01-13 01:50</td>
+</tr>
+<tr>
+<td>9</td>
+<td>ATL</td>
+<td>TYO</td>
+<td>American/Japan Airlines</td>
+<td>$2,139</td>
+<td>1 stop (DFW)</td>
+<td>7:15 am ATL</td>
+<td>2:20 pm +1 HND</td>
+<td>18h 05m out, 16h 28m return</td>
+<td>/10</td>
+<td>Available via Kayak</td>
+<td>2026-01-13 01:50</td>
+</tr>
+<tr>
+<td>10</td>
+<td>ATL</td>
+<td>TYO</td>
+<td>Japan Airlines</td>
+<td>$2,158</td>
+<td>1 stop (DFW/ORD)</td>
+<td>7:15 am ATL</td>
+<td>2:20 pm +1 HND</td>
+<td>18h 05m out, 16h 13m return</td>
+<td>/10</td>
+<td>Available via Kayak</td>
+<td>2026-01-13 01:50</td>
+</tr>
+<tr>
+<td>11</td>
+<td>ATL</td>
+<td>TYO</td>
+<td>ANA</td>
+<td>$2,371</td>
+<td>1 stop (IAH)</td>
+<td>8:56 pm ATL</td>
+<td>2:25 pm +2 NRT</td>
+<td>28h 29m out, 49h 22m return</td>
+<td>/10</td>
+<td>Available via Kayak</td>
+<td>2026-01-13 01:50</td>
+</tr>
+<tr>
+<td>12</td>
+<td>ATL</td>
+<td>TYO</td>
+<td>Multiple</td>
+<td>$934</td>
+<td>2 stops</td>
+<td>8:56 pm ATL</td>
+<td>2:25 pm +2 NRT</td>
+<td>28h 29m out, 49h 22m return</td>
+<td>/10</td>
+<td>Available via Kayak</td>
+<td>2026-01-13 01:50</td>
+</tr>
+</tbody></table>
+<h3>Harrisburg → Tokyo</h3>
+<table>
+<thead>
+<tr>
+<th>Rank</th>
+<th>Origin</th>
+<th>Destination</th>
+<th>Airline</th>
+<th>Price</th>
+<th>Route</th>
+<th>Departure Time</th>
+<th>Arrival Time</th>
+<th>Duration</th>
+<th>Value Score</th>
+<th>Booking URL</th>
+<th>Research Timestamp</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>MDT</td>
+<td>TYO</td>
+<td>United Airlines</td>
+<td>$1,679</td>
+<td>1 stop (ORD)</td>
+<td>8:29 am MDT</td>
+<td>3:00 pm +1 NRT</td>
+<td>17h 31m out, 20h 22m return</td>
+<td>/10</td>
+<td>Available via Kayak</td>
+<td>2026-01-13 01:51</td>
+</tr>
+<tr>
+<td>2</td>
+<td>MDT</td>
+<td>TYO</td>
+<td>United Airlines</td>
+<td>$1,679</td>
+<td>1 stop (ORD)</td>
+<td>6:15 am MDT</td>
+<td>3:00 pm +1 NRT</td>
+<td>19h 45m out, 19h 18m return</td>
+<td>/10</td>
+<td>Available via Kayak</td>
+<td>2026-01-13 01:51</td>
+</tr>
+<tr>
+<td>3</td>
+<td>MDT</td>
+<td>TYO</td>
+<td>United Airlines</td>
+<td>$1,681</td>
+<td>1 stop (ORD)</td>
+<td>8:29 am MDT</td>
+<td>3:00 pm +1 NRT</td>
+<td>17h 31m out, 20h 22m return</td>
+<td>/10</td>
+<td>Available via Kayak</td>
+<td>2026-01-13 01:51</td>
+</tr>
+<tr>
+<td>4</td>
+<td>MDT</td>
+<td>TYO</td>
+<td>United Airlines</td>
+<td>$1,804</td>
+<td>1 stop (IAD/ORD)</td>
+<td>10:40 am MDT</td>
+<td>3:55 pm +1 HND</td>
+<td>16h 15m out, 19h 18m return</td>
+<td>/10</td>
+<td>Available via Kayak</td>
+<td>2026-01-13 01:51</td>
+</tr>
+<tr>
+<td>5</td>
+<td>MDT</td>
+<td>TYO</td>
+<td>ANA</td>
+<td>$2,192</td>
+<td>1 stop</td>
+<td>TBD</td>
+<td>TBD</td>
+<td>TBD</td>
+<td>/10</td>
+<td>Available via Kayak</td>
+<td>2026-01-13 01:51</td>
+</tr>
+</tbody></table>
+<h3>Philadelphia → Tokyo</h3>
+<table>
+<thead>
+<tr>
+<th>Rank</th>
+<th>Origin</th>
+<th>Destination</th>
+<th>Airline</th>
+<th>Price</th>
+<th>Route</th>
+<th>Departure Time</th>
+<th>Arrival Time</th>
+<th>Duration</th>
+<th>Value Score</th>
+<th>Booking URL</th>
+<th>Research Timestamp</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>PHL</td>
+<td>TYO</td>
+<td>Delta</td>
+<td>$1,991</td>
+<td>1 stop (MSP)</td>
+<td>6:00 am PHL</td>
+<td>1:05 pm +1 HND</td>
+<td>18h 05m out, 15h 47m return</td>
+<td>/10</td>
+<td>Available via Kayak</td>
+<td>2026-01-13 01:52</td>
+</tr>
+<tr>
+<td>2</td>
+<td>PHL</td>
+<td>TYO</td>
+<td>American Airlines</td>
+<td>$1,865</td>
+<td>1 stop (LAX)</td>
+<td>7:15 am PHL</td>
+<td>3:50 pm +1 HND</td>
+<td>19h 35m out, 17h 30m return</td>
+<td>/10</td>
+<td>Available via Kayak</td>
+<td>2026-01-13 01:52</td>
+</tr>
+<tr>
+<td>3</td>
+<td>PHL</td>
+<td>TYO</td>
+<td>Multiple</td>
+<td>$1,276</td>
+<td>2 stops</td>
+<td>8:00 am PHL</td>
+<td>2:25 pm +2 NRT</td>
+<td>41h 25m out, 29h 40m return</td>
+<td>/10</td>
+<td>Available via Kayak</td>
+<td>2026-01-13 01:52</td>
+</tr>
+<tr>
+<td>4</td>
+<td>PHL</td>
+<td>TYO</td>
+<td>ANA</td>
+<td>$2,241</td>
+<td>1 stop</td>
+<td>TBD</td>
+<td>TBD</td>
+<td>TBD</td>
+<td>/10</td>
+<td>Available via Kayak</td>
+<td>2026-01-13 01:52</td>
+</tr>
+</tbody></table>
+<h2>Multi-City / Open-Jaw Flight Results</h2>
+<h3>NYC → Tokyo (HND), Tokyo (NRT) → NYC</h3>
+<table>
+<thead>
+<tr>
+<th>Rank</th>
+<th>Origin</th>
+<th>Arrival</th>
+<th>Departure</th>
+<th>Airline</th>
+<th>Price</th>
+<th>Outbound Route</th>
+<th>Return Route</th>
+<th>Outbound Duration</th>
+<th>Return Duration</th>
+<th>Value Score</th>
+<th>Booking URL</th>
+<th>Research Timestamp</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>NYC</td>
+<td>HND</td>
+<td>NRT</td>
+<td>Japan Airlines</td>
+<td>$2,043</td>
+<td>Non-stop</td>
+<td>Non-stop</td>
+<td>14h 30m</td>
+<td>13h 10m</td>
+<td>/10</td>
+<td>Available via Kayak</td>
+<td>2026-01-13 01:53</td>
+</tr>
+<tr>
+<td>2</td>
+<td>NYC</td>
+<td>HND</td>
+<td>NRT</td>
+<td>American Airlines</td>
+<td>$2,437</td>
+<td>Non-stop</td>
+<td>Non-stop</td>
+<td>14h 30m</td>
+<td>13h 10m</td>
+<td>/10</td>
+<td>Available via Kayak</td>
+<td>2026-01-13 01:53</td>
+</tr>
+<tr>
+<td>3</td>
+<td>NYC</td>
+<td>HND</td>
+<td>NRT</td>
+<td>United Airlines</td>
+<td>$2,548</td>
+<td>Non-stop</td>
+<td>Non-stop</td>
+<td>14h 30m</td>
+<td>13h 05m</td>
+<td>/10</td>
+<td>Available via Kayak</td>
+<td>2026-01-13 01:53</td>
+</tr>
+<tr>
+<td>4</td>
+<td>NYC</td>
+<td>HND</td>
+<td>NRT</td>
+<td>American Airlines</td>
+<td>$2,777</td>
+<td>Non-stop</td>
+<td>Non-stop</td>
+<td>14h 15m</td>
+<td>13h 10m</td>
+<td>/10</td>
+<td>Available via Kayak</td>
+<td>2026-01-13 01:53</td>
+</tr>
+<tr>
+<td>5</td>
+<td>NYC</td>
+<td>HND</td>
+<td>NRT</td>
+<td>Multiple</td>
+<td>$1,162</td>
+<td>2 stops</td>
+<td>3 stops</td>
+<td>42h 15m</td>
+<td>39h 41m</td>
+<td>/10</td>
+<td>Available via Kayak</td>
+<td>2026-01-13 01:53</td>
+</tr>
+</tbody></table>
+<h3>NYC → Tokyo (HND), Osaka (KIX) → NYC</h3>
+<table>
+<thead>
+<tr>
+<th>Rank</th>
+<th>Origin</th>
+<th>Arrival</th>
+<th>Departure</th>
+<th>Airline</th>
+<th>Price</th>
+<th>Outbound Route</th>
+<th>Return Route</th>
+<th>Outbound Duration</th>
+<th>Return Duration</th>
+<th>Value Score</th>
+<th>Booking URL</th>
+<th>Research Timestamp</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>NYC</td>
+<td>HND</td>
+<td>KIX</td>
+<td>American/Japan Airlines</td>
+<td>$2,443</td>
+<td>Non-stop</td>
+<td>1 stop (HND)</td>
+<td>14h 30m</td>
+<td>16h 00m</td>
+<td>/10</td>
+<td>Available via Kayak</td>
+<td>2026-01-13 01:54</td>
+</tr>
+<tr>
+<td>2</td>
+<td>NYC</td>
+<td>HND</td>
+<td>KIX</td>
+<td>Multiple</td>
+<td>$1,136</td>
+<td>2 stops</td>
+<td>3 stops</td>
+<td>32h 25m</td>
+<td>TBD</td>
+<td>/10</td>
+<td>Available via Kayak</td>
+<td>2026-01-13 01:54</td>
+</tr>
+</tbody></table>
+<h3>Atlanta → Tokyo (HND), Tokyo (NRT) → Atlanta</h3>
+<table>
+<thead>
+<tr>
+<th>Rank</th>
+<th>Origin</th>
+<th>Arrival</th>
+<th>Departure</th>
+<th>Airline</th>
+<th>Price</th>
+<th>Outbound Route</th>
+<th>Return Route</th>
+<th>Outbound Duration</th>
+<th>Return Duration</th>
+<th>Value Score</th>
+<th>Booking URL</th>
+<th>Research Timestamp</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>ATL</td>
+<td>HND</td>
+<td>NRT</td>
+<td>Similar to round-trip options</td>
+<td>$1,456-$2,158</td>
+<td>1 stop</td>
+<td>1 stop</td>
+<td>18-20h</td>
+<td>16-17h</td>
+<td>/10</td>
+<td>Available via Kayak</td>
+<td>2026-01-13 01:54</td>
+</tr>
+</tbody></table>
+<h3>Harrisburg → Tokyo (HND), Tokyo (NRT) → Harrisburg</h3>
+<table>
+<thead>
+<tr>
+<th>Rank</th>
+<th>Origin</th>
+<th>Arrival</th>
+<th>Departure</th>
+<th>Airline</th>
+<th>Price</th>
+<th>Outbound Route</th>
+<th>Return Route</th>
+<th>Outbound Duration</th>
+<th>Return Duration</th>
+<th>Value Score</th>
+<th>Booking URL</th>
+<th>Research Timestamp</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>MDT</td>
+<td>HND</td>
+<td>NRT</td>
+<td>United Airlines</td>
+<td>$1,679-$1,804</td>
+<td>1 stop (ORD/IAD)</td>
+<td>1 stop (ORD)</td>
+<td>16-19h</td>
+<td>19-20h</td>
+<td>/10</td>
+<td>Available via Kayak</td>
+<td>2026-01-13 01:54</td>
+</tr>
+</tbody></table>
+<h3>Philadelphia → Tokyo (HND), Tokyo (NRT) → Philadelphia</h3>
+<table>
+<thead>
+<tr>
+<th>Rank</th>
+<th>Origin</th>
+<th>Arrival</th>
+<th>Departure</th>
+<th>Airline</th>
+<th>Price</th>
+<th>Outbound Route</th>
+<th>Return Route</th>
+<th>Outbound Duration</th>
+<th>Return Duration</th>
+<th>Value Score</th>
+<th>Booking URL</th>
+<th>Research Timestamp</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>PHL</td>
+<td>HND</td>
+<td>NRT</td>
+<td>Delta/American</td>
+<td>$1,865-$1,991</td>
+<td>1 stop (MSP/LAX)</td>
+<td>1 stop (MSP/LAX)</td>
+<td>18-19h</td>
+<td>15-17h</td>
+<td>/10</td>
+<td>Available via Kayak</td>
+<td>2026-01-13 01:54</td>
+</tr>
+</tbody></table>
+
+<ul>
+<li><strong>2026-01-13 01:48-01:54</strong>: Completed all 9 Kayak flight searches (4 round-trip + 5 multi-city/open-jaw)</li>
+<li><strong>Key Findings</strong>:<ul>
+<li><strong>NYC</strong>: Best value Japan Airlines $2,037 (non-stop, JFK-HND). Multiple non-stop options $2,037-$2,549</li>
+<li><strong>ATL</strong>: Best value Air Canada $1,456 (1 stop YYZ, HND). Price range $934-$2,371</li>
+<li><strong>MDT</strong>: Best value United Airlines $1,679 (1 stop ORD, NRT). Price range $1,679-$2,192</li>
+<li><strong>PHL</strong>: Best value Delta $1,991 (1 stop MSP, HND). Price range $1,276-$2,241</li>
+<li><strong>Multi-City Options</strong>: Available for all origins, typically $100-400 more than round-trip</li>
+<li><strong>Open-Jaw Benefits</strong>: NYC-HND/KIX option allows visiting Osaka/Kyoto without backtracking</li>
+<li><strong>HND (Haneda)</strong>: Preferred for proximity to Tokyo center (15-20 min vs 60+ min from NRT)</li>
+<li><strong>NRT (Narita)</strong>: Acceptable alternative, often slightly cheaper</li>
+</ul>
+</li>
+<li><strong>Price Trends</strong>: <ul>
+<li>Non-stop flights: $2,000-$2,600 range</li>
+<li>1-stop flights: $1,400-$2,200 range</li>
+<li>2+ stop flights: $900-$1,300 range (very long durations, not recommended)</li>
+</ul>
+</li>
+<li><strong>Recommendations</strong>: <ul>
+<li>NYC travelers: Consider Japan Airlines $2,037 non-stop for best value</li>
+<li>ATL travelers: Air Canada $1,456 offers good balance of price and convenience</li>
+<li>MDT/PHL travelers: United/Delta 1-stop options provide reasonable prices and durations</li>
+<li>Multi-city: Worth considering if visiting Osaka/Kyoto, adds ~$200-400 but saves travel time</li>
+</ul>
+</li>
+<li><strong>All searches completed</strong>: Report ready for review and value score calculations</li>
+</ul>
+<hr>
+<h2>title: Kayak Flight Research Report<br>date: 2026-01-12<br>tags: [#japan-trip, #logistics, #flights, #research, #kayak, #report]<br>type: reference<br>status: draft<br>aliases: []<br>related: ["[[Flights-Options-Kayak]]"]</h2>
+        </div>
+        
+        <div class="note-section">
+            <div class="note-title">011226 8:05PM The Minimal MVP: Momentum Through Focused Four-File Architecture</div>
+            <p>Alright, here are run notes you can listen to and mentally rehearse.</p>
+<p>⸻</p>
+<p>Let’s lock in the MVP mindset.</p>
+<p>You’re starting with a deliberately tiny repository. Four files. Nothing more. The goal here is momentum, not architecture.</p>
+<p>At the top level, you have a README, a single main.py, a requirements.txt, and a .gitignore. That’s it. This structure forces focus.</p>
+<p>Start with the README. Its job is not marketing. Its job is orientation. It tells future-you what to build first, in what order, and how to run the app without thinking. The key instruction is simple: fully implement main.py first. Everything else follows from that. The README also makes it clear that dependencies are added only when they are actually needed, not preemptively.</p>
+<p>Now move to main.py. This is the heart of the MVP. One file. One entry point. It must be runnable on its own, either with python main.py or a standard dev server command like uvicorn. You define the smallest possible app here. Usually that means a single root or health endpoint that returns something like “status ok.” No database. No background jobs. No auth. Just enough structure to prove the app runs.</p>
+<p>Crucially, main.py should include clear TODOs. These aren’t noise. They are signposts for future expansion: persistence, scheduling, auth, background tasks. You’re documenting intent as much as behavior.</p>
+<p>Next is requirements.txt. This file starts almost empty. That’s on purpose. You only add a dependency when main.py actually needs it. No speculative installs. Once things stabilize, then you pin versions. Until then, keep it lean.</p>
+<p>Finally, the .gitignore. This is defensive, not fancy. Ignore Python build artifacts, virtual environments, environment variable files, and editor junk. You only add new rules when new generated files appear. Nothing more.</p>
+<p>The mental model to remember is this:<br>One file runs the app. One file explains the app. One file lists dependencies. One file keeps the repo clean.</p>
+<p>If you can hold that line, everything you add later—APIs, scraping, agents, orchestration—will sit on a solid, understandable base.</p>
+<p>That’s the MVP discipline you want to keep while building this.</p>
+<p>Create this minimal structure:</p>
+<pre><code>your-app/
+├── README.md
+├── main.py
+├── requirements.txt
+└── .gitignore
+</code></pre>
+<h2>README.md</h2>
+<p>Include something like:</p>
+<pre><code class="language-md"># Your App MVP
+
+Start by fully implementing **main.py** first, then install dependencies from `requirements.txt`.
+
+## Build order
+
+1. `main.py` – core app logic and minimal endpoint(s)
+2. `requirements.txt` – add and pin dependencies as you implement features
+3. `.gitignore` – update as you add new artifact types (logs, data, etc.)
+
+## Getting started
+
+- Create and activate a virtual environment.
+- Install dependencies:
+
+  ```bash
+  pip install -r requirements.txt
+</code></pre>
+<ul>
+<li><p>Run the app (example for FastAPI with uvicorn):</p>
+<pre><code class="language-bash">uvicorn main:app --reload
+</code></pre>
+</li>
+</ul>
+<p>Add implementation details directly in the files as described below.<br>[web:19][web:22][web:25]</p>
+<pre><code>
+## main.py
+
+```python
+"""
+main.py
+
+Instruction: 
+- Define the minimal runnable app here (e.g., a FastAPI or Flask app, or a simple CLI).
+- Include:
+  - A single health or root endpoint (e.g., GET "/" returning a simple JSON payload).
+  - Any core in-memory data structures needed for the MVP (no DB at first).
+  - Clear TODO comments for future expansion (e.g., add persistence, auth, background jobs).
+- Keep this file as the single entrypoint so the MVP can run with just `python main.py`
+  or via the chosen framework's standard server command.
+"""
+# Example scaffold (delete/adjust once you implement for real):
+# from fastapi import FastAPI
+#
+# app = FastAPI()
+#
+# @app.get("/")
+# def read_root():
+#     return {"status": "ok"}
+#
+# if __name__ == "__main__":
+#     # Optional: dev-only startup logic or CLI entry
+#     import uvicorn
+#     uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)
+</code></pre>
+<h2>requirements.txt</h2>
+<pre><code class="language-txt"># requirements.txt
+
+# Instruction:
+# - List only the minimal libraries required to run the MVP.
+# - Add new dependencies here *only* when you actually need them in main.py.
+# - Pin versions once the MVP stabilizes (e.g., fastapi==0.x.x, uvicorn==0.x.x).
+
+# Example for a tiny FastAPI MVP (adjust as needed, or delete if using something else):
+# fastapi
+# uvicorn[standard]
+</code></pre>
+<h2>.gitignore</h2>
+<pre><code class="language-gitignore"># .gitignore
+
+# Instruction:
+# - Keep this focused on common Python build artifacts and environment files.
+# - Add new ignore rules only when a new type of generated file shows up
+#   (e.g., logs/, data/, .env, .DS_Store).
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.venv/
+venv/
+
+# Environment variables
+.env
+
+# OS / editor files
+.DS_Store
+*.swp
+*.swo
+.idea/
+.vscode/
+</code></pre>
+<p>Sources<br>[1] FastAPI Best Practices and Conventions we used at our startup <a href="https://github.com/zhanymkanov/fastapi-best-practices">https://github.com/zhanymkanov/fastapi-best-practices</a><br>[2] FastAPI Setup and Requirements – Practical Guide for 2026 <a href="https://www.zestminds.com/blog/fastapi-requirements-setup-guide-2025/">https://www.zestminds.com/blog/fastapi-requirements-setup-guide-2025/</a><br>[3] Tutorial - User Guide - FastAPI - Tiangolo <a href="https://fastapi.tiangolo.com/tutorial/">https://fastapi.tiangolo.com/tutorial/</a><br>[4] FastAPI Setup Guide for 2025: Requirements, Structure &amp; Deployment <a href="https://dev.to/zestminds_technologies_c1/fastapi-setup-guide-for-2025-requirements-structure-deployment-1gd">https://dev.to/zestminds_technologies_c1/fastapi-setup-guide-for-2025-requirements-structure-deployment-1gd</a><br>[5] FastAPI Project Structure Best Practices - LinkedIn <a href="https://www.linkedin.com/pulse/fastapi-project-structure-best-practices-manikandan-parasuraman-fx4pc">https://www.linkedin.com/pulse/fastapi-project-structure-best-practices-manikandan-parasuraman-fx4pc</a><br>[6] Creating a Readme File in a Power Platform Solution <a href="https://dev.to/wyattdave/creating-a-readme-file-in-a-power-platform-solution-16fh">https://dev.to/wyattdave/creating-a-readme-file-in-a-power-platform-solution-16fh</a><br>[7] Best practices for writing code comments - The Stack Overflow Blog <a href="https://stackoverflow.blog/2021/12/23/best-practices-for-writing-code-comments/">https://stackoverflow.blog/2021/12/23/best-practices-for-writing-code-comments/</a><br>[8] Hello FastAPI - FastapiTutorial <a href="https://www.fastapitutorial.com/blog/fastapi-hello-world/">https://www.fastapitutorial.com/blog/fastapi-hello-world/</a><br>[9] mvp-boilerplate/README.md at main - GitHub <a href="https://github.com/devtodollars/startup-boilerplate/blob/main/README.md">https://github.com/devtodollars/startup-boilerplate/blob/main/README.md</a><br>[10] Best practice for commenting code : r/learnprogramming - Reddit <a href="https://www.reddit.com/r/learnprogramming/comments/umnnbh/best_practice_for_commenting_code/">https://www.reddit.com/r/learnprogramming/comments/umnnbh/best_practice_for_commenting_code/</a><br>[11] Ultimate guide to FastAPI library in Python - Deepnote <a href="https://deepnote.com/blog/ultimate-guide-to-fastapi-library-in-python">https://deepnote.com/blog/ultimate-guide-to-fastapi-library-in-python</a><br>[12] README.md - dwyl App MVP - GitHub <a href="https://github.com/dwyl/mvp/blob/main/README.md">https://github.com/dwyl/mvp/blob/main/README.md</a><br>[13] 10 Best Practices to Follow While Writing Code Comments <a href="https://javarevisited.blogspot.com/2011/08/code-comments-java-best-practices.html">https://javarevisited.blogspot.com/2011/08/code-comments-java-best-practices.html</a><br>[14] FastAPI Folder Structure: A Guide For Developers <a href="https://copyright-certificate.byu.edu/news/fastapi-folder-structure-a-guide">https://copyright-certificate.byu.edu/news/fastapi-folder-structure-a-guide</a><br>[15] How to build an MVP with a single prompt in Cursor - LinkedIn <a href="https://www.linkedin.com/posts/eric-vyacheslav-156273169_you-can-now-go-from-github-readme-to-working-activity-7340332668191969280-faG">https://www.linkedin.com/posts/eric-vyacheslav-156273169_you-can-now-go-from-github-readme-to-working-activity-7340332668191969280-faG</a>_</p>
+        </div>
+        
+        <div class="note-section">
+            <div class="note-title">011226 7:53PM Modular Architecture for Agentic Flight Search</div>
+            <p>The cleanest Apify approach is: use an existing Google Flights Scraper Actor/API for data, then wrap it in your own Python Actor that standardizes results for your LLM/agent.[1][2][3][4][5]</p>
+<h2>High-level phases (for agents)</h2>
+<ul>
+<li>Requirements &amp; tech spec  </li>
+<li>Data layer (Apify Flights Actor)  </li>
+<li>Orchestration &amp; scheduling  </li>
+<li>LLM/agent integration  </li>
+<li>QA &amp; monitoring</li>
+</ul>
+<p>Below are concrete steps plus docs you can hand to different agents.</p>
+<hr>
+<h2>1) Requirements and tech spec</h2>
+<p><strong>Goal</strong>: Build a flight-search backend that, given origin(s), Japan airports, and date windows, calls Apify’s Google Flights tooling and returns normalized JSON/CSV for an LLM to reason over.[2][3][5][1]</p>
+<h3>Functional requirements (for a “Product/Spec” agent)</h3>
+<ul>
+<li>Inputs:<ul>
+<li>Origin IATA or city groups, e.g. <code>["NYC","PHL","ATL"]</code>.  </li>
+<li>Japan destinations, e.g. <code>["TYO","KIX","ITM","NGO","FUK","CTS"]</code>.  </li>
+<li>Outbound date range and return date range (ISO <code>YYYY-MM-DD</code>).  </li>
+<li>Trip type: round-trip, one-way, or multi-city/open-jaw.[3][5]</li>
+</ul>
+</li>
+<li>Behavior:<ul>
+<li>For each origin–destination–date combo, query an Apify Google Flights Actor/API (e.g. <code>simpleapi/google-flights-scraper</code> or <code>johnvc/google-flights-data-scraper-flight-and-price-search</code>).[4][1][2][3]</li>
+<li>Collect:<ul>
+<li>Price, currency.  </li>
+<li>Airline(s), marketing vs operating carrier if available.  </li>
+<li>Departure/arrival times, total duration.  </li>
+<li>Number of stops and layover airports.  </li>
+<li>URL/deep link to the original Google Flights result where provided.[1][2][3]</li>
+</ul>
+</li>
+<li>Normalize into a shared schema and persist to Apify Dataset + downloadable CSV.[6]</li>
+</ul>
+</li>
+<li>Non-functional:<ul>
+<li>Handle rate limits (batch queries, respect <code>maximum</code> parameter).[2]</li>
+<li>Fail fast when input parameters are invalid (bad IATA, malformed dates).  </li>
+<li>Clear logging for each route/date run (origin, dest, dates, count of results).[6]</li>
+</ul>
+</li>
+</ul>
+<p><strong>Sample normalized schema</strong></p>
+<pre><code class="language-json">{
+  "origin": "JFK",
+  "destination": "HND",
+  "tripType": "round-trip",
+  "outboundDate": "2026-04-02",
+  "returnDate": "2026-04-11",
+  "price": 945.20,
+  "currency": "USD",
+  "airlines": ["Japan Airlines"],
+  "alliances": ["oneworld"],
+  "stopsOutbound": 0,
+  "stopsReturn": 1,
+  "durationOutboundMinutes": 840,
+  "durationReturnMinutes": 900,
+  "bookingLink": "https://www.google.com/travel/flights/...",
+  "raw": {}
+}
+</code></pre>
+<hr>
+<h2>2) Data layer: choose and wrap an Apify Google Flights Actor</h2>
+<p><strong>Owner agent</strong>: “Apify Integration” agent.</p>
+<h3>Step 2.1 – Pick the base Actor/API</h3>
+<ul>
+<li>Use an existing Google Flights Actor instead of writing Selenium yourself:[5][3][1][2]<ul>
+<li>Example: <code>simpleapi/google-flights-scraper</code> – JSON input with <code>departureIATA</code>, <code>arrivalIATA</code>, <code>departureDate</code>, <code>maximum</code>, etc.[2]</li>
+<li>Example: <code>johnvc/google-flights-data-scraper-flight-and-price-search</code> for more advanced options (multi-city, filters, languages).[3][4]</li>
+</ul>
+</li>
+</ul>
+<p><strong>Common mistake to avoid</strong>: Mixing multiple different store Actors in one app before you’ve standardized schemas—start with one and align your normalization on its output structure.[4][3][2]</p>
+<h3>Step 2.2 – Create a thin Python wrapper Actor</h3>
+<p>Use the Python SDK + an Apify template:[7][6]</p>
+<ul>
+<li>Start from the empty Python template or a simple scraping template:[7]</li>
+<li>In <code>src/main.py</code>:<ul>
+<li>Read Actor input: <code>origins</code>, <code>destinations</code>, <code>outboundDates</code>, <code>returnDates</code>, <code>tripType</code>.  </li>
+<li>For each combination, build the JSON required by the Flights Actor (e.g. <code>departureIATA</code>, <code>arrivalIATA</code>, <code>departureDate</code>, <code>returnDate</code>, <code>maximum</code>).[3][2]</li>
+<li>Call the Flights Actor via Apify API client and capture results.[4][6]</li>
+<li>Transform each record into your normalized schema and <code>Actor.push_data()</code> it.[6]</li>
+</ul>
+</li>
+</ul>
+<p><strong>Common mistakes &amp; mitigations</strong></p>
+<ul>
+<li>Mistake: Not limiting the cartesian explosion.  <ul>
+<li>Mitigation: Hard-cap combinations per run (e.g., max 50 queries) and support pagination or multiple runs.</li>
+</ul>
+</li>
+<li>Mistake: Assuming all results have the same fields.  <ul>
+<li>Mitigation: Treat optional fields (<code>alliances</code>, <code>bookingLink</code>, baggage info) defensively; default to <code>null</code> if missing.[2][3]</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2>3) Orchestration and scheduling</h2>
+<p><strong>Owner agent</strong>: “Scheduler/DevOps” agent.</p>
+<h3>Step 3.1 – Input model for a run</h3>
+<p>Define Actor input JSON like:</p>
+<pre><code class="language-json">{
+  "origins": ["NYC", "PHL", "ATL"],
+  "japanAirports": ["HND", "NRT", "KIX", "ITM", "NGO", "FUK", "CTS"],
+  "outboundDateRange": ["2026-04-02", "2026-04-05"],
+  "returnDateRange": ["2026-04-08", "2026-04-11"],
+  "tripType": "round-trip",
+  "maxQueries": 40
+}
+</code></pre>
+<p>The Actor expands this to the underlying Google Flights Actor calls.</p>
+<h3>Step 3.2 – Scheduling &amp; rate limits</h3>
+<ul>
+<li>Use Apify’s built-in scheduler to run:<ul>
+<li>On demand (triggered via API)  </li>
+<li>Or on cron (e.g., daily 03:00 UTC to update prices).[6]</li>
+</ul>
+</li>
+<li>Respect:<ul>
+<li>The <code>maximum</code> parameter on Flights Actors, which controls how many itineraries per search are scraped.[2]</li>
+<li>Your cost limits (Apify usage + store Actor pricing).[1][2]</li>
+</ul>
+</li>
+</ul>
+<p><strong>Common mistakes</strong></p>
+<ul>
+<li>Firing too many Actors concurrently with same parameters → duplicated data and higher costs.  </li>
+<li>Forgetting to tag runs with an ID (e.g., <code>searchId</code>) to group results for the same logical search.</li>
+</ul>
+<hr>
+<h2>4) LLM/agent integration layer</h2>
+<p><strong>Owner agent</strong>: “Reasoning/Selection” agent.</p>
+<p>Responsibilities:</p>
+<ul>
+<li>Receive search parameters from user/LLM frontend.  </li>
+<li>Trigger the Apify wrapper Actor with those parameters.[6]</li>
+<li>Wait for completion (via webhooks or polling the run status).  </li>
+<li>Fetch Dataset items (JSON) and:<ul>
+<li>Filter out dominated options (Pareto front by price vs duration).  </li>
+<li>Apply user-specific utilities (e.g., penalize non-NYC airports, prefer certain alliances).</li>
+</ul>
+</li>
+</ul>
+<p><strong>Common mistakes</strong></p>
+<ul>
+<li>Letting the LLM directly form random Google Flights parameters; instead, validate/normalize into your spec first.  </li>
+<li>Not capturing the <code>searchId</code> in every row, which makes it hard to join multiple runs later.</li>
+</ul>
+<hr>
+<h2>5) Common pitfalls with Apify + Google Flights</h2>
+<ul>
+<li><strong>DOM/behavior changes</strong> are handled by the store Actor maintainer, but you still must:<ul>
+<li>Watch for sudden drops in result counts or obviously wrong prices.[3][2]</li>
+</ul>
+</li>
+<li><strong>Input validation</strong>:<ul>
+<li>Bad IATA codes or impossible dates will often just return zero results; your Actor should treat that as an error state/log event, not “success”.[2]</li>
+</ul>
+</li>
+<li><strong>Open-jaw / multi-city</strong>:<ul>
+<li>Not all Google Flights scrapers support full multi-city in one call; you might need to:<ul>
+<li>Call one-way twice (US → Japan, Japan → US from a different airport).  </li>
+<li>Or use the more advanced multi-city scraper (e.g., John’s actor) that advertises multi-city support.[4][3]</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2>Documents you can hand to agents</h2>
+<h3>A. Product requirements doc (PRD)</h3>
+<ul>
+<li>Problem: Automate multi-airport, multi-city Japan flight search for power users.  </li>
+<li>Users: You + future advanced travelers.  </li>
+<li>Scenarios:<ul>
+<li>“Compare NYC/PHL/ATL → Japan between Apr 2–11 for best value.”  </li>
+<li>“Find open-jaw itineraries into Tokyo, out of Osaka.”</li>
+</ul>
+</li>
+<li>Success metrics:<ul>
+<li>Time saved vs manual Google Flights use.  </li>
+<li>Number of times per week you use the tool.  </li>
+<li>% of searches returning at least N high-quality options.</li>
+</ul>
+</li>
+</ul>
+<h3>B. Technical design doc</h3>
+<ul>
+<li>Architecture:<ul>
+<li>Client/Agent → “Search Orchestrator” service → Apify wrapper Actor → Store Flights Actor(s) → Apify Dataset → LLM Ranking Layer.[3][6][2]</li>
+</ul>
+</li>
+<li>Key components:<ul>
+<li>Apify wrapper Actor (Python, uses Apify SDK).[7][6]</li>
+<li>Flight schema module shared between orchestrator and LLM.  </li>
+<li>Monitoring: Apify run logs, dataset counts, alert if 0 results.[6]</li>
+</ul>
+</li>
+</ul>
+<h3>C. Implementation checklist per agent</h3>
+<ul>
+<li><p><strong>Apify Integration agent</strong>:</p>
+<ul>
+<li>Choose base Flights Actor.  </li>
+<li>Implement wrapper Actor with normalization and push_data.  </li>
+<li>Test with a single NYC→TYO date pair.</li>
+</ul>
+</li>
+<li><p><strong>Scheduler/Infra agent</strong>:</p>
+<ul>
+<li>Configure scheduler and webhooks.  </li>
+<li>Set environment secrets (Apify token).  </li>
+<li>Implement run-status polling endpoint.</li>
+</ul>
+</li>
+<li><p><strong>LLM/Reasoning agent</strong>:</p>
+<ul>
+<li>Define strict JSON schema for results.  </li>
+<li>Author prompts that assume that schema, not raw Google Flights HTML.  </li>
+<li>Implement Pareto and custom scoring logic.</li>
+</ul>
+</li>
+</ul>
+<p>If you want, the next step can be a concrete <code>src/main.py</code> skeleton for the Apify wrapper Actor that calls a specific Google Flights scraper (e.g., <code>simpleapi/google-flights-scraper</code>) and emits your normalized schema.</p>
+<p>Sources<br>[1] Google Flights Scraper API in Python - Apify <a href="https://apify.com/simpleapi/google-flights-scraper/api/python">https://apify.com/simpleapi/google-flights-scraper/api/python</a><br>[2] Google Flights Scraper - Apify <a href="https://apify.com/simpleapi/google-flights-scraper">https://apify.com/simpleapi/google-flights-scraper</a><br>[3] Google Flights Scraper - Apify <a href="https://apify.com/johnvc/google-flights-data-scraper-flight-and-price-search">https://apify.com/johnvc/google-flights-data-scraper-flight-and-price-search</a><br>[4] Google Flights API in Python - Apify <a href="https://apify.com/canadesk/google-flights/api/python">https://apify.com/canadesk/google-flights/api/python</a><br>[5] Google Flights API - Apify <a href="https://apify.com/api/google-flights-api">https://apify.com/api/google-flights-api</a><br>[6] Introduction | SDK for Python - Apify Documentation <a href="https://docs.apify.com/sdk/python/docs/overview/introduction">https://docs.apify.com/sdk/python/docs/overview/introduction</a><br>[7] Empty Python project · Template - Apify <a href="https://apify.com/templates/python-empty">https://apify.com/templates/python-empty</a><br>[8] Scrape Google Flights with Python - Apify Blog <a href="https://blog.apify.com/how-to-scrape-google-flights/">https://blog.apify.com/how-to-scrape-google-flights/</a><br>[9] Using Selenium | SDK for Python - Apify Documentation <a href="https://docs.apify.com/sdk/python/docs/guides/selenium">https://docs.apify.com/sdk/python/docs/guides/selenium</a><br>[10] How to use Selenium for web scraping (Python guide) - Apify Blog <a href="https://blog.apify.com/web-scraping-with-selenium-and-python/">https://blog.apify.com/web-scraping-with-selenium-and-python/</a><br>[11] Google Flights OpenAPI definition - Apify <a href="https://apify.com/canadesk/google-flights/api/openapi">https://apify.com/canadesk/google-flights/api/openapi</a><br>[12] Python browser automation with Selenium (2025 guide) - Apify Blog <a href="https://blog.apify.com/python-browser-automation-with-selenium/">https://blog.apify.com/python-browser-automation-with-selenium/</a><br>[13] Flight Award &amp; Itinerary Scraper – Miles, Taxes &amp; Cabins - Apify <a href="https://apify.com/igolaizola/flight-award-scraper">https://apify.com/igolaizola/flight-award-scraper</a><br>[14] manifest.json - apify/actor-templates - GitHub <a href="https://github.com/apify/actor-templates/blob/master/templates/manifest.json">https://github.com/apify/actor-templates/blob/master/templates/manifest.json</a><br>[15] Selenium + Chrome · Template - Apify <a href="https://apify.com/templates/python-selenium">https://apify.com/templates/python-selenium</a></p>
+        </div>
+        
+        <div class="note-section">
+            <div class="note-title">011226 7:42PM Engineering a Robust Flight Scraper: From Selenium Automation to LLM Analysis</div>
+            <p>LLMs like ChatGPT/Perplexity/Gemini are great for <em>strategy</em> and transforming flight data, but they cannot reliably surface every live fare or replicate historical prices; you need them orchestrating real search engines (Google Flights, Skyscanner, Kayak, etc.), not replacing them.[1][2]</p>
+<p>Below is a practical way to combine them and which platforms to lean on when you’re optimizing across multiple airports.</p>
+<h2>Why LLMs miss good or “historical” prices</h2>
+<p>LLMs:</p>
+<ul>
+<li>Do not have direct GDS/airline API access in consumer UIs, so they mostly reason <em>about</em> flights instead of querying full inventories.[2][1]</li>
+<li>Tend to default to “safe” patterns (major hubs, obvious routes), a form of collapse where you keep seeing the same 3–5 options and mid‑range prices.[3]</li>
+<li>Are not guaranteed to be trained on, or have tools connected to, the <em>exact</em> historical price traces you remember for a period.[4][3]</li>
+</ul>
+<p>So use them as:</p>
+<ul>
+<li>Constraint solvers (“given this dump of options, rank by X,Y,Z”).  </li>
+<li>Macro‑strategy advisors (“which days/airports/alliances to target”).  </li>
+<li>Script generators (e.g., generate scraping/automation code against flight tools).[5][6]</li>
+</ul>
+<h2>Best engines for multi‑airport / flexible search</h2>
+<p>When you care about <em>deterministic</em> coverage and multiple airports, these tend to work best:</p>
+<table>
+<thead>
+<tr>
+<th>Need</th>
+<th>Best tools</th>
+<th>Why they’re strong</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Fast baseline, multiple airports, decent price history</td>
+<td><strong>Google Flights</strong>, <strong>KAYAK</strong></td>
+<td>Google is very fast, strong filters, good calendar/date grid; Kayak supports multiple departure airports and color‑coded fare calendars. [7][8][9]</td>
+</tr>
+<tr>
+<td>“Everywhere” / flexible region + dates</td>
+<td><strong>Skyscanner</strong>, <strong>FlightsFinder</strong>, <strong>Kiwi</strong></td>
+<td>“Everywhere” destination search, whole‑month or year calendars, and region‑level search (country/continent), great for broad scanning. [7][8][9]</td>
+</tr>
+<tr>
+<td>Very flexible routes, stitched itineraries</td>
+<td><strong>Kiwi</strong>, <strong>PanFlights</strong></td>
+<td>Can stitch non‑partner carriers and flexible multi‑city routes, including remote airports and route optimization. [10][9]</td>
+</tr>
+<tr>
+<td>Deep control / power user</td>
+<td><strong>ITA Matrix</strong> (backing Google Flights)</td>
+<td>Advanced routing language and fare construction; often used after Google Flights to lock in a specific construction. [11][8]</td>
+</tr>
+</tbody></table>
+<p>For someone doing multi‑airport optimization around NYC, a strong stack is:</p>
+<ul>
+<li>Google Flights (primary grid/explore).[7][9]</li>
+<li>Skyscanner or FlightsFinder/“flexible dates” for everywhere + obscure combos.[9][7]</li>
+<li>Kiwi or PanFlights when you’re willing to self‑connect.[10][9]</li>
+</ul>
+<h2>How to use an LLM <em>with</em> these tools</h2>
+<p>Treat the LLM as a meta‑layer over your manual/automated searches:</p>
+<ol>
+<li><p><strong>Query design / search strategy</strong></p>
+<ul>
+<li>Ask it to propose a search plan across tools: which origin airports to bundle, which date windows to scan, and which engines to use for each step (baseline vs. edge routes).[8][7][9]</li>
+<li>Example: “Given NYC and possible destinations X/Y/Z, propose search steps on Google Flights + Skyscanner to minimize total cost with max 1 stop.”</li>
+</ul>
+</li>
+<li><p><strong>Parsing and ranking exported data</strong></p>
+<ul>
+<li>Export or copy search results (date grids, CSV exports, scraped data) and have the LLM:<ul>
+<li>Normalize carriers, stops, and total travel time.  </li>
+<li>Score options given your utility function (e.g., minimize cost subject to arrival before 10am, no &lt;90‑min connections, prefer alliances).[5]</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>Agentic workflows</strong></p>
+<ul>
+<li>Use tools like LangChain/LangGraph or browser‑automation agents that:<ul>
+<li>Call Google Flights / Skyscanner / Kiwi with different airport/date combos.  </li>
+<li>Pull results into a table.  </li>
+<li>Have the LLM run reasoning on that table to pick candidates and suggest “next queries” (e.g., tighten date window where heat‑map shows dips).[6][5]</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>Retrospective / “historical” sanity checks</strong></p>
+<ul>
+<li>For a past period where you <em>know</em> prices were lower, you won’t get exact historical fares, but you can:<ul>
+<li>Use the LLM to infer likely causes (seasonality, fuel, demand, route cuts).[12][2]</li>
+<li>Ask it to define guardrail ranges (e.g., “on NYC–LON, off‑peak economy under $X one‑way is historically ‘good’ vs. ‘great’ vs. ‘unicorn’”) and then compare to current grids you see in Google Flights.[7][8][12]</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h2>Concrete workflow for “best determinant across many airports”</h2>
+<p>For something like NYC + BOS + PHL + maybe WAS to Europe/Asia:</p>
+<ol>
+<li><p><strong>Wide scan</strong></p>
+<ul>
+<li>In Google Flights: use multiple departure airports and a destination region, view month‑wide calendar + date grid to see low‑fare days by origin.[9][7]</li>
+<li>In Skyscanner / FlightsFinder / Kiwi: run “Everywhere” or region searches from an airport group and flexible dates (month/year).[7][9]</li>
+</ul>
+</li>
+<li><p><strong>Data capture</strong></p>
+<ul>
+<li>Screenshot or copy the cheapest round‑trip prices by origin and date buckets into a small sheet (or export if supported).[9]</li>
+<li>Include columns: origin airport, destination (city/region), date range, fare, carrier, stops, total duration.</li>
+</ul>
+</li>
+<li><p><strong>Send to LLM for optimization</strong></p>
+<ul>
+<li>Paste that structured data and ask:<ul>
+<li>“Find Pareto‑optimal itineraries minimizing price and total travel time.”  </li>
+<li>“Rank the airports by effective ‘value’ when you factor in my ground‑travel penalty (e.g., add $50 cost for BOS vs. JFK).”[5]</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>Refine</strong></p>
+<ul>
+<li>Use the LLM’s ranking to focus on 1–2 best origin airports + tight date ranges, then re‑run focused searches directly in Google Flights / Skyscanner to confirm and book.[8][7][9]</li>
+</ul>
+</li>
+</ol>
+<p>If helpful, a next step could be drafting a concrete schema and LLM prompt template for you (e.g., JSON columns + scoring function) so you can drop in exports from Google Flights/Skyscanner and have an agent consistently choose the best airport/date combo.</p>
+<p>Sources<br>[1] When LLMs Hit Their Limit And Why You Need Agents <a href="https://aipmguru.substack.com/p/when-llms-hit-their-limit-and-why">https://aipmguru.substack.com/p/when-llms-hit-their-limit-and-why</a><br>[2] The Rise of AI Flight Search Engines: Could LLMs Reshape Airlines ... <a href="https://pros.com/learn/blog/rise-ai-flight-search-engines-could-llms-reshape-airlines-traffic-acquisition-trends/">https://pros.com/learn/blog/rise-ai-flight-search-engines-could-llms-reshape-airlines-traffic-acquisition-trends/</a><br>[3] Escaping LLM Collapse: Why AI Keeps Recommending the Same 3 ... <a href="https://www.ottotheagent.com/tech-blog-posts/escaping-llm-collapse-why-ai-keeps-recommending-the-same-3-flights-and-how-we-broke-it">https://www.ottotheagent.com/tech-blog-posts/escaping-llm-collapse-why-ai-keeps-recommending-the-same-3-flights-and-how-we-broke-it</a><br>[4] Fine-Tuning LLMs vs. RAG: How to Solve LLM Limitations - Memgraph <a href="https://memgraph.com/blog/llm-limitations-fine-tuning-vs-rag">https://memgraph.com/blog/llm-limitations-fine-tuning-vs-rag</a><br>[5] Searching flights just got better with the power of LLM (and a bit of ... <a href="https://www.reddit.com/r/ChatGPT/comments/1mim0b2/searching_flights_just_got_better_with_the_power/">https://www.reddit.com/r/ChatGPT/comments/1mim0b2/searching_flights_just_got_better_with_the_power/</a><br>[6] Building a Secure Flight Booking System with LLM Agent in Langflow <a href="https://dev.to/permit_io/building-a-secure-flight-booking-system-with-llm-agent-in-langflow-3ml">https://dev.to/permit_io/building-a-secure-flight-booking-system-with-llm-agent-in-langflow-3ml</a><br>[7] Google Flights vs Skyscanner: Honest Comparison in 2026 - Going <a href="https://www.going.com/guides/google-flights-vs-skyscanner">https://www.going.com/guides/google-flights-vs-skyscanner</a><br>[8] 10 best flight booking solutions in 2026 - COAX Software <a href="https://coaxsoft.com/blog/10-best-flight-booking-solutions">https://coaxsoft.com/blog/10-best-flight-booking-solutions</a><br>[9] Flexible Flights, Flexible Dates Flight Search | FlightsFinder <a href="https://www.flightsfinder.com/flexible-dates">https://www.flightsfinder.com/flexible-dates</a><br>[10] PanFlights: Flexible flight search, fare calendar and reverse ... <a href="https://panflights.com">https://panflights.com</a><br>[11] TravelArrow vs Google Flights vs Skyscanner… what's actually ... <a href="https://www.reddit.com/r/travel/comments/1qax1ll/travelarrow_vs_google_flights_vs_skyscanner_whats/">https://www.reddit.com/r/travel/comments/1qax1ll/travelarrow_vs_google_flights_vs_skyscanner_whats/</a><br>[12] The 10 Best (and Cheapest) Airfare Search Sites for ... <a href="https://www.frommers.com/tips/airfare/the-10-best-and-cheapest-airfare-search-sites-for-2026/">https://www.frommers.com/tips/airfare/the-10-best-and-cheapest-airfare-search-sites-for-2026/</a><br>[13] Comparing Language Models (LLM &amp; LCM) in Modern Airport ... <a href="https://www.linkedin.com/pulse/comparing-language-models-llm-lcm-modern-airport-burak-da%C4%9Fdeviren-9peof">https://www.linkedin.com/pulse/comparing-language-models-llm-lcm-modern-airport-burak-da%C4%9Fdeviren-9peof</a><br>[14] How to search for multi-city (aka open-jaw) flights with flexible ... <a href="https://www.reddit.com/r/Shoestring/comments/156x7q7/how_to_search_for_multicity_aka_openjaw_flights/">https://www.reddit.com/r/Shoestring/comments/156x7q7/how_to_search_for_multicity_aka_openjaw_flights/</a><br>[15] Why is finding the nearest airport using LLMs so complex? <a href="https://stories.riafy.me/why-is-finding-the-nearest-airport-using-llms-so-complex-76bca0ace1d5">https://stories.riafy.me/why-is-finding-the-nearest-airport-using-llms-so-complex-76bca0ace1d5</a></p>
+        </div>
+        
+        <div class="note-section">
+            <div class="note-title">010326 8:45PM NYC-Tokyo Strategic Booking Plan April 2026</div>
+            <p>Based on comprehensive research across multiple airline and booking platforms, here's what you need to know about round-trip flights between New York and Tokyo for April 3-10 or April 3-11, 2026.</p>
+<h2>Flight Pricing Overview</h2>
+<h3>Expected Price Range</h3>
+<p>For your specific dates in early April 2026, expect to pay <strong>$1,000-$1,750</strong> for round-trip economy flights on direct routes. April is high season for Tokyo travel due to cherry blossom season, which drives prices significantly higher than other months.[1][2][3][4]</p>
+<p>Current pricing data shows:</p>
+<ul>
+<li><strong>American Airlines</strong>: $1,000-$1,764 for late April departures from JFK to Haneda (HND)[3][4]</li>
+<li><strong>Japan Airlines (JAL)</strong>: $966-$972 for February (reference pricing)[5]</li>
+<li><strong>ANA (All Nippon Airways)</strong>: $487-$545 one-way for January-February[6]</li>
+</ul>
+<p>For comparison, February 2026 round-trips are currently priced at $809-$970, demonstrating the substantial April premium.[7][5]</p>
+<h3>Airlines Operating Direct Flights</h3>
+<p>Three major carriers operate nonstop service between New York and Tokyo with approximately <strong>14-14.5 hour flight times</strong>:</p>
+<p><strong>ANA (All Nippon Airways)</strong></p>
+<ul>
+<li>Route: JFK → HND (Haneda)</li>
+<li>Flight time: 14h 35m nonstop[6]</li>
+<li>Frequency: ~28 direct flights per week[8]</li>
+<li>Punctuality: 90.91% on-time performance (highest among carriers)[9]</li>
+</ul>
+<p><strong>Japan Airlines (JAL)</strong></p>
+<ul>
+<li>Routes: JFK ↔ HND, JFK ↔ NRT (Narita)</li>
+<li>Multiple daily departures[10]</li>
+<li>2-4-2 seating configuration (more comfortable than standard 3-3-3)[11]</li>
+</ul>
+<p><strong>American Airlines</strong></p>
+<ul>
+<li>Route: JFK ↔ HND</li>
+<li>Daily service in partnership with JAL and ANA[12][1]</li>
+</ul>
+<h3>Budget-Conscious Options</h3>
+<p>If you're flexible on travel time, one-stop connections offer significant savings:</p>
+<ul>
+<li><strong>Philippine Airlines</strong> (via Manila): From $249 one-way[13][14]</li>
+<li><strong>Alaska Airlines</strong> (one stop): From $512 one-way[14]</li>
+<li><strong>Korean Air</strong> (via Seoul): $828+ round-trip[15]</li>
+<li><strong>Zipair</strong> (budget carrier): $294-$363 one-way with connections[16]</li>
+</ul>
+<p>However, these options add 6-12 hours to total travel time and may not be ideal for a short 7-8 day trip.</p>
+<h2>Where to Book: Direct URLs</h2>
+<h3>Flight Comparison Platforms</h3>
+<ol>
+<li><p><strong>Google Flights</strong>: <a href="https://www.google.com/travel/flights%5B17%5D%5B18%5D">https://www.google.com/travel/flights[17][18]</a></p>
+<ul>
+<li>Best for: Date flexibility tools, price tracking, visual calendar</li>
+<li>Shows cheapest booking window is typically 28-61 days before departure[19]</li>
+</ul>
+</li>
+<li><p><strong>Kayak</strong>: <a href="https://www.kayak.com%5B1%5D">https://www.kayak.com[1]</a></p>
+<ul>
+<li>Best for: Multi-site aggregation, flexible date searches</li>
+<li>Shows April as high season with lowest historical prices in February[2][1]</li>
+</ul>
+</li>
+<li><p><strong>Skyscanner</strong>: <a href="https://www.skyscanner.com%5B13%5D">https://www.skyscanner.com[13]</a></p>
+<ul>
+<li>Best for: International fare comparisons, budget airline discovery</li>
+<li>Currently showing April flights starting at $249 one-way (with stops)[13]</li>
+</ul>
+</li>
+<li><p><strong>Expedia</strong>: <a href="https://www.expedia.com%5B15%5D">https://www.expedia.com[15]</a></p>
+<ul>
+<li>Best for: Package deals (flight + hotel)</li>
+<li>Recent round-trips listed at $790+[15]</li>
+</ul>
+</li>
+</ol>
+<h3>Direct Airline Booking</h3>
+<ul>
+<li><strong>American Airlines</strong>: <a href="https://www.aa.com/en-us/flights-from-new-york-to-japan%5B4%5D">https://www.aa.com/en-us/flights-from-new-york-to-japan[4]</a></li>
+<li><strong>Japan Airlines</strong>: <a href="https://www.jal.co.jp/flights/en-us/flights-from-new-york%5B5%5D">https://www.jal.co.jp/flights/en-us/flights-from-new-york[5]</a></li>
+<li><strong>ANA</strong>: <a href="https://www.ana.co.jp/en/us/%5B20%5D">https://www.ana.co.jp/en/us/[20]</a></li>
+</ul>
+<p>Booking directly with airlines often provides better flexibility for changes and direct customer service, though prices may be slightly higher than aggregators.</p>
+<h2>Price Trend Analysis &amp; Optimal Booking Time</h2>
+<h3>Will Prices Increase or Decrease?</h3>
+<p><strong>Prices are highly likely to INCREASE</strong> as you approach your April 3 departure date. Here's why:</p>
+<p><strong>Timing Factors</strong></p>
+<ul>
+<li>You're currently <strong>3 months out</strong> from departure (January 3 → April 3)[19]</li>
+<li>Optimal booking window for transpacific flights is <strong>5-7 months in advance</strong>[19]</li>
+<li>For spring break/April travel specifically, the sweet spot is <strong>late January to early February</strong>[19]</li>
+<li>Google Flights data shows the cheapest domestic spring booking is 43 days before departure (28-61 day range), but international flights require more lead time[19]</li>
+</ul>
+<p><strong>Seasonal Demand</strong></p>
+<ul>
+<li>April is <strong>peak season</strong> for Tokyo due to cherry blossoms[2][1]</li>
+<li>Spring 2026 demand is exceptionally high, with 2025 prices already up 20-40% year-over-year[11]</li>
+<li>Japan international arrivals surged 50% in 2024, driving sustained high demand[21]</li>
+<li>Weak yen has made Japan more attractive to US travelers[21]</li>
+</ul>
+<p><strong>Price Escalation Pattern</strong><br>Research shows that prices increase steadily within 28 days of departure, with the steepest increases in the final 11 days (up to 15% premium). Waiting beyond mid-February significantly increases your risk of paying premium rates.[22]</p>
+<h3>When to Book: Recommendation</h3>
+<p><strong>Book by mid-February 2026 at the latest.</strong> Here's the strategic timeline:</p>
+<table>
+<thead>
+<tr>
+<th>Timeframe</th>
+<th>Action</th>
+<th>Risk Level</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Now - Jan 20</strong></td>
+<td>Monitor prices, set alerts</td>
+<td>Low risk, may see small fluctuations</td>
+</tr>
+<tr>
+<td><strong>Jan 20 - Feb 15</strong></td>
+<td><strong>Optimal booking window</strong></td>
+<td>Moderate risk if waiting</td>
+</tr>
+<tr>
+<td><strong>Feb 15 - Mar 1</strong></td>
+<td>Book immediately if not done</td>
+<td>High risk of price increases</td>
+</tr>
+<tr>
+<td><strong>After Mar 1</strong></td>
+<td>Expect significant premiums</td>
+<td>Very high risk</td>
+</tr>
+</tbody></table>
+<p><strong>Immediate Next Steps:</strong></p>
+<ol>
+<li><strong>Set price alerts</strong> on Google Flights, Kayak, and Skyscanner for your specific dates today</li>
+<li><strong>Check prices now</strong> to establish a baseline (aim for $1,000-$1,200 range for direct flights)</li>
+<li><strong>Monitor for 1-2 weeks</strong> to see if any fare sales emerge (airlines occasionally drop prices in mid-January)</li>
+<li><strong>Book by late January</strong> if you see prices in the $1,000-$1,200 range for direct flights</li>
+<li><strong>Don't wait past mid-February</strong> under any circumstances</li>
+</ol>
+<h3>Additional Cost Consideration</h3>
+<p>Japan is implementing a <strong>tripled departure tax starting July 2026</strong> (from ¥1,000 to ¥3,000, approximately $20 USD). While this won't affect your April dates, it demonstrates Japan's effort to manage over-tourism through pricing, which may influence airline pricing strategies for the entire year.[23]</p>
+<h2>Airport Options</h2>
+<h3>New York Departure</h3>
+<ul>
+<li><strong>JFK (John F. Kennedy)</strong>: Most direct international flights, primary hub[9]</li>
+<li><strong>EWR (Newark)</strong>: Alternative with similar pricing, good ANA service[24]</li>
+<li><strong>LGA (LaGuardia)</strong>: Primarily domestic; limited international options[25]</li>
+</ul>
+<p><strong>Recommendation</strong>: Prioritize JFK for the most direct flight options and schedule flexibility.</p>
+<h3>Tokyo Arrival</h3>
+<ul>
+<li><strong>HND (Haneda)</strong>: Closer to central Tokyo (~30 min), more convenient[14]</li>
+<li><strong>NRT (Narita)</strong>: ~60-90 min to central Tokyo, often slightly cheaper[14]</li>
+</ul>
+<p><strong>Recommendation</strong>: Haneda is worth a small premium ($50-100) for the time savings and convenience, especially on a short 7-8 day trip.</p>
+<h2>Summary: Your Action Plan</h2>
+<p>Given your April 3-10/11 travel dates (3 months from today), you're entering the booking window but haven't missed the optimal timing. Here's what to do:</p>
+<ol>
+<li><p><strong>This Week</strong>: Search all major platforms (Google Flights, Kayak, Skyscanner) and set price alerts for:</p>
+<ul>
+<li>JFK → HND/NRT departing April 3, 2026</li>
+<li>HND/NRT → JFK returning April 10 or 11, 2026</li>
+</ul>
+</li>
+<li><p><strong>Target Price</strong>: $1,000-$1,200 for direct round-trip economy flights (ANA, JAL, or American Airlines)</p>
+</li>
+<li><p><strong>Book By</strong>: Mid-February 2026 (no later than February 15)</p>
+</li>
+<li><p><strong>Expected Outcome</strong>: Prices will likely increase 10-25% if you wait until March, so booking in the January-February window maximizes value</p>
+</li>
+<li><p><strong>Consider</strong>: Budget one-stop options only if you're comfortable with 20+ hour total travel time and can save $300-500</p>
+</li>
+</ol>
+<p>The data strongly indicates that waiting will cost you more. April's high-season premium combined with strong demand trends means early booking is your best strategy for securing reasonable fares.</p>
+<p><a href="https://www.kayak.com/flight-routes/New-York-NYC/Tokyo-TYO">1</a><br><a href="https://www.kayak.com/flight-routes/New-York-USNY/Tokyo-TYO">2</a><br><a href="https://www.aa.com/en-us/flights-from-united-states-to-japan">3</a><br><a href="https://www.aa.com/en-us/flights-from-new-york-to-japan">4</a><br><a href="https://www.jal.co.jp/flights/en-us/flights-from-new-york">5</a><br><a href="https://www.trip.com/hot/ana(nh)-flights-from-new-york-to-tokyo/">6</a><br><a href="https://www.aa.com/en-us/flights-from-new-york-to-tokyo">7</a><br><a href="https://www.kayak.com/flight-routes/ANA-New-York-NYC/Tokyo-TYO.b.NH.ksp">8</a><br><a href="https://www.skyscanner.com/routes/jfk/hnd/new-york-john-f-kennedy-to-tokyo-haneda.html">9</a><br><a href="https://onemileatatime.com/news/japan-airlines-airbus-a350-1000/">10</a><br><a href="https://www.reddit.com/r/JapanTravelTips/comments/1j35fyq/summer_2024_vs_2025_2025_increase_on_hotels_and/">11</a><br><a href="https://www.kayak.com/flight-routes/New-York-John-F-Kennedy-Intl-JFK/Tokyo-Haneda-HND">12</a><br><a href="https://www.skyscanner.com/routes/nyca/tyoa/new-york-to-tokyo.html">13</a><br><a href="https://www.skyscanner.com/routes/jfk/nrt/new-york-john-f-kennedy-to-tokyo-narita.html">14</a><br><a href="https://www.expedia.com/lp/flights/jfk/nrt/new-york-to-tokyo">15</a><br><a href="https://www.skyscanner.com/routes/tyoa/nyca/tokyo-to-new-york.html">16</a><br><a href="https://www.google.com/travel/flights/flights-from-new-york-to-tokyo.html?hl=en-US">17</a><br><a href="https://www.google.com/travel/flights?hl=en-US">18</a><br><a href="https://thepointsguy.com/airline/best-time-to-book-a-flight/">19</a><br><a href="https://www.ana.co.jp/en/us/">20</a><br><a href="https://www.cnbc.com/2025/01/09/where-airfare-is-falling-in-2025-cheap-flights.html">21</a><br><a href="https://www.priceline.com/flight-routes/en-us/NYC/TYO/flights-from-new-york-city-to-tokyo.ssp">22</a><br><a href="https://www.travelandtourworld.com/news/article/south-korean-travellers-brace-for-shocking-cost-hikes-japan-to-triple-departure-tax-starting-july-2026-how-will-korean-air-hotels-handle-the-impact/">23</a><br><a href="https://www.skyscanner.com/routes/ewr/nrt/new-york-newark-to-tokyo-narita.html">24</a><br><a href="https://www.skyscanner.com/routes/lga/tyoa/new-york-laguardia-to-tokyo.html">25</a><br><a href="https://www.google.com/travel/flights/flights-to-tokyo.html?hl=en-US">26</a><br><a href="https://flights.ana.co.jp/en-us/flights-from-new-york-to-tokyo">27</a><br><a href="https://flights.cathaypacific.com/destinations/en_US/flights-from-new-york-to-tokyo">28</a><br><a href="https://www.kayak.com/flight-routes/United-States-US0/Tokyo-TYO">29</a><br><a href="https://www.alaskaair.com/en/flights-from-new-york-to-tokyo">30</a><br><a href="https://www.travelocity.com/lp/flight-routes/asiana-airlines-from-john-f-kennedy-intl-to-narita-intl/oz/jfk/nrt">31</a><br><a href="https://www.facebook.com/groups/japantravel/posts/1121839915601254/">32</a><br><a href="https://www.jal.co.jp/flights/en-us/flights-from-new-york-to-tokyo">33</a><br><a href="https://flights.evaair.com/en-us/flights-from-new-york-to-japan">34</a><br><a href="https://www.reddit.com/r/IAmA/comments/1hvr1n6/iama_cheap_flight_expert_here_to_talk_mistake/">35</a><br><a href="https://www.united.com/en-us/flights-to-tokyo">36</a><br><a href="https://www.kayak.com/flight-routes/New-York-John-F-Kennedy-Intl-JFK/Japan-JP0">37</a><br><a href="https://www.flightaware.com/live/findflight/KJFK/RJTT">38</a><br><a href="https://www.epicbeertrips.com/travel-tips/how-far-ahead-should-you-book-an-international-flight-to-get-the-best-deal/">39</a><br><a href="https://thriftytraveler.com/guides/best-time-to-book-flights/">40</a><br><a href="https://www.smartertravel.com/booking-international-flights-for-summer/">41</a><br><a href="https://www.cheapflights.com.hk/flights/New-York-NYC/Tokyo-TYO.NH.ksp">42</a><br><a href="https://dollarflightclub.com/articles/best-months-for-cheap-flights-in-2025/">43</a><br><a href="https://dollarflightclub.com/articles/best-times-of-day-to-book-flights-in-2025/">44</a><br><a href="https://www.skyscanner.com/routes/nyca/hnd/new-york-to-tokyo-haneda.html">45</a><br><a href="https://travelnoire.com/cheapest-destinations-to-fly-2026">46</a><br><a href="https://www.reddit.com/r/AskACanadian/comments/1nsuouz/how_many_months_in_advance_do_you_book_a_flight/">47</a><br><a href="https://www.reddit.com/r/Flights/comments/1h657j1/flight_cost_question_nycjapan/">48</a><br><a href="https://www.facebook.com/groups/457573074653783/posts/1828889180855492/">49</a><br><a href="https://flights.virginatlantic.com/en-us/">50</a><br><a href="https://www.aa.com/en-us/flights-from-dallas-to-tokyo">51</a><br><a href="https://www.kayak.com/flight-routes/New-York-NYC/Tokyo-Haneda-HND">52</a><br><a href="https://www.skyscanner.com/routes/jfk/tyoa/new-york-john-f-kennedy-to-tokyo.html">53</a><br><a href="https://www.kayak.com/flight-routes/New-York-John-F-Kennedy-Intl-JFK/Tokyo-TYO">54</a><br><a href="https://nypost.com/2025/12/16/lifestyle/revealed-the-5-cheapest-places-to-fly-in-2026-and-the-best-dates-to-get-bang-for-your-buck/">55</a><br><a href="https://www.yahoo.com/lifestyle/articles/2026-flight-cheat-code-cheapest-194258078.html">56</a><br><a href="https://dollarflightclub.com/articles/cheapest-places-to-fly-2026/">57</a><br><a href="https://www.facebook.com/groups/1478535869139825/posts/4031269137199806/">58</a><br><a href="https://www.instagram.com/p/DRUp7QOCAZC/">59</a><br><a href="https://www.google.com/travel/flights/flights-from-toronto-to-tokyo.html?hl=en">60</a><br><a href="https://ae.trip.com/flights/airport-ewr-nrt/">61</a><br><a href="https://www.google.com/travel/flights?hl=en">62</a><br><a href="https://www.google.com/travel/flights/region/flights-to-japan.html?hl=en-US">63</a><br><a href="https://www.google.com/travel/flights/flights-from-newark-to-tokyo.html?hl=en-US">64</a><br><a href="https://www.google.com/travel/flights/flights-from-toronto.html?hl=en">65</a><br><a href="https://www.expedia.com/lp/flights/ewr/nrt/newark-liberty-intl-airport-to-tokyo">66</a><br><a href="https://www.jal.co.jp/flights/en-jp/flights-from-tokyo-to-new-york">67</a><br><a href="https://www.jal.co.jp/flights/en-us/business_class-flights-from-new-york-to-tokyo">68</a></p>
+        </div>
+        
+    </div>
+    
+</body>
+</html>

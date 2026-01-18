@@ -1,5 +1,3 @@
-
-
 **Flight Research Update (January 4, 2026):**
 
 **Key Discovery - JAL Free Domestic Flights:**

@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>011226 8:05PM The Minimal MVP: Momentum Through Focused Four-File Architecture</title>
+    <meta name="Title" content="The Minimal MVP: Momentum Through Focused Four-File Architecture" type="Artifact">
+    <meta name="Summary" content="A disciplined development approach starting with a single entry point to ensure momentum. This architecture prioritizes runnable code over complex structure." type="Artifact">
+    <meta name="Description" content="Technical strategy slide outlining the four-file minimal viable product structure." type="Artifact">
+    <meta name="Insight" content="The README's primary job is not marketing, but providing a strict build order that forces the implementation of main.py before dependencies are even defined." type="Artifact">
+    <meta name="Question" content="How can developers maintain momentum and avoid architectural paralysis when starting a new MVP?" type="Artifact">
+</head>
+<body style="margin: 0; padding: 0; background-color: #f0f0f0; font-family: 'Segoe UI', Arial, sans-serif; -webkit-font-smoothing: antialiased;">
+
+<!-- 
+<analysis>
+1. Key Points:
+   - Philosophy: Momentum > Architecture. Start tiny.
+   - Structure: 4 Files (README, main.py, requirements, gitignore).
+   - Execution: main.py is the single entry point; requirements start empty.
+   - Discipline: README defines build order, not marketing.
+   
+2. Information Type: 
+   - Framework / Structural Strategy.
+   - Component Breakdown.
+
+3. Layout Evaluation:
+   - Table Slide: Functional, but a bit dry for a "Philosophy".
+   - Subtitle Slide (Four Column): Excellent. It treats each file as a "Pillar" of the strategy.
+   - Framework Slide: Also good, but the column structure allows for code snippets better.
+   
+4. Selection: Four-Column Subtitle Slide.
+   - Title: "The Minimal MVP: Momentum Through Radical Simplicity"
+   - Column 1: README.md (The Map).
+   - Column 2: main.py (The Engine).
+   - Column 3: requirements.txt (The Fuel).
+   - Column 4: .gitignore (The Shield).
+
+5. Plan:
+   - Use `display: table` for the 4 columns.
+   - Use Monospace fonts for filenames.
+   - Visual cue: Use a "file icon" or visual representation for each header.
+</analysis>
+
+<design_planning>
+1. Color Palette:
+   - Primary: #051C2C (McKinsey Navy).
+   - Accent: #0078D7 (VS Code Blue).
+   - Backgrounds: #FAFAFA (Paper White).
+   - Code Blocks: #F0F0F0 (Light Gray).
+
+2. Visual Hierarchy:
+   - Title: 26px Serif, Navy.
+   - File Names: 14px Monospace, Bold, Blue.
+   - Roles: 11px Italic, Dark Grey.
+   - Body: 11px Sans-Serif.
+
+3. Layout Structure:
+   - Width: 1100px.
+   - 4 Columns with 20px spacing.
+   - Bottom "Mental Model" Banner.
+
+4. Typography:
+   - Font: Segoe UI (Body), Consolas/Courier (Code).
+</design_planning>
+-->
+
+    <!-- Main Slide Container -->
+    <div style="width: 1100px; margin: 40px auto; background-color: #ffffff; padding: 50px; box-shadow: 0 0 20px rgba(0,0,0,0.1); box-sizing: border-box;">
+
+        <!-- Header -->
+        <div style="border-bottom: 2px solid #051C2C; padding-bottom: 20px; margin-bottom: 30px;">
+            <div style="font-size: 11px; text-transform: uppercase; color: #666; letter-spacing: 1px; margin-bottom: 5px;">Development Strategy</div>
+            <h1 style="font-size: 28px; color: #051C2C; margin: 0; font-family: 'Georgia', serif; font-weight: normal; line-height: 1.2;">
+                Enforcing a strict "Four-File" architecture prioritizes momentum over premature abstraction
+            </h1>
+        </div>
+
+        <!-- 4-Column Layout via Table -->
+        <div style="display: table; width: 100%; border-spacing: 20px 0; margin-left: -20px;">
+
+            <!-- Column 1: README.md -->
+            <div style="display: table-cell; width: 25%; vertical-align: top; background-color: #fff;">
+                <h3 style="font-family: Consolas, monospace; font-size: 14px; color: #0078D7; margin-top: 0; margin-bottom: 5px; border-bottom: 1px solid #ddd; padding-bottom: 10px;">
+                    README.md
+                </h3>
+                <div style="font-size: 11px; color: #666; font-style: italic; margin-bottom: 15px;">Role: Orientation & Order</div>
+
+                <div style="font-size: 12px; color: #333; margin-bottom: 10px; font-weight: bold;">Primary Function</div>
+                <div style="font-size: 12px; color: #444; line-height: 1.5; margin-bottom: 15px;">
+                    Not for marketing. It defines the <strong>build order</strong>, forcing the implementation of <code>main.py</code> before dependencies are even listed.
+                </div>
+
+                <div style="background-color: #F5F5F5; padding: 10px; border-left: 3px solid #051C2C; font-family: Consolas, monospace; font-size: 10px; color: #555;">
+                    # Build Order<br>
+                    1. main.py<br>
+                    2. requirements.txt<br>
+                    3. .gitignore
+                </div>
+            </div>
+
+            <!-- Column 2: main.py -->
+            <div style="display: table-cell; width: 25%; vertical-align: top; background-color: #F0F8FF; border-top: 3px solid #0078D7; padding: 15px;">
+                <h3 style="font-family: Consolas, monospace; font-size: 14px; color: #0078D7; margin-top: 0; margin-bottom: 5px; padding-bottom: 5px;">
+                    main.py
+                </h3>
+                <div style="font-size: 11px; color: #666; font-style: italic; margin-bottom: 15px;">Role: Execution Core</div>
+
+                <div style="font-size: 12px; color: #333; margin-bottom: 10px; font-weight: bold;">The MVP Heart</div>
+                <ul style="margin: 0; padding-left: 15px; font-size: 12px; color: #444; line-height: 1.5; margin-bottom: 15px;">
+                    <li><strong>Single Entry:</strong> Runnable via <code>python main.py</code>.</li>
+                    <li><strong>Self-Contained:</strong> No database or auth at start.</li>
+                    <li><strong>Signposts:</strong> Explicit TODOs for future expansion.</li>
+                </ul>
+            </div>
+
+            <!-- Column 3: requirements.txt -->
+            <div style="display: table-cell; width: 25%; vertical-align: top;">
+                <h3 style="font-family: Consolas, monospace; font-size: 14px; color: #0078D7; margin-top: 0; margin-bottom: 5px; border-bottom: 1px solid #ddd; padding-bottom: 10px;">
+                    requirements.txt
+                </h3>
+                <div style="font-size: 11px; color: #666; font-style: italic; margin-bottom: 15px;">Role: Just-in-Time Dependencies</div>
+
+                <div style="font-size: 12px; color: #333; margin-bottom: 10px; font-weight: bold;">Discipline</div>
+                <div style="font-size: 12px; color: #444; line-height: 1.5; margin-bottom: 15px;">
+                    Starts completely empty. Dependencies are added <strong>only</strong> when called by <code>main.py</code> code. No speculative installs.
+                </div>
+
+                <div style="background-color: #F5F5F5; padding: 10px; border: 1px dashed #999; font-family: Consolas, monospace; font-size: 10px; color: #777;">
+                    # Only added when used<br>
+                    fastapi==0.109.0<br>
+                    uvicorn[standard]
+                </div>
+            </div>
+
+            <!-- Column 4: .gitignore -->
+            <div style="display: table-cell; width: 25%; vertical-align: top;">
+                <h3 style="font-family: Consolas, monospace; font-size: 14px; color: #0078D7; margin-top: 0; margin-bottom: 5px; border-bottom: 1px solid #ddd; padding-bottom: 10px;">
+                    .gitignore
+                </h3>
+                <div style="font-size: 11px; color: #666; font-style: italic; margin-bottom: 15px;">Role: Hygiene & Defense</div>
+
+                <div style="font-size: 12px; color: #333; margin-bottom: 10px; font-weight: bold;">Reactive Rules</div>
+                <div style="font-size: 12px; color: #444; line-height: 1.5; margin-bottom: 15px;">
+                    Defensive, not fancy. Ignore artifacts only as they appear (logs, pycache, .env). Keeps the mental model clean.
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Mental Model Footer -->
+        <div style="margin-top: 40px; background-color: #051C2C; padding: 20px; color: #fff;">
+            <div style="font-size: 11px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 5px; opacity: 0.8;">The Mental Model</div>
+            <div style="font-family: 'Georgia', serif; font-size: 16px; font-style: italic;">
+                "One file runs the app. One file explains the app. One file lists dependencies. One file keeps the repo clean."
+            </div>
+        </div>
+
+        <!-- Sources -->
+        <div style="margin-top: 15px; font-size: 9px; color: #999;">
+            Source: "The Minimal MVP" Development Standard, FastAPI Best Practices 2026
+        </div>
+
+    </div>
+
+
+<div class="notes-section" style="margin-top: 2em; padding-top: 2em; border-top: 1px solid #e5e7eb;"><h2 style="font-size: 1.5em; margin-bottom: 1em;">Notes</h2><p>Alright, here are run notes you can listen to and mentally rehearse.</p>
+<p>⸻</p>
+<p>Let’s lock in the MVP mindset.</p>
+<p>You’re starting with a deliberately tiny repository. Four files. Nothing more. The goal here is momentum, not architecture.</p>
+<p>At the top level, you have a README, a single main.py, a requirements.txt, and a .gitignore. That’s it. This structure forces focus.</p>
+<p>Start with the README. Its job is not marketing. Its job is orientation. It tells future-you what to build first, in what order, and how to run the app without thinking. The key instruction is simple: fully implement main.py first. Everything else follows from that. The README also makes it clear that dependencies are added only when they are actually needed, not preemptively.</p>
+<p>Now move to main.py. This is the heart of the MVP. One file. One entry point. It must be runnable on its own, either with python main.py or a standard dev server command like uvicorn. You define the smallest possible app here. Usually that means a single root or health endpoint that returns something like “status ok.” No database. No background jobs. No auth. Just enough structure to prove the app runs.</p>
+<p>Crucially, main.py should include clear TODOs. These aren’t noise. They are signposts for future expansion: persistence, scheduling, auth, background tasks. You’re documenting intent as much as behavior.</p>
+<p>Next is requirements.txt. This file starts almost empty. That’s on purpose. You only add a dependency when main.py actually needs it. No speculative installs. Once things stabilize, then you pin versions. Until then, keep it lean.</p>
+<p>Finally, the .gitignore. This is defensive, not fancy. Ignore Python build artifacts, virtual environments, environment variable files, and editor junk. You only add new rules when new generated files appear. Nothing more.</p>
+<p>The mental model to remember is this:<br>One file runs the app. One file explains the app. One file lists dependencies. One file keeps the repo clean.</p>
+<p>If you can hold that line, everything you add later—APIs, scraping, agents, orchestration—will sit on a solid, understandable base.</p>
+<p>That’s the MVP discipline you want to keep while building this.</p>
+<p>Create this minimal structure:</p>
+<pre><code>your-app/
+├── README.md
+├── main.py
+├── requirements.txt
+└── .gitignore
+</code></pre>
+<h2>README.md</h2>
+<p>Include something like:</p>
+<pre><code class="language-md"># Your App MVP
+
+Start by fully implementing **main.py** first, then install dependencies from `requirements.txt`.
+
+## Build order
+
+1. `main.py` – core app logic and minimal endpoint(s)
+2. `requirements.txt` – add and pin dependencies as you implement features
+3. `.gitignore` – update as you add new artifact types (logs, data, etc.)
+
+## Getting started
+
+- Create and activate a virtual environment.
+- Install dependencies:
+
+  ```bash
+  pip install -r requirements.txt
+</code></pre>
+<ul>
+<li><p>Run the app (example for FastAPI with uvicorn):</p>
+<pre><code class="language-bash">uvicorn main:app --reload
+</code></pre>
+</li>
+</ul>
+<p>Add implementation details directly in the files as described below.<br>[web:19][web:22][web:25]</p>
+<pre><code>
+## main.py
+
+```python
+"""
+main.py
+
+Instruction: 
+- Define the minimal runnable app here (e.g., a FastAPI or Flask app, or a simple CLI).
+- Include:
+  - A single health or root endpoint (e.g., GET "/" returning a simple JSON payload).
+  - Any core in-memory data structures needed for the MVP (no DB at first).
+  - Clear TODO comments for future expansion (e.g., add persistence, auth, background jobs).
+- Keep this file as the single entrypoint so the MVP can run with just `python main.py`
+  or via the chosen framework's standard server command.
+"""
+# Example scaffold (delete/adjust once you implement for real):
+# from fastapi import FastAPI
+#
+# app = FastAPI()
+#
+# @app.get("/")
+# def read_root():
+#     return {"status": "ok"}
+#
+# if __name__ == "__main__":
+#     # Optional: dev-only startup logic or CLI entry
+#     import uvicorn
+#     uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)
+</code></pre>
+<h2>requirements.txt</h2>
+<pre><code class="language-txt"># requirements.txt
+
+# Instruction:
+# - List only the minimal libraries required to run the MVP.
+# - Add new dependencies here *only* when you actually need them in main.py.
+# - Pin versions once the MVP stabilizes (e.g., fastapi==0.x.x, uvicorn==0.x.x).
+
+# Example for a tiny FastAPI MVP (adjust as needed, or delete if using something else):
+# fastapi
+# uvicorn[standard]
+</code></pre>
+<h2>.gitignore</h2>
+<pre><code class="language-gitignore"># .gitignore
+
+# Instruction:
+# - Keep this focused on common Python build artifacts and environment files.
+# - Add new ignore rules only when a new type of generated file shows up
+#   (e.g., logs/, data/, .env, .DS_Store).
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.venv/
+venv/
+
+# Environment variables
+.env
+
+# OS / editor files
+.DS_Store
+*.swp
+*.swo
+.idea/
+.vscode/
+</code></pre>
+<p>Sources<br>[1] FastAPI Best Practices and Conventions we used at our startup <a href="https://github.com/zhanymkanov/fastapi-best-practices">https://github.com/zhanymkanov/fastapi-best-practices</a><br>[2] FastAPI Setup and Requirements – Practical Guide for 2026 <a href="https://www.zestminds.com/blog/fastapi-requirements-setup-guide-2025/">https://www.zestminds.com/blog/fastapi-requirements-setup-guide-2025/</a><br>[3] Tutorial - User Guide - FastAPI - Tiangolo <a href="https://fastapi.tiangolo.com/tutorial/">https://fastapi.tiangolo.com/tutorial/</a><br>[4] FastAPI Setup Guide for 2025: Requirements, Structure &amp; Deployment <a href="https://dev.to/zestminds_technologies_c1/fastapi-setup-guide-for-2025-requirements-structure-deployment-1gd">https://dev.to/zestminds_technologies_c1/fastapi-setup-guide-for-2025-requirements-structure-deployment-1gd</a><br>[5] FastAPI Project Structure Best Practices - LinkedIn <a href="https://www.linkedin.com/pulse/fastapi-project-structure-best-practices-manikandan-parasuraman-fx4pc">https://www.linkedin.com/pulse/fastapi-project-structure-best-practices-manikandan-parasuraman-fx4pc</a><br>[6] Creating a Readme File in a Power Platform Solution <a href="https://dev.to/wyattdave/creating-a-readme-file-in-a-power-platform-solution-16fh">https://dev.to/wyattdave/creating-a-readme-file-in-a-power-platform-solution-16fh</a><br>[7] Best practices for writing code comments - The Stack Overflow Blog <a href="https://stackoverflow.blog/2021/12/23/best-practices-for-writing-code-comments/">https://stackoverflow.blog/2021/12/23/best-practices-for-writing-code-comments/</a><br>[8] Hello FastAPI - FastapiTutorial <a href="https://www.fastapitutorial.com/blog/fastapi-hello-world/">https://www.fastapitutorial.com/blog/fastapi-hello-world/</a><br>[9] mvp-boilerplate/README.md at main - GitHub <a href="https://github.com/devtodollars/startup-boilerplate/blob/main/README.md">https://github.com/devtodollars/startup-boilerplate/blob/main/README.md</a><br>[10] Best practice for commenting code : r/learnprogramming - Reddit <a href="https://www.reddit.com/r/learnprogramming/comments/umnnbh/best_practice_for_commenting_code/">https://www.reddit.com/r/learnprogramming/comments/umnnbh/best_practice_for_commenting_code/</a><br>[11] Ultimate guide to FastAPI library in Python - Deepnote <a href="https://deepnote.com/blog/ultimate-guide-to-fastapi-library-in-python">https://deepnote.com/blog/ultimate-guide-to-fastapi-library-in-python</a><br>[12] README.md - dwyl App MVP - GitHub <a href="https://github.com/dwyl/mvp/blob/main/README.md">https://github.com/dwyl/mvp/blob/main/README.md</a><br>[13] 10 Best Practices to Follow While Writing Code Comments <a href="https://javarevisited.blogspot.com/2011/08/code-comments-java-best-practices.html">https://javarevisited.blogspot.com/2011/08/code-comments-java-best-practices.html</a><br>[14] FastAPI Folder Structure: A Guide For Developers <a href="https://copyright-certificate.byu.edu/news/fastapi-folder-structure-a-guide">https://copyright-certificate.byu.edu/news/fastapi-folder-structure-a-guide</a><br>[15] How to build an MVP with a single prompt in Cursor - LinkedIn <a href="https://www.linkedin.com/posts/eric-vyacheslav-156273169_you-can-now-go-from-github-readme-to-working-activity-7340332668191969280-faG">https://www.linkedin.com/posts/eric-vyacheslav-156273169_you-can-now-go-from-github-readme-to-working-activity-7340332668191969280-faG</a>_</p></div>
+</body>
+</html>

@@ -1,5 +1,3 @@
-
-
 ### Flight Strategy Breakthrough (January 4, 2026)
 
 Today's research produced a game-changing discovery that fundamentally alters the trip economics: **JAL's free domestic flights program**. This wasn't on my radar before, and it completely reframes the multi-city vs single-city decision.

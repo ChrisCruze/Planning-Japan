@@ -137,3 +137,4 @@ Unstructured hours to wander, rest, or discover
 
 - Research shows travelers experience more satisfaction from flexible itineraries with structured anchors than rigid plans
 - Energy management is crucial for group travel success
+

@@ -1,5 +1,3 @@
-
-
 ## Flight Research - January 4, 2026
 
 ### Question 1: Is it cheaper to fly from Atlanta to Japan or from NYC to Japan?
@@ -262,4 +260,3 @@
 - Delta: https://www.delta.com/us/en/flight-deals/asia-flights/flights-to-tokyo
 - United: https://www.united.com/en-us/flights-to-tokyo
 - American: https://www.aa.com
-
